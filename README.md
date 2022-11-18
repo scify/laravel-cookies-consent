@@ -71,7 +71,7 @@ custom [Laravel View Component](https://laravel.com/docs/9.x/blade#components) i
 
 This will render the following cookies consent that, will look very much like this one.
 
-![dialog](https://scify.github.io/laravel-cookies-consent/images/dialog.png)
+![dialog](https://github.com/scify/laravel-cookies-consent/blob/9c0ddafe15ad8118ab07979b72094799417f93db/images/dialog.png)
 
 The styling of the component will also be published automatically, in the `public/vendor/scify/laravel-cookies-consent/css/style.css` file.
 
