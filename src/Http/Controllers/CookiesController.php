@@ -11,6 +11,9 @@ use Illuminate\Support\Facades\Cookie;
  * Manages the cookies consent submission
  */
 class CookiesController extends Controller {
+
+    private static int $MINUTES_IN_A_DAY = 1440;
+
     /**
      * Called when the user clicks on "ACCEPT ALL"
      *
@@ -77,7 +80,7 @@ class CookiesController extends Controller {
      */
     public function set_cookie(string $cookie_name) {
         $cookie_prefix = config('cookies_consent.cookie_prefix');
-        Cookie::queue(Cookie::forever($cookie_prefix . $cookie_name, true));
+        Cookie::queue($cookie_prefix . $cookie_name, true, (self::$MINUTES_IN_A_DAY * config('cookies_consent.cookie_lifetime')));
     }
 
     /**

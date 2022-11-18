@@ -34,4 +34,8 @@ return [
         'functionality',
     ],
     'required' => ['strictly_necessary'],
+    /*
+     * Set the cookie duration in days.  Default is 365 * 10.
+     */
+    'cookie_lifetime' => 365 * 10,
 ];

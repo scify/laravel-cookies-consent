@@ -1,4 +1,4 @@
-# Laravel Cookies Consent Plugin
+# Laravel Cookies Consent Plugin - Make your Laravel app compliant with the EU GDPR cookie law
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/scify/laravel-cookies-consent.svg?style=flat-square)](https://packagist.org/packages/scify/laravel-cookies-consent)
 [![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/scify/laravel-cookies-consent/run-tests?label=tests)](https://github.com/scify/laravel-cookies-consent/actions?query=workflow%3Arun-tests+branch%3Amain)
@@ -17,26 +17,38 @@ allow.
 After the user submission, the page reloads and the relevant cookies are set on the browser, and can then be used in the
 front-end.
 
+## Features
+
+- Customizable cookie categories
+- Customizable pop-up view and style
+- Customizable show/hide "Read more" link
+- Customizable translations (6 languages already included)
+
 ## Installation
 
 You can install the package via composer:
 
 ```bash
-composer require scify/laravel-cookies-consent
+  composer require scify/laravel-cookies-consent
 ```
 
-If on Laravel 9 or newer, the assets files (style.css) will automatically be published in `public/vendor/cookies_consent`.
+If on Laravel 9 or newer, the assets files (style.css) will automatically be published
+in `public/vendor/cookies_consent`.
 
 If on Laravel 8 or older, **make sure to also publish** the styles file:
 
 ```bash
-php artisan vendor:publish --provider="SciFY\LaravelCookiesConsent\LaravelCookiesConsentServiceProvider" --tag="laravel-assets"
+    php artisan vendor:publish \
+    --provider="SciFY\LaravelCookiesConsent\LaravelCookiesConsentServiceProvider" \
+    --tag="laravel-assets"
 ```
 
 You can publish the config file with:
 
 ```bash
-php artisan vendor:publish --provider="SciFY\LaravelCookiesConsent\LaravelCookiesConsentServiceProvider" --tag="cookies-consent-config"
+    php artisan vendor:publish \
+    --provider="SciFY\LaravelCookiesConsent\LaravelCookiesConsentServiceProvider" \
+    --tag="cookies-consent-config"
 ```
 
 In the config file, you can change the cookie categories of your application, set the required and pre-selected
@@ -44,23 +56,24 @@ categories, as well as add new categories.
 
 This is the contents of the published config file:
 
-```php
-return [
-    'cookie_prefix' => '',
-    'cookies' => [
-        'strictly_necessary', 
-        'targeting', 
-        'performance', 
-        'functionality'
-    ],
-    'enabled' => [
-        'strictly_necessary', 
-        'targeting', 
-        'performance', 
-        'functionality'
-    ],
-    'required' => ['strictly_necessary']
-];
+```bash
+    return [
+        'cookie_prefix' => '',
+        'cookies' => [
+            'strictly_necessary', 
+            'targeting', 
+            'performance', 
+            'functionality'
+        ],
+        'enabled' => [
+            'strictly_necessary', 
+            'targeting', 
+            'performance', 
+            'functionality'
+        ],
+        'required' => ['strictly_necessary'],
+        'cookie_lifetime' => 365 * 10,
+    ];
 ```
 
 The `cookie_prefix` is optional and, if set, will be applied to every cookie. A good example of customizing
@@ -72,6 +85,8 @@ If you want to remove a cookie category, simply remove it from the array.
 
 You can use the `enabled` array to set the cookie categories that will be pre-selected,
 and the `required` array to set the cookies that the user won't be able to deselect.
+
+If you want to change how long the cookies will be stored, edit the `cookie_lifetime` variable.
 
 ## Usage
 
@@ -86,62 +101,77 @@ You can then use this component in order to display the cookies consent window, 
 
 Typically, a good strategy is to put the component just before the closing `<body>` tag:
 
-```html
-
-<body>
-...
-...
-...
-<x-laravel-cookies-consent></x-laravel-cookies-consent>
-</body>
+```bash
+    <body>
+        ...
+        ...
+        ...
+        <x-laravel-cookies-consent></x-laravel-cookies-consent>
+    </body>
 ```
 
 After that, you can use the `$_COOKIE` global object, in order to check for the appropriate cookie.
 
-For example, An application that want to load the Google Analytics script only if the user has given their consent to
+The only step remaining is to use this object in our Blade files:
+
+```bash
+$_COOKIE[config('cookies_consent.cookie_prefix') . {{ COOKIE_NAME }}]
+```
+
+For example, An application that wants to load the Google Analytics script only if the user has given their consent to
 the `targeting` cookie category,
 might do the following:
 
 ```php
-<!-- Google Analytics -->
-@if(isset($_COOKIE[config('cookies_consent.cookie_prefix') . 'cookies_consent_targeting']) && config('app.google_analytics_id'))
-    <script defer async>
-        (function (i, s, o, g, r, a, m) {
-            i['GoogleAnalyticsObject'] = r;
-            i[r] = i[r] || function () {
-                (i[r].q = i[r].q || []).push(arguments)
-            }, i[r].l = 1 * new Date();
-            a = s.createElement(o),
-                m = s.getElementsByTagName(o)[0];
-            a.async = 1;
-            a.src = g;
-            m.parentNode.insertBefore(a, m)
-        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
-
-        window.ga('create', '{{ config('app.google_analytics_id') }}', 'auto');
-        window.ga('set', 'anonymizeIp', true);
-        window.ga('send', 'pageview');
-    </script>
-@endif
+    google-analytics.blade.php
+    
+    <!-- Check the 'targeting' cookie: -->
+    @if(isset($_COOKIE[config('cookies_consent.cookie_prefix') 
+    . 'cookies_consent_targeting']) && config('app.google_analytics_id'))
+        
+        <!-- Google Analytics -->
+        <script defer async>
+            (function (i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r;
+                i[r] = i[r] || function () {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date();
+                a = s.createElement(o),
+                    m = s.getElementsByTagName(o)[0];
+                a.async = 1;
+                a.src = g;
+                m.parentNode.insertBefore(a, m)
+            })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+    
+            window.ga('create', '{{ config('app.google_analytics_id') }}', 'auto');
+            window.ga('set', 'anonymizeIp', true);
+            window.ga('send', 'pageview');
+        </script>
+    @endif
 ```
 
-In this example, we checked whether the `$_COOKIE[config('cookies_consent.cookie_prefix') . 'cookies_consent_targeting']` key exists or not.
+In this example, we checked whether
+the `$_COOKIE[config('cookies_consent.cookie_prefix') . 'cookies_consent_targeting']` key exists or not.
 
-## Customising the component texts
+## Customization
+
+### Customizing the component texts
 
 If you want to modify the texts shown in the cookies dialog, you can publish the language resource files with this
 command:
 
 ```bash
-php artisan vendor:publish --provider="SciFY\LaravelCookiesConsent\LaravelCookiesConsentServiceProvider" --tag="cookies-consent-translations"
+    php artisan vendor:publish \
+    --provider="SciFY\LaravelCookiesConsent\LaravelCookiesConsentServiceProvider" \
+    --tag="cookies-consent-translations"
 ```
 
 This will publish this file to `resources/lang/vendor/cookies_consent/{{lang}}/messages.php`.
 
-The plugin comes with 5 built-in languages. You can change the translations for a given language, or add additional
+The plugin comes with 6 built-in languages. You can change the translations for a given language, or add additional
 languages yourself.
 
-### Customising the "Read more" link
+### Customizing the "Read more" link
 
 In the cookies dialog, there is also an optional "Read more" link. This link is specified in the language translation
 files, since it is common to have a different link for each language.
@@ -158,12 +188,14 @@ return [
 
 If the link is left empty (default state), it won't be shown.
 
-### Customising the component contents
+### Customizing the component contents
 
 If you need full control over the contents of the cookies dialog, you can publish the views of the package:
 
 ```bash
-php artisan vendor:publish --provider="SciFY\LaravelCookiesConsent\LaravelCookiesConsentServiceProvider" --tag="cookies-consent-components"
+    php artisan vendor:publish \
+    --provider="SciFY\LaravelCookiesConsent\LaravelCookiesConsentServiceProvider" \
+    --tag="cookies-consent-components"
 ```
 
 This will copy the `resources/views/components/laravel-cookies-consent` view file over
@@ -171,9 +203,63 @@ to `resources/views/components/vendor/cookies_consent` directory.
 
 ## Testing
 
+This project uses [Pest](https://pestphp.com/) for testing. To execute the test suite, run:
+
 ```bash
-composer test
+  composer test
 ```
+
+## FAQ
+
+**Question:** Is this plugin free to use?
+
+**Answer:** Yes. This plugin is totally free and developed as
+an [Open-Source project](https://github.com/scify/laravel-cookies-consent).
+
+---
+
+**Question:** How long do the cookies last?
+
+**Answer:** The duration is set in days, in `config/cookies_consent.php` file. In order to publish this file, run
+
+```bash
+```bash
+    php artisan vendor:publish \
+    --provider="SciFY\LaravelCookiesConsent\LaravelCookiesConsentServiceProvider" \
+    --tag="cookies-consent-config"
+```
+
+And then edit the `cookie_lifetime` field (in days).
+
+---
+
+**Question:** Will the cookie consent window show every time?
+
+**Answer:** No. As soon as the user clicks one of the "Accept all", "Accept selection", or "Decline all", the selection
+will be stored in another cookie, and the window won't pop up again, until this cookie expires, or is deleted.
+
+---
+
+**Question:** In which languages is the plugin available?
+
+**Answer:** The plugin has 6 built-in languages: English, Greek, Spanish, German, Italian, and Swedish. If you would
+like to add an additional language, publish the translations by running:
+
+```bash
+    php artisan vendor:publish \
+    --provider="SciFY\LaravelCookiesConsent\LaravelCookiesConsentServiceProvider" \
+    --tag="cookies-consent-translations"
+```
+
+And add/change your own translations. If you add a new language, consider also opening
+a [pull request](https://github.com/scify/laravel-cookies-consent/pulls), in order for this language to be included in
+the plugin.
+
+**Question:** Does this plugin work with all Laravel versions?
+
+**Answer:** We have tested the plugin with Laravel 7, 8, and 9. The plugin's simplicity allows it to work with any
+Laravel version, but if you try it with a version other that the tested ones and it does not work, please open an issue
+on [GitHub](https://github.com/scify/laravel-cookies-consent/issues).
 
 ## Changelog
 
