@@ -6,7 +6,6 @@ use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 
 class LaravelCookiesConsentServiceProvider extends ServiceProvider {
-
     public function boot() {
         $this->publishes([
             __DIR__ . '/../resources/assets' => public_path('vendor/cookies_consent'),
@@ -42,6 +41,4 @@ class LaravelCookiesConsentServiceProvider extends ServiceProvider {
             __DIR__ . '/../config/cookies_consent.php', 'cookies_consent'
         );
     }
-
-
 }
