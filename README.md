@@ -55,14 +55,11 @@ return [
 
 You can add as many cookie categories as you like, simply by adding values to the `cookies` array.
 
+If you want to remove a cookie category, simply remove it from the array.
+
 You can use the `enabled` array to set the cookie categories that will be pre-selected,
 and the `required` array to set the cookies that the user won't be able to deselect.
 
-Optionally, you can publish the view components using
-
-```bash
-php artisan vendor:publish --provider="SciFY\LaravelCookiesConsent\LaravelCookiesConsentServiceProvider" --tag="cookies-consent-components"
-```
 
 ## Usage
 
@@ -145,7 +142,7 @@ Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
 
 ## Credits
 
-- [Paul Isaris](https://github.com/PavlosIsaris)
+- [SciFY Dev Team](https://github.com/scify)
 
 ## License
 
