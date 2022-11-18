@@ -11,7 +11,7 @@
         "laravel cookies",
         "laravel gdpr"
     ],
-    "homepage": "https://github.com/pavlosisaris/laravel-cookies-consent",
+    "homepage": "https://github.com/scify/laravel-cookies-consent",
     "license": "MIT",
     "authors": [
         {
