@@ -11,5 +11,5 @@ return [
     'cookie_functionality' => 'ΛΕΙΤΟΥΡΓΙΚΟΤΗΤΑΣ',
     'accept_selection_btn' => 'ΑΠΟΔΟΧΗ ΕΠΙΛΟΓΗΣ',
     'accept_all_btn' => 'ΑΠΟΔΟΧΗ ΟΛΩΝ',
-    'decline_all_btn' => 'ΑΠΟΡΡΙΨΗ ΟΛΩΝ'
+    'decline_all_btn' => 'ΑΠΟΡΡΙΨΗ ΟΛΩΝ',
 ];

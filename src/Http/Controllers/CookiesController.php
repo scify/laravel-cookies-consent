@@ -10,18 +10,20 @@ use Illuminate\Support\Facades\Cookie;
 /**
  * Manages the cookies consent submission
  */
-class CookiesController extends Controller {
-
+class CookiesController extends Controller
+{
     /**
      * Called when the user clicks on "ACCEPT ALL"
      *
      * @return RedirectResponse redirects to the previous page
      */
-    public function accept_all_cookies(): RedirectResponse {
+    public function accept_all_cookies(): RedirectResponse
+    {
         $this->set_cookies_consent_basic_cookie();
         foreach (config('cookies_consent.cookies') as $cookie_key) {
-            $this->set_cookie('cookies_consent_cookie_' . $cookie_key);
+            $this->set_cookie('cookies_consent_cookie_'.$cookie_key);
         }
+
         return redirect()->back()->withCookies(Cookie::getQueuedCookies());
     }
 
@@ -30,11 +32,13 @@ class CookiesController extends Controller {
      *
      * @return RedirectResponse redirects to the previous page
      */
-    public function decline_all_cookies(): RedirectResponse {
+    public function decline_all_cookies(): RedirectResponse
+    {
         $this->set_cookies_consent_basic_cookie();
         foreach (config('cookies_consent.cookies') as $cookie_key) {
-            $this->delete_cookie('cookies_consent_cookie_' . $cookie_key);
+            $this->delete_cookie('cookies_consent_cookie_'.$cookie_key);
         }
+
         return redirect()->back()->withCookies(Cookie::getQueuedCookies());
     }
 
@@ -46,7 +50,8 @@ class CookiesController extends Controller {
      *
      * @return RedirectResponse redirects to the previous page
      */
-    public function accept_selection_cookies(Request $request): RedirectResponse {
+    public function accept_selection_cookies(Request $request): RedirectResponse
+    {
         $this->set_cookies_consent_basic_cookie();
         $data = $request->all();
         foreach ($data as $key => $value) {
@@ -54,6 +59,7 @@ class CookiesController extends Controller {
                 $this->set_cookie($key);
             }
         }
+
         return redirect()->back()->withCookies(Cookie::getQueuedCookies());
     }
 
@@ -63,7 +69,8 @@ class CookiesController extends Controller {
      *
      * @return void
      */
-    public function set_cookies_consent_basic_cookie() {
+    public function set_cookies_consent_basic_cookie()
+    {
         $this->set_cookie('cookies_consent_selection');
     }
 
@@ -73,7 +80,8 @@ class CookiesController extends Controller {
      * @param $cookie_name string the cookie name
      * @return void
      */
-    public function set_cookie(string $cookie_name) {
+    public function set_cookie(string $cookie_name)
+    {
         Cookie::queue(Cookie::forever($cookie_name, true));
     }
 
@@ -83,7 +91,8 @@ class CookiesController extends Controller {
      * @param $cookie_name string the cookie name
      * @return void
      */
-    public function delete_cookie(string $cookie_name) {
+    public function delete_cookie(string $cookie_name)
+    {
         Cookie::queue(Cookie::forget($cookie_name));
     }
 }
