@@ -5,6 +5,13 @@ All notable changes to `laravel-cookies-consent` will be documented in this file
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## v0.0.2 - Added translations, cookie liffetime duration - 2022-11-18
+
+- Added the ability to set cookie duration
+- Fixed container width on larger screens
+- Added remaining languages
+- Improved README.md instructions
+
 ## v0.0.1 First Testing Version - 2022-11-18
 
 This is the initial release of the plugin.
