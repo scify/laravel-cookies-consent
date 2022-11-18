@@ -242,7 +242,7 @@ will be stored in another cookie, and the window won't pop up again, until this 
 **Question:** In which languages is the plugin available?
 
 **Answer:** The plugin has 6 built-in languages: English, Greek, Spanish, German, Italian, and Swedish. If you would
-like to add an additional language, publish the translations by running:
+like to add a language, publish the translations by running:
 
 ```bash
 php artisan vendor:publish \
@@ -253,6 +253,8 @@ php artisan vendor:publish \
 And add/change your own translations. If you add a new language, consider also opening
 a [pull request](https://github.com/scify/laravel-cookies-consent/pulls), in order for this language to be included in
 the plugin.
+
+---
 
 **Question:** Does this plugin work with all Laravel versions?
 
