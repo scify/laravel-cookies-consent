@@ -1,9 +1,9 @@
 # Laravel Cookies Consent Plugin
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/pavlosisaris/laravel-cookies-consent.svg?style=flat-square)](https://packagist.org/packages/pavlosisaris/laravel-cookies-consent)
-[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/pavlosisaris/laravel-cookies-consent/run-tests?label=tests)](https://github.com/pavlosisaris/laravel-cookies-consent/actions?query=workflow%3Arun-tests+branch%3Amain)
-[![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/pavlosisaris/laravel-cookies-consent/Fix%20PHP%20code%20style%20issues?label=code%20style)](https://github.com/pavlosisaris/laravel-cookies-consent/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
-[![Total Downloads](https://img.shields.io/packagist/dt/pavlosisaris/laravel-cookies-consent.svg?style=flat-square)](https://packagist.org/packages/pavlosisaris/laravel-cookies-consent)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/scify/laravel-cookies-consent.svg?style=flat-square)](https://packagist.org/packages/scify/laravel-cookies-consent)
+[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/scify/laravel-cookies-consent/run-tests?label=tests)](https://github.com/scify/laravel-cookies-consent/actions?query=workflow%3Arun-tests+branch%3Amain)
+[![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/scify/laravel-cookies-consent/Fix%20PHP%20code%20style%20issues?label=code%20style)](https://github.com/scify/laravel-cookies-consent/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
+[![Total Downloads](https://img.shields.io/packagist/dt/scify/laravel-cookies-consent.svg?style=flat-square)](https://packagist.org/packages/scify/laravel-cookies-consent)
 
 ## About the plugin
 
