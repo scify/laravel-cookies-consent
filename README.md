@@ -1,69 +1,133 @@
-# :package_description
+# Laravel Cookies Consent Plugin
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/:vendor_slug/:package_slug.svg?style=flat-square)](https://packagist.org/packages/:vendor_slug/:package_slug)
-[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/:vendor_slug/:package_slug/run-tests?label=tests)](https://github.com/:vendor_slug/:package_slug/actions?query=workflow%3Arun-tests+branch%3Amain)
-[![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/:vendor_slug/:package_slug/Fix%20PHP%20code%20style%20issues?label=code%20style)](https://github.com/:vendor_slug/:package_slug/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
-[![Total Downloads](https://img.shields.io/packagist/dt/:vendor_slug/:package_slug.svg?style=flat-square)](https://packagist.org/packages/:vendor_slug/:package_slug)
-<!--delete-->
----
-This repo can be used to scaffold a Laravel package. Follow these steps to get started:
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/pavlosisaris/laravel-cookies-consent.svg?style=flat-square)](https://packagist.org/packages/pavlosisaris/laravel-cookies-consent)
+[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/pavlosisaris/laravel-cookies-consent/run-tests?label=tests)](https://github.com/pavlosisaris/laravel-cookies-consent/actions?query=workflow%3Arun-tests+branch%3Amain)
+[![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/pavlosisaris/laravel-cookies-consent/Fix%20PHP%20code%20style%20issues?label=code%20style)](https://github.com/pavlosisaris/laravel-cookies-consent/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
+[![Total Downloads](https://img.shields.io/packagist/dt/pavlosisaris/laravel-cookies-consent.svg?style=flat-square)](https://packagist.org/packages/pavlosisaris/laravel-cookies-consent)
 
-1. Press the "Use this template" button at the top of this repo to create a new repo with the contents of this skeleton.
-2. Run "php ./configure.php" to run a script that will replace all placeholders throughout all the files.
-3. Have fun creating your package.
-4. If you need help creating a package, consider picking up our <a href="https://laravelpackage.training">Laravel Package Training</a> video course.
----
-<!--/delete-->
-This is where your description should go. Limit it to a paragraph or two. Consider adding a small example.
+## About the plugin
 
-## Support us
+According to the [GDPR law](https://gdpr-info.eu/), every platform is required to allow the users to decide which cookie
+categories they will allow,
+and, if a cookie category is not allowed, the application should not use the functionality tied to that cookie.
 
-[<img src="https://github-ads.s3.eu-central-1.amazonaws.com/:package_name.jpg?t=1" width="419px" />](https://spatie.be/github-ad-click/:package_name)
+This plugin provides a simple cookie consent window through which the user can specify the cookies they would like to
+allow.
 
-We invest a lot of resources into creating [best in class open source packages](https://spatie.be/open-source). You can support us by [buying one of our paid products](https://spatie.be/open-source/support-us).
-
-We highly appreciate you sending us a postcard from your hometown, mentioning which of our package(s) you are using. You'll find our address on [our contact page](https://spatie.be/about-us). We publish all received postcards on [our virtual postcard wall](https://spatie.be/open-source/postcards).
+After the user submission, the relevant cookies are set on the browser, and can then be used in the front-end.
 
 ## Installation
 
 You can install the package via composer:
 
 ```bash
-composer require :vendor_slug/:package_slug
-```
-
-You can publish and run the migrations with:
-
-```bash
-php artisan vendor:publish --tag=":package_slug-migrations"
-php artisan migrate
+composer require scify/laravel-cookies-consent
 ```
 
 You can publish the config file with:
 
 ```bash
-php artisan vendor:publish --tag=":package_slug-config"
+php artisan vendor:publish --provider="SciFY\LaravelCookiesConsent\LaravelCookiesConsentServiceProvider" --tag="cookies-consent-config"
 ```
+
+In the config file, you can change the cookie categories of your application, set the required and pre-selected
+categories, as well as add new categories.
 
 This is the contents of the published config file:
 
 ```php
 return [
+    'cookies' => [
+        'strictly_necessary', 
+        'targeting', 
+        'performance', 
+        'functionality'
+    ],
+    'enabled' => [
+        'strictly_necessary', 
+        'targeting', 
+        'performance', 
+        'functionality'
+    ],
+    'required' => ['strictly_necessary']
 ];
 ```
 
-Optionally, you can publish the views using
+You can add as many cookie categories as you like, simply by adding values to the `cookies` array.
+
+You can use the `enabled` array to set the cookie categories that will be pre-selected,
+and the `required` array to set the cookies that the user won't be able to deselect.
+
+Optionally, you can publish the view components using
 
 ```bash
-php artisan vendor:publish --tag=":package_slug-views"
+php artisan vendor:publish --provider="SciFY\LaravelCookiesConsent\LaravelCookiesConsentServiceProvider" --tag="cookies-consent-components"
 ```
 
 ## Usage
 
-```php
-$variable = new VendorName\Skeleton();
-echo $variable->echoPhrase('Hello, VendorName!');
+When the plugin is installed, a `laravel-cookies-consent`
+custom [Laravel View Component](https://laravel.com/docs/9.x/blade#components) is automatically registered.
+
+This will render the following cookies consent that, will look very much like this one.
+
+![dialog](https://scify.github.io/laravel-cookies-consent/images/dialog.png)
+
+The styling of the component will also be published automatically, in the `public/vendor/scify/laravel-cookies-consent/css/style.css` file.
+
+**Notice:** Make sure to include this file to `.gitignore`.
+
+You can then use this component in order to display the cookies consent window, wherever you'd like.
+
+Typically, a good strategy is to put the component just before the closing `<body>` tag:
+
+```html
+<body>
+    ...
+    ...
+    ...
+    <x-laravel-cookies-consent></x-laravel-cookies-consent>
+</body>
 ```
+
+## Customising the component texts
+
+If you want to modify the texts shown in the cookies dialog, you can publish the language resource files with this command:
+
+```bash
+php artisan vendor:publish --provider="SciFY\LaravelCookiesConsent\LaravelCookiesConsentServiceProvider" --tag="cookies-consent-translations"
+```
+
+This will publish this file to `resources/lang/vendor/cookies_consent/{{lang}}/messages.php`.
+
+The plugin comes with 5 built-in languages. You can change the translations for a given language, or add additional languages yourself.
+
+### Customising the "Read more" link
+
+In the cookies dialog, there is also an optional "Read more" link. This link is specified in the language translation files, since it is common to have a different link for each language.
+
+Example (file `lang/vendor/cookies_consent/en/messages.php`):
+
+```php
+return [
+    ...
+    'read_more_link' => '',
+    ...
+];
+```
+
+If the link is left empty (default state), it won't be shown.
+
+### Customising the component contents
+
+If you need full control over the contents of the cookies dialog, you can publish the views of the package:
+
+```bash
+php artisan vendor:publish --provider="SciFY\LaravelCookiesConsent\LaravelCookiesConsentServiceProvider" --tag="cookies-consent-components"
+```
+
+This will copy the `resources/views/components/laravel-cookies-consent` view file over to `resources/views/components/vendor/cookies_consent` directory. 
+
 
 ## Testing
 
@@ -79,15 +143,10 @@ Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed re
 
 Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
 
-## Security Vulnerabilities
-
-Please review [our security policy](../../security/policy) on how to report security vulnerabilities.
-
 ## Credits
 
-- [:author_name](https://github.com/:author_username)
-- [All Contributors](../../contributors)
+- [Paul Isaris](https://github.com/PavlosIsaris)
 
 ## License
 
-The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
+The Apache Licence. Please see the [Licence File](LICENCE.md) for more information.

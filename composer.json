@@ -1,22 +1,27 @@
 {
-    "name": ":vendor_slug/:package_slug",
-    "description": ":package_description",
+    "name": "scify/laravel-cookies-consent",
+    "version": "0.0.1",
+    "description": "A Laravel package that provides a Cookies consent floating window and publishes the Cookies for the different consent categories",
     "keywords": [
-        ":vendor_name",
+        "scify",
         "laravel",
-        ":package_slug"
+        "laravel-cookies-consent",
+        "cookies",
+        "gdpr",
+        "laravel cookies",
+        "laravel gdpr"
     ],
-    "homepage": "https://github.com/:vendor_slug/:package_slug",
+    "homepage": "https://github.com/pavlosisaris/laravel-cookies-consent",
     "license": "MIT",
     "authors": [
         {
-            "name": ":author_name",
-            "email": "author@domain.com",
+            "name": "Paul Isaris",
+            "email": "paulisaris@gmail.com",
             "role": "Developer"
         }
     ],
     "require": {
-        "php": "^8.1",
+        "php": "^7.4|^8.1",
         "spatie/laravel-package-tools": "^1.13.0",
         "illuminate/contracts": "^9.0"
     },
@@ -35,13 +40,13 @@
     },
     "autoload": {
         "psr-4": {
-            "VendorName\\Skeleton\\": "src",
-            "VendorName\\Skeleton\\Database\\Factories\\": "database/factories"
+            "SciFY\\LaravelCookiesConsent\\": "src",
+            "SciFY\\LaravelCookiesConsent\\Database\\Factories\\": "database/factories"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "VendorName\\Skeleton\\Tests\\": "tests"
+            "SciFY\\LaravelCookiesConsent\\Tests\\": "tests"
         }
     },
     "scripts": {
@@ -61,10 +66,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "VendorName\\Skeleton\\SkeletonServiceProvider"
+                "SciFY\\LaravelCookiesConsent\\LaravelCookiesConsentServiceProvider"
             ],
             "aliases": {
-                "Skeleton": "VendorName\\Skeleton\\Facades\\Skeleton"
+                "LaravelCookiesConsent": "SciFY\\LaravelCookiesConsent\\Facades\\LaravelCookiesConsent"
             }
         }
     },

@@ -1,0 +1,173 @@
+.laravel-cookies-consent {
+    border: 1px solid #2D2D2D;
+    border-radius: 10px;
+    background-color: #2D2D2D;
+    position: fixed;
+    left: 25px;
+    z-index: 1;
+    color: #FFFFFF;
+    -webkit-animation-name: slide_to_top;
+    -webkit-animation-duration: 1.5s;
+    -webkit-animation-timing-function: ease;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-direction: normal;
+    -webkit-animation-delay: 0s;
+    -webkit-animation-play-state: running;
+    -webkit-animation-fill-mode: forwards;
+}
+
+.laravel-cookies-consent.slide_down {
+    -webkit-animation-name: slide_to_bottom;
+}
+
+@-webkit-keyframes slide_to_top {
+    0% {
+        bottom: -800px;
+    }
+    100% {
+        bottom: 25px;
+    }
+}
+
+@-webkit-keyframes slide_to_bottom {
+    0% {
+        bottom: 25px;
+    }
+    100% {
+        bottom: -800px;
+        display: none;
+    }
+}
+
+.laravel-cookies-consent .outer-wrapper {
+    padding: 20px;
+}
+
+.laravel-cookies-consent .cookies-title {
+    margin-top: 0;
+}
+
+.laravel-cookies-consent .cookies-text {
+    color: lightgrey;
+}
+
+.laravel-cookies-consent .cookies-text a {
+    color: #FFFFFF;
+    font-weight: bold;
+}
+
+.laravel-cookies-consent .cookies-close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: block;
+    width: 30px;
+    height: 30px;
+    font-size: 0;
+}
+
+.laravel-cookies-consent .cookies-close:before,
+.laravel-cookies-consent .cookies-close:after {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 2px;
+    height: 10px;
+    background-color: #F0F0F0;
+    transform: rotate(45deg) translate(-50%, -50%);
+    transform-origin: top left;
+    content: '';
+}
+
+.laravel-cookies-consent .cookies-close:after {
+    transform: rotate(-45deg) translate(-50%, -50%);
+}
+
+.laravel-cookies-consent .consent-form-container {
+    margin-top: 15px;
+}
+
+.laravel-cookies-consent .consent-form-container .consent-checkboxes {
+    margin-bottom: 25px;
+}
+
+.laravel-cookies-consent .consent-form-container .consent-checkboxes .form-group label {
+    font-size: 0.7rem;
+    letter-spacing: 1px;
+}
+
+.laravel-cookies-consent .consent-form-container .consent-checkboxes .form-group input:hover {
+    cursor: pointer;
+}
+
+.laravel-cookies-consent .consent-form-container .consent-buttons {
+    display: inline-block;
+    width: 100%;
+}
+
+.laravel-cookies-consent .consent-form-container .consent-buttons .consent-submit {
+    height: 35px;
+    color: #FFFFFF;
+    border-radius: 35px;
+    padding-left: 10px;
+    padding-right: 10px;
+    text-align: center;
+    border: 1px solid;
+    width: 48%;
+    font-size: 0.7rem;
+}
+
+.laravel-cookies-consent .consent-form-container .consent-buttons a.consent-submit {
+    padding-top: 9px;
+}
+
+.laravel-cookies-consent .consent-form-container .consent-buttons .consent-submit:hover {
+    cursor: pointer;
+}
+
+.laravel-cookies-consent .consent-form-container .consent-buttons .consent-submit.consent-accept {
+    background-color: #6BBE6B;
+    border-color: #6BBE6B;
+    float: left;
+}
+
+.laravel-cookies-consent .consent-form-container .consent-buttons .consent-submit.consent-decline-all {
+    background-color: transparent;
+    border-color: #FFFFFF;
+    float: right;
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    .laravel-cookies-consent {
+        width: 80%;
+    }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+    .laravel-cookies-consent {
+        width: 60%;
+    }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    .laravel-cookies-consent {
+        width: 40%;
+    }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+    .laravel-cookies-consent {
+        width: 350px;
+    }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+    .laravel-cookies-consent {
+        width: 350px;
+    }
+}
