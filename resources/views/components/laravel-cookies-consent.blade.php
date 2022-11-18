@@ -1,5 +1,5 @@
-@if(!isset($_COOKIE['cookies_consent_selection']))
-    <link rel="stylesheet" href="/vendor/cookies_consent/css/style.css">
+@if(!isset($_COOKIE[config('cookies_consent.cookie_prefix') . 'cookies_consent_selection']))
+    <link rel="stylesheet" href="{{asset('vendor/cookies_consent/css/style.css')}}">
     <div class="laravel-cookies-consent" id="laravel-cookies-consent">
         <div class="outer-wrapper">
             <a href="#" class="cookies-close" tabindex="0" role="button"

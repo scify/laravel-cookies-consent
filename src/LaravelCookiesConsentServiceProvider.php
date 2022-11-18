@@ -9,7 +9,7 @@ class LaravelCookiesConsentServiceProvider extends ServiceProvider {
 
     public function boot() {
         $this->publishes([
-            __DIR__ . '/../public' => public_path('vendor/cookies_consent'),
+            __DIR__ . '/../resources/assets' => public_path('vendor/cookies_consent'),
         ], 'laravel-assets');
 
         $this->publishes([

@@ -1,0 +1,49 @@
+{
+  "preset": "laravel",
+  "rules": {
+    "function_typehint_space": false,
+    "not_operator_with_successor_space": false,
+    "braces": {
+      "allow_single_line_anonymous_class_with_empty_body": true,
+      "allow_single_line_closure": true,
+      "position_after_control_structures": "same",
+      "position_after_functions_and_oop_constructs": "same",
+      "position_after_anonymous_constructs": "same"
+    },
+    "curly_braces_position": {
+      "control_structures_opening_brace": "same_line",
+      "functions_opening_brace": "same_line",
+      "anonymous_functions_opening_brace": "same_line",
+      "classes_opening_brace": "same_line",
+      "anonymous_classes_opening_brace": "same_line",
+      "allow_single_line_empty_anonymous_classes": true,
+      "allow_single_line_anonymous_functions": true
+    },
+    "no_blank_lines_after_class_opening": false,
+    "no_blank_lines_after_phpdoc": false,
+    "binary_operator_spaces": {
+      "operators": {
+        "=>": null
+      }
+    },
+    "no_trailing_whitespace": false,
+    "no_extra_blank_lines": false,
+    "class_attributes_separation": {
+      "elements": {
+        "const": "none",
+        "method": "one",
+        "property": "none",
+        "trait_import": "none",
+        "case": "none"
+      }
+    },
+    "class_definition": {
+      "multi_line_extends_each_single_line": false,
+      "space_before_parenthesis": false,
+      "inline_constructor_arguments": false
+    },
+    "concat_space": {
+      "spacing": "one"
+    }
+  }
+}

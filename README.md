@@ -14,7 +14,8 @@ and, if a cookie category is not allowed, the application should not use the fun
 This plugin provides a simple cookie consent window through which the user can specify the cookies they would like to
 allow.
 
-After the user submission, the page reloads and the relevant cookies are set on the browser, and can then be used in the front-end.
+After the user submission, the page reloads and the relevant cookies are set on the browser, and can then be used in the
+front-end.
 
 ## Installation
 
@@ -22,6 +23,14 @@ You can install the package via composer:
 
 ```bash
 composer require scify/laravel-cookies-consent
+```
+
+If on Laravel 9 or newer, the assets files (style.css) will automatically be published in `public/vendor/cookies_consent`.
+
+If on Laravel 8 or older, **make sure to also publish** the styles file:
+
+```bash
+php artisan vendor:publish --provider="SciFY\LaravelCookiesConsent\LaravelCookiesConsentServiceProvider" --tag="laravel-assets"
 ```
 
 You can publish the config file with:
@@ -37,6 +46,7 @@ This is the contents of the published config file:
 
 ```php
 return [
+    'cookie_prefix' => '',
     'cookies' => [
         'strictly_necessary', 
         'targeting', 
@@ -53,6 +63,9 @@ return [
 ];
 ```
 
+The `cookie_prefix` is optional and, if set, will be applied to every cookie. A good example of customizing
+the `cookie_prefix` variable is setting it with a character divider at the end, for example `"my_app_"`.
+
 You can add as many cookie categories as you like, simply by adding values to the `cookies` array.
 
 If you want to remove a cookie category, simply remove it from the array.
@@ -68,11 +81,6 @@ custom [Laravel View Component](https://laravel.com/docs/9.x/blade#components) i
 This will render the following cookies consent that, will look very much like this one.
 
 ![dialog](https://github.com/scify/laravel-cookies-consent/blob/9c0ddafe15ad8118ab07979b72094799417f93db/images/dialog.png)
-
-The styling of the component will also be published automatically, in
-the `public/vendor/scify/laravel-cookies-consent/css/style.css` file.
-
-**Notice:** Make sure to include this file to `.gitignore`.
 
 You can then use this component in order to display the cookies consent window, wherever you'd like.
 
@@ -96,7 +104,7 @@ might do the following:
 
 ```php
 <!-- Google Analytics -->
-@if(isset($_COOKIE['cookies_consent_targeting']) && config('app.google_analytics_id'))
+@if(isset($_COOKIE[config('cookies_consent.cookie_prefix') . 'cookies_consent_targeting']) && config('app.google_analytics_id'))
     <script defer async>
         (function (i, s, o, g, r, a, m) {
             i['GoogleAnalyticsObject'] = r;
@@ -117,8 +125,7 @@ might do the following:
 @endif
 ```
 
-In this example, we checked whether the `$_COOKIE['cookies_consent_targeting']` key exists or not.
-
+In this example, we checked whether the `$_COOKIE[config('cookies_consent.cookie_prefix') . 'cookies_consent_targeting']` key exists or not.
 
 ## Customising the component texts
 

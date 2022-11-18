@@ -1,7 +1,13 @@
 <?php
 
 return [
-
+    /**
+     * This prefix will be applied when setting and getting all cookies.
+     * If not set, the cookies will not be prefixed.
+     * When using this plugin for multiple apps, it is a good strategy to set a prefix that is relevant to the app
+     * (for example "my_app_", in order for the cookies not to be mingled when running locally.
+     */
+    'cookie_prefix' => '',
     /*
     |--------------------------------------------------------------------------
     | Editor
