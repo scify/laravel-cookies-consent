@@ -8,7 +8,7 @@ on:
 
 jobs:
   test:
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: true
       matrix:
@@ -19,8 +19,6 @@ jobs:
         include:
           - laravel: 9.*
             testbench: 7.*
-          - laravel: 8.*
-            testbench: ^6.23
 
     name: P${{ matrix.php }} - L${{ matrix.laravel }} - ${{ matrix.stability }} - ${{ matrix.os }}
 
