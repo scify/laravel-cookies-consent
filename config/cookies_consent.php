@@ -19,13 +19,13 @@ return [
         'strictly_necessary',
         'targeting',
         'performance',
-        'functionality'
+        'functionality',
     ],
     'enabled' => [
         'strictly_necessary',
         'targeting',
         'performance',
-        'functionality'
+        'functionality',
     ],
     'required' => ['strictly_necessary'],
 ];

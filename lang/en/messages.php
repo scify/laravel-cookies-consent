@@ -11,5 +11,5 @@ return [
     'cookie_functionality' => 'FUNCTIONALITY',
     'accept_selection_btn' => 'ACCEPT SELECTION',
     'accept_all_btn' => 'ACCEPT ALL',
-    'decline_all_btn' => 'DECLINE ALL'
+    'decline_all_btn' => 'DECLINE ALL',
 ];
