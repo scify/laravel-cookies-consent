@@ -1,6 +1,5 @@
 {
     "name": "scify/laravel-cookies-consent",
-    "version": "0.0.1",
     "description": "A Laravel package that provides a Cookies consent floating window and publishes the Cookies for the different consent categories",
     "keywords": [
         "scify",
