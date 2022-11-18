@@ -92,7 +92,7 @@
 }
 
 .laravel-cookies-consent .consent-form-container .consent-checkboxes .form-group label {
-    font-size: 0.7rem;
+    font-size: smaller;
     letter-spacing: 1px;
 }
 
@@ -114,7 +114,11 @@
     text-align: center;
     border: 1px solid;
     width: 48%;
-    font-size: 0.7rem;
+    font-size: small;
+}
+
+.laravel-cookies-consent .consent-form-container .consent-buttons .consent-submit.hidden {
+    display: none;
 }
 
 .laravel-cookies-consent .consent-form-container .consent-buttons a.consent-submit {
