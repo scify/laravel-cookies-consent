@@ -14,7 +14,7 @@ and, if a cookie category is not allowed, the application should not use the fun
 This plugin provides a simple cookie consent window through which the user can specify the cookies they would like to
 allow.
 
-After the user submission, the relevant cookies are set on the browser, and can then be used in the front-end.
+After the user submission, the page reloads and the relevant cookies are set on the browser, and can then be used in the front-end.
 
 ## Installation
 
