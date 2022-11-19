@@ -32,8 +32,7 @@ You can install the package via composer:
 composer require scify/laravel-cookies-consent
 ```
 
-If on Laravel 9 or newer, the assets files (style.css) will automatically be published
-in `public/vendor/cookies_consent`.
+If on Laravel 9 or newer, the assets files (style.css) will **automatically** be published
 
 If on Laravel 8 or older, **make sure to also publish** the styles file:
 
@@ -43,6 +42,11 @@ php artisan vendor:publish \
 --tag="laravel-assets"
 ```
 
+In both cases, the assets files will be copied to `public/vendor/cookies_consent`.
+
+You can then either decide to include the `public/vendor/cookies_consent/style.css` file to git (especially if you want
+to edit it first), or add it to `.gitignore`, and make sure to also run this command on the staging/production server.
+
 You can publish the config file with:
 
 ```bash
@@ -50,6 +54,8 @@ php artisan vendor:publish \
 --provider="SciFY\LaravelCookiesConsent\LaravelCookiesConsentServiceProvider" \
 --tag="cookies-consent-config"
 ```
+
+The configuration file will be published to `config/cookies_consent.php`.
 
 In the config file, you can change the cookie categories of your application, set the required and pre-selected
 categories, as well as add new categories.
@@ -228,7 +234,9 @@ php artisan vendor:publish \
 --tag="cookies-consent-config"
 ```
 
-And then edit the `cookie_lifetime` field (in days).
+The configuration file will be published to `config/cookies_consent.php`.
+
+Then, edit the `cookie_lifetime` field (in days).
 
 ---
 
