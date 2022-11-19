@@ -41,7 +41,7 @@ composer require scify/laravel-cookies-consent
 
 If on Laravel 9 or newer, the assets files (style.css) will **automatically** be published
 
-If on Laravel 8 or older, **make sure to also publish** the styles file:
+If on Laravel 8 or older, **make sure to manually publish** the styles file, by running:
 
 ```bash
 php artisan vendor:publish \
