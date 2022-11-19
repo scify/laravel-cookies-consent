@@ -4,6 +4,13 @@
 [![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/scify/laravel-cookies-consent/run-tests?label=tests)](https://github.com/scify/laravel-cookies-consent/actions?query=workflow%3Arun-tests+branch%3Amain)
 [![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/scify/laravel-cookies-consent/Fix%20PHP%20code%20style%20issues?label=code%20style)](https://github.com/scify/laravel-cookies-consent/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/scify/laravel-cookies-consent.svg?style=flat-square)](https://packagist.org/packages/scify/laravel-cookies-consent)
+[![GitHub Issues](https://img.shields.io/github/issues/scify/laravel-cookies-consent)](https://img.shields.io/github/issues/scify/laravel-cookies-consent)
+[![GitHub Stars](https://img.shields.io/github/stars/scify/laravel-cookies-consent)](https://img.shields.io/github/stars/scify/laravel-cookies-consent)
+[![GitHub forks](https://img.shields.io/github/forks/scify/laravel-cookies-consent)](https://img.shields.io/github/forks/scify/laravel-cookies-consent)
+[![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/dwyl/esta/issues)
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/Naereen/StrapDown.js/graphs/commit-activity)
+[![Ask Me Anything !](https://img.shields.io/badge/Ask%20me-anything-1abc9c.svg)](https://GitHub.com/scify)
 
 ## About the plugin
 
@@ -118,7 +125,7 @@ Typically, a good strategy is to put the component just before the closing `<bod
 
 After that, you can use the `$_COOKIE` global object, in order to check for the appropriate cookie.
 
-The only step remaining is to use this object in our Blade files:
+Now you can use this object in your Blade files like this:
 
 ```bash
 $_COOKIE[config('cookies_consent.cookie_prefix') . {{ COOKIE_NAME }}]
