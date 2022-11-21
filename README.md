@@ -277,6 +277,13 @@ the plugin.
 Laravel version, but if you try it with a version other that the tested ones and it does not work, please open an issue
 on [GitHub](https://github.com/scify/laravel-cookies-consent/issues).
 
+---
+
+**Question:** If I install later a new cookie category, how can I force the plugin to "reset" and show again?
+
+**Answer:** The easiest way is to publish the configuration file, and change the `cookie_prefix` field. This will force
+the plugin to show again.
+
 ## Changelog
 
 Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
