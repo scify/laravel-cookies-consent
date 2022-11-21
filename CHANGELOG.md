@@ -5,6 +5,11 @@ All notable changes to `laravel-cookies-consent` will be documented in this file
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## v0.9.0 - Tested and improved UI in smaller screens - 2022-11-21
+
+- Improved UI design in smaller (phone & tablet) screens.
+- The plugin is now ready to be tested and used in 3rd party Laravel apps.
+
 ## v0.0.3 - Improvements in Design & Layout - 2022-11-21
 
 Improved the overall design and fixed the width of the cookies container
