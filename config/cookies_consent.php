@@ -4,10 +4,10 @@ return [
     /**
      * This prefix will be applied when setting and getting all cookies.
      * If not set, the cookies will not be prefixed.
-     * If set, an underscore "_" will be added between the field value, and each cookie.
-     * For example, if `cookie_prefix` is set to `my_app`, then the targeting cookie will have a value of `my_app_cookies_consent_targeting`.
+     * If set, a good strategy is to also add a trailing underscore "_", that will be added between the field value, and each cookie.
+     * For example, if `cookie_prefix` is set to `my_app_`, then the targeting cookie will have a value of `my_app_cookies_consent_targeting`.
      * When using this plugin for multiple apps, it is a good strategy to set a prefix that is relevant to the app
-     * (for example "my_app", in order for the cookies not to be mingled when running locally.
+     * (for example "my_app_", in order for the cookies not to be mingled when running locally.
      */
     'cookie_prefix' => '',
     /*

@@ -90,10 +90,10 @@ return [
 ```
 
 The `cookie_prefix` is optional and, if set, will be applied to every cookie. 
-If the field is set, an underscore "_" will be added between the field value and every cookie.
 
-For example, if `cookie_prefix` is set to `my_app`, then the targeting cookie will have a value of `my_app_cookies_consent_targeting`.
+If set, a good strategy is to also add a trailing underscore "_", that will be added between the field value, and each cookie.
 
+For example, if `cookie_prefix` is set to `my_app_`, then the targeting cookie will have a value of `my_app_cookies_consent_targeting`.
 You can add as many cookie categories as you like, simply by adding values to the `cookies` array.
 
 If you want to remove a cookie category, simply remove it from the array.

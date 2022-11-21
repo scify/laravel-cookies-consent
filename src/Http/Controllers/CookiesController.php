@@ -92,9 +92,6 @@ class CookiesController extends Controller {
     }
 
     private function get_cookie_prefix(): string {
-        $config_prefix = config('cookies_consent.cookie_prefix');
-        if ($config_prefix)
-            return $config_prefix . '_';
-        return $config_prefix;
+        return config('cookies_consent.cookie_prefix');
     }
 }
