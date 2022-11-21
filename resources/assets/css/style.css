@@ -151,14 +151,14 @@
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
     .laravel-cookies-consent {
-        width: 60%;
+        width: 70%;
     }
 }
 
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
     .laravel-cookies-consent {
-        width: 40%;
+        width: 50%;
     }
 }
 
