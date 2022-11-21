@@ -78,8 +78,7 @@ class CookiesController extends Controller {
      * @return void
      */
     public function set_cookie(string $cookie_name) {
-        $cookie_prefix = config('cookies_consent.cookie_prefix');
-        Cookie::queue($cookie_prefix . $cookie_name, true, (self::$MINUTES_IN_A_DAY * config('cookies_consent.cookie_lifetime')));
+        Cookie::queue($this->get_cookie_prefix() . $cookie_name, true, (self::$MINUTES_IN_A_DAY * config('cookies_consent.cookie_lifetime')));
     }
 
     /**
@@ -89,7 +88,13 @@ class CookiesController extends Controller {
      * @return void
      */
     public function delete_cookie(string $cookie_name) {
-        $cookie_prefix = config('cookies_consent.cookie_prefix');
-        Cookie::queue(Cookie::forget($cookie_prefix . $cookie_name));
+        Cookie::queue(Cookie::forget($this->get_cookie_prefix() . $cookie_name));
+    }
+
+    private function get_cookie_prefix(): string {
+        $config_prefix = config('cookies_consent.cookie_prefix');
+        if ($config_prefix)
+            return $config_prefix . '_';
+        return $config_prefix;
     }
 }

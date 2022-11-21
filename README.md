@@ -89,8 +89,10 @@ return [
 ];
 ```
 
-The `cookie_prefix` is optional and, if set, will be applied to every cookie. A good example of customizing
-the `cookie_prefix` variable is setting it with a character divider at the end, for example `"my_app_"`.
+The `cookie_prefix` is optional and, if set, will be applied to every cookie. 
+If the field is set, an underscore "_" will be added between the field value and every cookie.
+
+For example, if `cookie_prefix` is set to `my_app`, then the targeting cookie will have a value of `my_app_cookies_consent_targeting`.
 
 You can add as many cookie categories as you like, simply by adding values to the `cookies` array.
 
