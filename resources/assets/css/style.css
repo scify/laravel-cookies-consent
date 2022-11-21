@@ -144,21 +144,31 @@
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
     .laravel-cookies-consent {
-        width: 80%;
+        bottom: 10px;
+        left: 5px;
+        width: calc(100% - 10px);
+    }
+
+    .laravel-cookies-consent .outer-wrapper {
+        padding: 10px;
     }
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
     .laravel-cookies-consent {
-        width: 70%;
+        width: 75%;
+    }
+
+    .laravel-cookies-consent .outer-wrapper {
+        padding: 15px;
     }
 }
 
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
     .laravel-cookies-consent {
-        width: 50%;
+        width: 55%;
     }
 }
 
