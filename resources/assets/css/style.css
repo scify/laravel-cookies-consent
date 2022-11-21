@@ -92,7 +92,7 @@
 }
 
 .laravel-cookies-consent .consent-form-container .consent-checkboxes .form-group label {
-    font-size: smaller;
+    font-size: small;
     letter-spacing: 1px;
 }
 
@@ -165,13 +165,13 @@
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
     .laravel-cookies-consent {
-        width: 360px;
+        width: 420px;
     }
 }
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 1200px) {
     .laravel-cookies-consent {
-        width: 360px;
+        width: 420px;
     }
 }
