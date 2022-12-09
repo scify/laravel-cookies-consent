@@ -5,6 +5,10 @@ All notable changes to `laravel-cookies-consent` will be documented in this file
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## Use of app()->langPath() Laravel method, in order to publish the translation resources - 2022-12-09
+
+The plugin now uses Laravel's `app()->langPath()` method, in order to publish the translation files.
+
 ## v0.9.3 - Plugin is now compatible with all 7.x and 8.x versions - 2022-11-21
 
 Set the required PHP version to either `7.x` or `8.x`, in order to accommodate older Laravel installations.
