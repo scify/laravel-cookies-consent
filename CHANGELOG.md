@@ -5,6 +5,10 @@ All notable changes to `laravel-cookies-consent` will be documented in this file
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## v0.9.3 - Plugin is now compatible with all 7.x and 8.x versions - 2022-11-21
+
+Set the required PHP version to either `7.x` or `8.x`, in order to accommodate older Laravel installations.
+
 ## v0.9.2 - Fixed bugs on cookie prefix, improved documentation - 2022-11-21
 
 - Now the cookie prefix is set entirely from the configuration file. The trailing character should be set there.
