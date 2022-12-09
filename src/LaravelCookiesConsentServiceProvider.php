@@ -19,14 +19,8 @@ class LaravelCookiesConsentServiceProvider extends ServiceProvider {
             __DIR__ . '/../config/cookies_consent.php' => config_path('cookies_consent.php'),
         ], 'cookies-consent-config');
 
-        $version = intval(substr(app()->version(), 0, 1));
-        $translations_publishing_path_relative = 'lang/vendor/cookies_consent';
-        $translations_publishing_path = base_path($translations_publishing_path_relative);
-        if ($version < 9) {
-            $translations_publishing_path = resource_path($translations_publishing_path_relative);
-        }
         $this->publishes([
-            __DIR__ . '/../lang' => $translations_publishing_path,
+            __DIR__ . '/../lang' => app()->langPath() . '/vendor/cookies_consent',
         ], 'cookies-consent-translations');
 
         $this->loadViewsFrom(__DIR__ . '/../resources/views', 'cookies_consent');
