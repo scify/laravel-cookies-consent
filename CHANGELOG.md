@@ -5,6 +5,12 @@ All notable changes to `laravel-cookies-consent` will be documented in this file
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## v1.0.0 - First Stable Release - 2022-12-19
+
+This is the first stable release of the plugin!
+Feel free to download, try and customize it. If you find any issues, please report them to the [issue page](https://github.com/scify/laravel-cookies-consent/issues).
+Check out the [CONTRIBUTING.md](https://github.com/scify/laravel-cookies-consent/blob/main/CONTRIBUTING.md) guide to contribute to this open-source project!
+
 ## Use of app()->langPath() Laravel method, in order to publish the translation resources - 2022-12-09
 
 The plugin now uses Laravel's `app()->langPath()` method, in order to publish the translation files.
