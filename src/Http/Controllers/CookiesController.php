@@ -21,7 +21,7 @@ class CookiesController extends Controller {
     public function accept_all_cookies(): RedirectResponse {
         $this->set_cookies_consent_basic_cookie();
         foreach (config('cookies_consent.cookies') as $cookie_key) {
-            $this->set_cookie('cookies_consent_cookie_' . $cookie_key);
+            $this->set_cookie('cookies_consent_' . $cookie_key);
         }
 
         return redirect()->back()->withCookies(Cookie::getQueuedCookies());
