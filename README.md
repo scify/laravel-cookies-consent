@@ -292,7 +292,42 @@ Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed re
 
 ## Contributing
 
-Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
+Please see [CONTRIBUTING](CONTRIBUTING.md) for general details.
+
+### PHP code style - Laravel Pint
+
+This application uses [Laravel Pint](https://laravel.com/docs/9.x/pint) in order to perform code-style.
+
+In order to run the styler, run :
+
+```bash
+./vendor/bin/pint --test -v # the --test will not do any changes, it will just output the changes needed
+
+./vendor/bin/pint -v # this command will actually perform the code style changes 
+```
+
+### Releasing a new version
+
+After you have committed your changes, create a new git tag:
+
+```bash
+git tag -a vx.y.z -m "This is a nice tag name"
+```
+
+Then, push the tag:
+
+```bash
+git push origin vx.y.z
+```
+
+Then, in the [GitHub Releases page](https://github.com/scify/laravel-cookies-consent/releases), create a new Release **and correlate it with the tag that you just created.**
+
+That's it! Packagist will be updated automatically. 
+
+Also, the `.github/workflows/update-changelog.yml` GitHub action will run, and it will update the `CHANGELOG.md` file.
+
+Make sure that you run `git pull` afterwards, to get the updates.
+
 
 ## Credits
 
