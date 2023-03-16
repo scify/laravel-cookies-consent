@@ -5,6 +5,10 @@ All notable changes to `laravel-cookies-consent` will be documented in this file
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## v1.0.1 - Fixed bug on setting "all" cookies button - 2023-03-16
+
+This release addresses [this issue](https://github.com/scify/laravel-cookies-consent/issues/4), regarding the cookie prefix when accepting "all" cookies.
+
 ## v1.0.0 - First Stable Release - 2022-12-19
 
 This is the first stable release of the plugin!
