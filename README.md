@@ -39,17 +39,15 @@ You can install the package via composer:
 composer require scify/laravel-cookies-consent
 ```
 
-If on Laravel 9 or newer, the assets files (style.css) will **automatically** be published
-
-If on Laravel 8 or older, **make sure to manually publish** the styles file, by running:
+**Make sure to manually publish** the styles file, by running:
 
 ```bash
 php artisan vendor:publish \
 --provider="SciFY\LaravelCookiesConsent\LaravelCookiesConsentServiceProvider" \
---tag="laravel-assets"
+--tag="cookies-consent-assets"
 ```
 
-In both cases, the assets files will be copied to `public/vendor/cookies_consent`.
+By doing so, the assets files will be copied to `public/vendor/cookies_consent`.
 
 You can then either decide to include the `public/vendor/cookies_consent/css/style.css` file to git (especially if you want
 to edit it first), or add it to `.gitignore`, and make sure to also run this command on the staging/production server.
@@ -215,6 +213,39 @@ php artisan vendor:publish \
 
 This will copy the `resources/views/components/laravel-cookies-consent` view file over
 to `resources/views/components/vendor/cookies_consent` directory.
+
+## Development
+
+In order to locally run the package, you should use a local Laravel application, in which you are going to install it.
+
+Make sure that the `composer.json` file of the Laravel app has the following entry:
+
+```text
+
+"require": {
+    "scify/laravel-cookies-consent": "@dev",
+}
+...
+...
+"repositories": [
+        {
+            "type": "path",
+            "url": "../path/to/laravel-cookies-consent/",
+            "options": {
+                "symlink": true
+            }
+        }
+    ]
+```
+
+This will tell composer that the code for the package is of the `"@dev"` version and that it exists in the specified path.
+
+Then run:
+```bash
+composer update scify/laravel-cookies-consent --prefer-source
+```
+
+To fetch the local package.
 
 ## Testing
 
