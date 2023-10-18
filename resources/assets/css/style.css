@@ -4,7 +4,7 @@
     background-color: #2D2D2D;
     position: fixed;
     left: 25px;
-    z-index: 1;
+    z-index: 999999;
     color: #FFFFFF;
     -webkit-animation-name: slide_to_top;
     -webkit-animation-duration: 1.5s;
