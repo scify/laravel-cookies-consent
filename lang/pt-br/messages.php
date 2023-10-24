@@ -1,11 +1,11 @@
 <?php
 
 return [
-    'title' => 'Esse website utiliza cookies',
+    'title' => 'Esse site utiliza cookies',
     'body' => 'Este site utiliza cookies para melhorar a experiência do usuário. Ao utilizar o nosso site você concorda com todos os cookies de acordo com a nossa Política de Cookies.',
     'read_more_text' => 'Saiba Mais.',
     'read_more_link' => '',
-    'cookie_strictly_necessary' => 'SÓMENTE O NESCESSARIO',
+    'cookie_strictly_necessary' => 'SOMENTE O NESCESSÁRIO',
     'cookie_performance' => 'PERFORMANCE',
     'cookie_targeting' => 'LOCALIZAÇÃO',
     'cookie_functionality' => 'FUNCIONALIDADES',
