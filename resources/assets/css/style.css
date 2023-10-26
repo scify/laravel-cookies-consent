@@ -64,6 +64,8 @@
     width: 30px;
     height: 30px;
     font-size: 0;
+    /* declare the background-color as bootstrap seems to reset it to default body's color:*/
+    background-color: #2d2d2d;
 }
 
 .laravel-cookies-consent .cookies-close:before,
@@ -109,35 +111,34 @@
     height: 35px;
     color: #FFFFFF;
     border-radius: 35px;
-    padding-left: 10px;
-    padding-right: 10px;
     text-align: center;
     border: 1px solid;
     width: 48%;
     font-size: small;
+    line-height: 35px;
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
 }
 
 .laravel-cookies-consent .consent-form-container .consent-buttons .consent-submit.hidden {
     display: none;
 }
 
-.laravel-cookies-consent .consent-form-container .consent-buttons a.consent-submit {
-    padding-top: 9px;
-}
-
 .laravel-cookies-consent .consent-form-container .consent-buttons .consent-submit:hover {
     cursor: pointer;
 }
 
+.laravel-cookies-consent .consent-form-container .consent-buttons .consent-submit {
+    background-color: transparent;
+    border-color: #FFFFFF;
+}
+
 .laravel-cookies-consent .consent-form-container .consent-buttons .consent-submit.consent-accept {
-    background-color: #6BBE6B;
-    border-color: #6BBE6B;
     float: left;
 }
 
 .laravel-cookies-consent .consent-form-container .consent-buttons .consent-submit.consent-decline-all {
-    background-color: transparent;
-    border-color: #FFFFFF;
     float: right;
 }
 
