@@ -5,6 +5,11 @@ All notable changes to `laravel-cookies-consent` will be documented in this file
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## v1.1.3 - UI Improvements for compliance with GDPR - 2023-10-26
+
+- Changed the background color of the "Allow all cookies" button, in order to be compliant with the GDPR rules
+- Fixed the padding of the button texts
+
 ## v.1.1.2 - Portoguese Language v2
 
 Added Portuguese Language corrections, thanks to
@@ -24,7 +29,7 @@ Improvements regarding the styles file, Composer lib updates
 **List of Updates:**
 
 - Fixed z-index issue (as reported in https://github.com/scify/laravel-cookies-consent/issues/10)
-- Now the front-end assets (styles) file is not automatically published, to avoid causing overriding (reported
+- Now the front-end assets (styles) file is not automatically published, to avoid causing overriding (reported   
   in https://github.com/scify/laravel-cookies-consent/issues/11)
 - Composer libraries update
 - Improved Development guidelines in Readme file
@@ -38,8 +43,8 @@ run the publishing command:
 php artisan vendor:publish \
 --provider="SciFY\LaravelCookiesConsent\LaravelCookiesConsentServiceProvider" \
 --tag="cookies-consent-assets"
-```
 
+```
 ## v1.0.1 - Fixed bug on setting "all" cookies button - 2023-03-16
 
 This release addresses [this issue](https://github.com/scify/laravel-cookies-consent/issues/4), regarding the cookie
