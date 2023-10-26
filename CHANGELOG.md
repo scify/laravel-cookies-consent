@@ -5,15 +5,53 @@ All notable changes to `laravel-cookies-consent` will be documented in this file
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## v.1.1.2 - Portoguese Language v2
+
+Added Portuguese Language corrections, thanks to
+this [PR](https://github.com/scify/laravel-cookies-consent/commit/a0ce037cd3bc82ca95c52ff30d2bf07236bd8306)
+by [ViNiSeNnAtt](https://github.com/scify/laravel-cookies-consent/commits?author=ViNiSeNnAtt)
+
+## v1.1.1 - Portuguese Language
+
+Added Portuguese Language, thanks
+to [this commit](https://github.com/scify/laravel-cookies-consent/commit/c5e015f93df4ad9a40450cea37231592613e77b8)
+by [ViNiSeNnAtt](https://github.com/scify/laravel-cookies-consent/commits?author=ViNiSeNnAtt)
+
+## v1.1.0 - Improvements regarding the styles file, Composer lib updates
+
+Improvements regarding the styles file, Composer lib updates
+
+**List of Updates:**
+
+- Fixed z-index issue (as reported in https://github.com/scify/laravel-cookies-consent/issues/10)
+- Now the front-end assets (styles) file is not automatically published, to avoid causing overriding (reported
+  in https://github.com/scify/laravel-cookies-consent/issues/11)
+- Composer libraries update
+- Improved Development guidelines in Readme file
+
+**Notable Changes:**
+
+Now, in order to publish the styles file to `public/vendor/cookies_consent/css/style.css` it is **required** to manually
+run the publishing command:
+
+```bash
+php artisan vendor:publish \
+--provider="SciFY\LaravelCookiesConsent\LaravelCookiesConsentServiceProvider" \
+--tag="cookies-consent-assets"
+```
+
 ## v1.0.1 - Fixed bug on setting "all" cookies button - 2023-03-16
 
-This release addresses [this issue](https://github.com/scify/laravel-cookies-consent/issues/4), regarding the cookie prefix when accepting "all" cookies.
+This release addresses [this issue](https://github.com/scify/laravel-cookies-consent/issues/4), regarding the cookie
+prefix when accepting "all" cookies.
 
 ## v1.0.0 - First Stable Release - 2022-12-19
 
 This is the first stable release of the plugin!
-Feel free to download, try and customize it. If you find any issues, please report them to the [issue page](https://github.com/scify/laravel-cookies-consent/issues).
-Check out the [CONTRIBUTING.md](https://github.com/scify/laravel-cookies-consent/blob/main/CONTRIBUTING.md) guide to contribute to this open-source project!
+Feel free to download, try and customize it. If you find any issues, please report them to
+the [issue page](https://github.com/scify/laravel-cookies-consent/issues).
+Check out the [CONTRIBUTING.md](https://github.com/scify/laravel-cookies-consent/blob/main/CONTRIBUTING.md) guide to
+contribute to this open-source project!
 
 ## Use of app()->langPath() Laravel method, in order to publish the translation resources - 2022-12-09
 
