@@ -18,8 +18,9 @@
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/Naereen/StrapDown.js/graphs/commit-activity)
 [![Ask Me Anything !](https://img.shields.io/badge/Ask%20me-anything-1abc9c.svg)](https://GitHub.com/scify)
-[![GitHub contributors](https://img.shields.io/github/contributors/scify/laravel-cookies-consent)](https://GitHub.com/scify)
+[![GitHub contributors](https://img.shields.io/github/contributors/scify/laravel-cookies-consent)](https://github.com/scify/laravel-cookies-consent/graphs/contributors)
 [![GitHub pull-requests](https://img.shields.io/github/issues-pr/scify/laravel-cookies-consent)](https://github.com/scify/laravel-cookies-consent/pulls)
+[![GitHub closed pull-requests](https://img.shields.io/github/issues-pr-closed/scify/laravel-cookies-consent)](https://github.com/scify/laravel-cookies-consent/pulls?q=is%3Apr+is%3Aclosed)
 
 ## About the plugin
 
