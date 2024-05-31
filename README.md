@@ -1,5 +1,12 @@
 # Laravel Cookies Consent Plugin - Make your Laravel app compliant with the EU GDPR cookie law
 
+<p align="center">
+<img src="logo.jpg" alt="logo" width="400">
+</p>
+
+
+<hr>
+
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/scify/laravel-cookies-consent.svg?style=flat-square)](https://packagist.org/packages/scify/laravel-cookies-consent)
 [![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/scify/laravel-cookies-consent/run-tests.yml?branch=main)](https://github.com/scify/laravel-cookies-consent/actions?query=workflow%3Arun-tests+branch%3Amain)
 [![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/scify/laravel-cookies-consent/fix-php-code-style-issues.yml?branch=main)](https://github.com/scify/laravel-cookies-consent/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
@@ -11,6 +18,8 @@
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/Naereen/StrapDown.js/graphs/commit-activity)
 [![Ask Me Anything !](https://img.shields.io/badge/Ask%20me-anything-1abc9c.svg)](https://GitHub.com/scify)
+[![GitHub contributors](https://img.shields.io/github/contributors/scify/laravel-cookies-consent)](https://GitHub.com/scify)
+[![GitHub pull-requests](https://img.shields.io/github/issues-pr/scify/laravel-cookies-consent)](https://github.com/scify/laravel-cookies-consent/pulls)
 
 ## About the plugin
 
@@ -49,7 +58,8 @@ php artisan vendor:publish \
 
 By doing so, the assets files will be copied to `public/vendor/cookies_consent`.
 
-You can then either decide to include the `public/vendor/cookies_consent/css/style.css` file to git (especially if you want
+You can then either decide to include the `public/vendor/cookies_consent/css/style.css` file to git (especially if you
+want
 to edit it first), or add it to `.gitignore`, and make sure to also run this command on the staging/production server.
 
 Next, you need to publish the config file:
@@ -87,11 +97,13 @@ return [
 ];
 ```
 
-The `cookie_prefix` is optional and, if set, will be applied to every cookie. 
+The `cookie_prefix` is optional and, if set, will be applied to every cookie.
 
-If set, a good strategy is to also add a trailing underscore "_", that will be added between the field value, and each cookie.
+If set, a good strategy is to also add a trailing underscore "_", that will be added between the field value, and each
+cookie.
 
-For example, if `cookie_prefix` is set to `my_app_`, then the targeting cookie will have a value of `my_app_cookies_consent_targeting`.
+For example, if `cookie_prefix` is set to `my_app_`, then the targeting cookie will have a value
+of `my_app_cookies_consent_targeting`.
 You can add as many cookie categories as you like, simply by adding values to the `cookies` array.
 
 If you want to remove a cookie category, simply remove it from the array.
@@ -238,9 +250,11 @@ Make sure that the `composer.json` file of the Laravel app has the following ent
     ]
 ```
 
-This will tell composer that the code for the package is of the `"@dev"` version and that it exists in the specified path.
+This will tell composer that the code for the package is of the `"@dev"` version and that it exists in the specified
+path.
 
 Then run:
+
 ```bash
 composer update scify/laravel-cookies-consent --prefer-source
 ```
@@ -351,14 +365,14 @@ Then, push the tag:
 git push origin vx.y.z
 ```
 
-Then, in the [GitHub Releases page](https://github.com/scify/laravel-cookies-consent/releases), create a new Release **and correlate it with the tag that you just created.**
+Then, in the [GitHub Releases page](https://github.com/scify/laravel-cookies-consent/releases), create a new Release *
+*and correlate it with the tag that you just created.**
 
-That's it! Packagist will be updated automatically. 
+That's it! Packagist will be updated automatically.
 
 Also, the `.github/workflows/update-changelog.yml` GitHub action will run, and it will update the `CHANGELOG.md` file.
 
 Make sure that you run `git pull` afterwards, to get the updates.
-
 
 ## Credits
 
