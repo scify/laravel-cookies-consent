@@ -1,0 +1,29 @@
+{
+  "name": "laravel-cookies-consent",
+  "version": "1.0.0",
+  "description": "<p align=\"center\"> <img src=\"logo.jpg\" alt=\"logo\" width=\"400\"> </p>",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "vite",
+    "build": "vite build && cp resources/images/cookie.png public/cookie.png"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/scify/laravel-cookies-consent.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/scify/laravel-cookies-consent/issues"
+  },
+  "homepage": "https://github.com/scify/laravel-cookies-consent#readme",
+  "devDependencies": {
+    "sass": "^1.77.6",
+    "vite": "^5.3.3"
+  }
+}

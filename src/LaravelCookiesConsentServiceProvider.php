@@ -7,13 +7,22 @@ use Illuminate\Support\ServiceProvider;
 
 class LaravelCookiesConsentServiceProvider extends ServiceProvider {
     public function boot() {
+        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'cookies-consent');
+
         $this->publishes([
-            __DIR__ . '/../resources/assets' => public_path('vendor/cookies_consent'),
+            __DIR__ . '/../public/cookies-consent.js' => public_path('vendor/cookies_consent/js/cookies-consent.js'),
+            __DIR__ . '/../public/cookies-consent.css' => public_path('vendor/cookies_consent/css/cookies-consent.css'),
+            __DIR__ . '/../public/cookie.png' => public_path('vendor/cookies_consent/images/cookie.png'),
         ], 'cookies-consent-assets');
+
 
         $this->publishes([
             __DIR__ . '/../resources/views/components/' => resource_path('views/vendor/cookies_consent/components'),
         ], 'cookies-consent-components');
+
+        $this->publishes([
+            __DIR__ . '/../public' => public_path('vendor/cookie-consent'),
+        ], 'cookies-consent-public');
 
         $this->publishes([
             __DIR__ . '/../config/cookies_consent.php' => config_path('cookies_consent.php'),

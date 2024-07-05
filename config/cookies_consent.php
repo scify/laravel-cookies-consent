@@ -10,6 +10,8 @@ return [
      * (for example "my_app_", in order for the cookies not to be mingled when running locally.
      */
     'cookie_prefix' => '',
+    'display_floating_button' => false, // Set to false to display the footer link instead
+    'use_separate_page' => false, // Set to true to use a separate page for cookies explanation
     /*
     |--------------------------------------------------------------------------
     | Editor
@@ -24,7 +26,13 @@ return [
     |
     */
     'cookies' => [
-        'strictly_necessary',
+        'strictly_necessary' => [
+            [
+                'name' => 'cookies_consent_selection',
+                'description' => 'This cookie is set by the GDPR Cookie Consent plugin and is used to store whether or not user has consented to the use of cookies. It does not store any personal data.',
+                'policy' => 'https://www.example.com/privacy-policy',
+            ],
+        ],
         'targeting',
         'performance',
         'functionality',

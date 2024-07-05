@@ -1,0 +1,487 @@
+@import 'variables';
+
+.cookies-policy-body {
+  color: #222;
+  font-family: Roboto, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+.cookies-policy-body.banner {
+  min-height: auto;
+}
+
+.cookies-consent-banner {
+
+  button, input, optgroup, select, textarea {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    margin: 0;
+  }
+
+  // Container
+  .container {
+    width: 100%;
+    padding-right: $gutter;
+    padding-left: $gutter;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  // Row
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: calc($gutter / -2);
+    margin-left: calc($gutter / -2);
+  }
+
+  .g-0 {
+    --bs-gutter-x: 0;
+    --bs-gutter-y: 0;
+  }
+
+  @media (min-width: 576px) {
+    .col-sm-12 {
+      flex: 0 0 auto;
+      width: 100%;
+    }
+  }
+
+  @media (min-width: 992px) {
+    .col-lg-4 {
+      flex: 0 0 auto;
+      width: 33.33333333%;
+    }
+  }
+
+  // Button
+  .btn {
+    display: inline-block;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    text-align: center;
+    text-decoration: none;
+    vertical-align: middle;
+    cursor: pointer;
+    user-select: none;
+    border: 1px solid transparent;
+    padding: 0.375rem 0.75rem;
+    font-size: $font-size-base;
+    border-radius: $border-radius;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  }
+
+  .btn-light {
+    color: #212529;
+    background-color: $light-color;
+    border-color: $light-color;
+  }
+
+  .btn-light:hover {
+    color: #212529;
+    background-color: darken($light-color, 10%);
+    border-color: darken($light-color, 10%);
+  }
+
+  .w-100 {
+    width: 100% !important;
+  }
+
+  // Accordion
+  .accordion {
+    --bs-accordion-border-color: $border-color;
+  }
+
+  .accordion-item {
+    background-color: #fff;
+    border: 1px solid $border-color;
+    color: #212529;
+  }
+
+  .accordion-header {
+    margin-bottom: 0;
+  }
+
+  .accordion-button {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 1rem 1.25rem;
+    font-size: $font-size-base;
+    color: #212529;
+    text-align: left;
+    background-color: $border-color;
+    border: 1px solid transparent;
+    border-top-left-radius: $border-radius;
+    border-top-right-radius: $border-radius;
+    cursor: pointer;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  }
+
+  .accordion-button:not(.collapsed) {
+    color: $primary-color;
+    background-color: $border-color;
+    box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.125);
+  }
+
+  .accordion-button::after {
+    flex-shrink: 0;
+    width: 1.25rem;
+    height: 1.25rem;
+    margin-left: auto;
+    content: "";
+    background: no-repeat center/50% url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23052c65'%3E%3Cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3E%3C/svg%3E");
+    transition: transform 0.2s ease-in-out;
+  }
+
+  .accordion-button:not(.collapsed)::after {
+    transform: rotate(90deg);
+  }
+
+  .accordion-collapse {
+    border-top: 1px solid $border-color;
+  }
+
+  .accordion-body {
+    padding: 1rem 1.25rem;
+  }
+
+  // Form check
+  .form-check {
+    position: relative;
+    display: block;
+    padding-left: 1.25rem;
+  }
+
+  .form-check-input {
+    float: left;
+    margin-left: -1.25rem;
+    width: $checkbox-size;
+    height: $checkbox-size;
+    border: 1px solid $border-color;
+    border-radius: $border-radius;
+    background-color: #fff;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    appearance: none;
+    -webkit-print-color-adjust: exact;
+    color-adjust: exact;
+    transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  }
+
+  .form-check-input[type='checkbox'] {
+    border-radius: 0.25em;
+  }
+
+  .form-check-input:checked {
+    background-color: $primary-color;
+    border-color: $primary-color;
+  }
+
+  .form-check-input:focus {
+    border-color: $primary-color;
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem rgba($primary-color, 0.25);
+  }
+
+  .form-check-input:disabled {
+    filter: none;
+    opacity: .5;
+    pointer-events: none;
+  }
+
+  .form-check-input:disabled ~ .form-check-label, .form-check-input[disabled] ~ .form-check-label {
+    cursor: default;
+    opacity: .5;
+  }
+
+  dl, ol, ul {
+    margin-bottom: 1rem;
+    margin-top: 0;
+  }
+
+  dd {
+    margin-bottom: .5rem;
+    margin-left: 0;
+  }
+
+  dt {
+    font-weight: 700;
+  }
+
+  b, strong {
+    font-weight: bolder;
+  }
+
+  .form-switch {
+    padding-left: 2.5rem;
+  }
+
+  .form-switch .form-check-input {
+    width: 2em;
+    height: 18px;
+    background-color: #adb5bd;
+    border-radius: 1em;
+    position: relative;
+    transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  .form-switch .form-check-input {
+    --bs-form-switch-bg: none;
+    background-image: none;
+  }
+
+  .form-switch .form-check-input::before {
+    content: "";
+    position: absolute;
+    top: 0.125em;
+    left: 0.125em;
+    width: 0.75em;
+    height: 0.75em;
+    border-radius: 0.75em;
+    background-color: #fff;
+    transition: transform 0.15s ease-in-out;
+  }
+
+  .form-switch .form-check-input:checked::before {
+    transform: translateX(1em);
+  }
+
+  .form-switch .form-check-input:checked {
+    background-color: $primary-color;
+  }
+
+  // List group
+  .list-group {
+    display: flex;
+    flex-direction: column;
+    padding-left: 0;
+    margin-bottom: 0;
+  }
+
+  .list-group-item {
+    position: relative;
+    display: block;
+    padding: 0.75rem 1.25rem;
+    background-color: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+  }
+
+  .mt-3 {
+    margin-top: 1rem !important;
+  }
+
+  // Typography
+  .h5 {
+    font-size: $h5-font-size;
+  }
+
+  .small {
+    font-size: $font-size-small;
+  }
+
+  .m-0 {
+    margin: 0 !important;
+  }
+
+  .pt-0 {
+    padding-top: 0 !important;
+  }
+
+  .pb-2 {
+    padding-bottom: 0.5rem !important;
+  }
+
+  // Definition List
+  dl {
+    margin-top: 0;
+    margin-bottom: 1rem;
+  }
+
+  dt {
+    font-weight: bold;
+  }
+
+  code {
+    font-size: 87.5%;
+    color: #d63384;
+    word-wrap: break-word;
+  }
+
+
+  /* Accordion styles */
+  .accordion {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 10px;
+  }
+
+  .accordion-item {
+    border-bottom: 1px solid #ddd;
+  }
+
+  .accordion-header {
+    margin-top: 0;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-weight: bold;
+    background-color: #f7f7f7;
+  }
+
+  .accordion-button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    background: none;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+  }
+
+  .accordion-button:focus {
+    outline: none;
+  }
+
+  .accordion-collapse {
+    display: none;
+  }
+
+  .accordion-collapse.show {
+    display: block;
+    padding: 10px 15px;
+  }
+
+  /* Form switch styles */
+  .form-check {
+    display: flex;
+    align-items: center;
+  }
+
+  .form-check-input {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+  }
+
+  .form-check-label {
+    margin-bottom: 0;
+  }
+
+  /* Button styles */
+  .btn {
+    display: inline-block;
+    font-size: 100%;
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    user-select: none;
+    border: 1px solid #222222;
+    padding: 0.375rem 0.75rem;
+    line-height: 1.5;
+    border-radius: 0.25rem;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  }
+
+  .btn-light {
+    color: #212529;
+    background-color: #f8f9fa;
+    cursor: pointer;
+  }
+
+  .btn-light:hover {
+    background-color: #e2e6ea;
+  }
+
+  /* Other styles */
+  .cookies-consent-banner {
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    margin: 20px auto;
+  }
+
+  .cookie-actions {
+    margin-top: 20px;
+  }
+
+  .cookie-button {
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+    background-color: #f8f9fa;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 5px;
+    cursor: pointer;
+
+    img {
+      width: 40px;
+      height: 40px;
+    }
+  }
+
+}
+
+.cookies-consent-banner {
+
+  #cookie-consent-title {
+    font-size: large;
+  }
+
+  background-color: #f8f9fa;
+  color: #000;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+
+  /* Query for mobile */
+  @media (max-width: 575.98px) {
+    width: calc(100% - 20px);
+    left: 10px;
+    right: 10px;
+  }
+
+  .accordion-button {
+    font-size: medium;
+  }
+}
+
+.cookies-consent-banner.banner {
+  position: fixed;
+  bottom: 1.25rem;
+  left: 1.25rem;
+  z-index: 1000;
+  width: 550px;
+  display: none;
+}
+
+.cookies-consent-banner .cookie-actions {
+  button#accept-all-cookies, button#accept-selected-cookies {
+    /*Query for non-mobile */
+    @media (min-width: 576px) {
+      border-right: 0;
+    }
+    /* Query for mobile */
+    @media (max-width: 575.98px) {
+      border-bottom: 0;
+    }
+  }
+}
