@@ -11,7 +11,7 @@ return [
      */
     'cookie_prefix' => '',
     'display_floating_button' => false, // Set to false to display the footer link instead
-    'use_separate_page' => false, // Set to true to use a separate page for cookies explanation
+    'use_separate_page' => true, // Set to true to use a separate page for cookies explanation
     /*
     |--------------------------------------------------------------------------
     | Editor
@@ -22,30 +22,37 @@ return [
     | publish the translation files and add a "cookie_marketing" key in the translation file,
     | since the plugin will try to display the cookie name by this convention.
     |
-    | Built-in: "strictly_necessary", "performance", "targeting", "functionality"
+    | Built-in: "strictly_necessary"
     |
     */
     'cookies' => [
         'strictly_necessary' => [
             [
-                'name' => 'cookies_consent_selection',
+                'name' => 'cookieConsent',
                 'description' => 'This cookie is set by the GDPR Cookie Consent plugin and is used to store whether or not user has consented to the use of cookies. It does not store any personal data.',
-                'policy' => 'https://www.example.com/privacy-policy',
+                'duration' => '2 years',
+                'policy_external_link' => null,
+            ],
+            [
+                'name' => 'XSRF-TOKEN',
+                'description' => 'This cookie is set by Laravel to prevent Cross-Site Request Forgery (CSRF) attacks.',
+                'duration' => '2 hours',
+                'policy_external_link' => null,
+            ],
+            [
+                'name' => 'laravel_session',
+                'description' => 'This cookie is set by Laravel to identify a session instance for the user.',
+                'duration' => '2 hours',
+                'policy_external_link' => null,
             ],
         ],
-        'targeting',
-        'performance',
-        'functionality',
     ],
     'enabled' => [
         'strictly_necessary',
-        'targeting',
-        'performance',
-        'functionality',
     ],
     'required' => ['strictly_necessary'],
     /*
-     * Set the cookie duration in days.  Default is 365 * 10.
+     * Set the cookie duration in days.  Default is 365 days.
      */
-    'cookie_lifetime' => 365 * 10,
+    'cookie_lifetime' => 365,
 ];

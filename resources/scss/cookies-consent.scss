@@ -22,21 +22,30 @@
     margin: 0;
   }
 
-  // Container
-  .container {
-    width: 100%;
-    padding-right: $gutter;
-    padding-left: $gutter;
-    margin-right: auto;
-    margin-left: auto;
-  }
-
   // Row
   .row {
     display: flex;
     flex-wrap: wrap;
     margin-right: calc($gutter / -2);
     margin-left: calc($gutter / -2);
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Define the col-6 class */
+  .col-6 {
+    width: 50%;
+    padding-right: 15px;
+    padding-left: 15px;
+    box-sizing: border-box;
+  }
+
+  /* Define the col class */
+  .col {
+    flex: 1;
+    padding-right: 15px;
+    padding-left: 15px;
+    box-sizing: border-box;
   }
 
   .g-0 {
