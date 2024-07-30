@@ -78,8 +78,7 @@
                      aria-labelledby="cookie-consent-title"
                      aria-describedby="cookie-consent-description"
                      data-ajax-url="{{ url('/cookie-consent/save') }}"
-                     data-show-floating-button="false"
-                     data-use-separate-page="true">
+                     data-show-floating-button="false">
                 @include('cookies_consent::components._cookie-categories', ['alwaysOpen' => true])
                 <div class="cookie-actions">
                     <div class="container-fluid p-0">

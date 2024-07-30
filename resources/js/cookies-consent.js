@@ -17,19 +17,35 @@ document.addEventListener('DOMContentLoaded', function () {
     const acceptSelectedButton = document.getElementById('accept-selected-cookies');
     const rejectOptionalButton = document.getElementById('reject-optional-cookies');
     const cookieBanner = document.getElementById('cookies-consent-banner');
-    const cookieButton = document.getElementById('cookieButton');
-    const showFloatingButton = cookieBanner.dataset.showFloatingButton === 'true';
-    const useSeparatePage = cookieBanner.dataset.useSeparatePage === 'true';
-
+    const cookieButton = document.getElementById('scify-cookie-consent-floating-button');
+    const showFloatingButton = cookieBanner.dataset.showFloatingButton === 'true' || cookieBanner.dataset.showFloatingButton === '1';
+    const cookieConsent = getCookie('cookieConsent');
+    initialiseBanner();
     setSliders();
 
     function onCookiesPage() {
         return window.location.href.includes('/cookie-policy');
     }
 
+    function initialiseBanner() {
+        if (onCookiesPage()) {
+            cookieBanner.style.display = 'block';
+            cookieButton.style.display = 'none';
+        } else {
+            if (cookieConsent) {
+                cookieBanner.style.display = 'none';
+                if (showFloatingButton) {
+                    console.log('showing floating button');
+                    cookieButton.style.display = 'block';
+                }
+            } else {
+                cookieBanner.style.display = 'block';
+            }
+        }
+    }
+
     function setSliders() {
         // Retrieve and set sliders based on cookieConsent cookie
-        const cookieConsent = getCookie('cookieConsent');
         if (cookieConsent) {
             const consentSettings = JSON.parse(cookieConsent);
             for (const category in consentSettings) {
@@ -37,18 +53,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 if (categoryCheckbox) {
                     categoryCheckbox.checked = consentSettings[category];
                 }
-            }
-        }
-        // Check if preferences are stored
-        if (cookieConsent && !onCookiesPage()) {
-            cookieBanner.style.display = 'none';
-            if (showFloatingButton) {
-                cookieButton.style.display = 'block';
-            }
-        } else {
-            cookieBanner.style.display = 'block';
-            if (showFloatingButton) {
-                cookieButton.style.display = 'none';
             }
         }
     }
