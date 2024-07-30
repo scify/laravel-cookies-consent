@@ -2,7 +2,7 @@
 
 namespace SciFY\LaravelCookiesConsent\Http\Controllers;
 
-use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Cookie;
@@ -14,51 +14,25 @@ class CookiesController extends Controller {
     private static $MINUTES_IN_A_DAY = 1440;
 
     /**
-     * Called when the user clicks on "ACCEPT ALL"
-     *
-     * @return RedirectResponse redirects to the previous page
-     */
-    public function accept_all_cookies(): RedirectResponse {
-        $this->set_cookies_consent_basic_cookie();
-        foreach (config('cookies_consent.cookies') as $cookie_key) {
-            $this->set_cookie('cookies_consent_' . $cookie_key);
-        }
-
-        return redirect()->back()->withCookies(Cookie::getQueuedCookies());
-    }
-
-    /**
-     * Called when the user clicks on "DECLINE ALL"
-     *
-     * @return RedirectResponse redirects to the previous page
-     */
-    public function decline_all_cookies(): RedirectResponse {
-        $this->set_cookies_consent_basic_cookie();
-        foreach (config('cookies_consent.cookies') as $cookie_key) {
-            $this->delete_cookie('cookies_consent_cookie_' . $cookie_key);
-        }
-
-        return redirect()->back()->withCookies(Cookie::getQueuedCookies());
-    }
-
-    /**
      * Called when the user clicks on "ACCEPT SELECTION"
      * This method goes over all the input fields (checkboxes)
      * submitted by the cookies consent form, and stores
      * all the relevant cookies.
      *
-     * @return RedirectResponse redirects to the previous page
+     * @return JsonResponse the result of the operation
      */
-    public function accept_selection_cookies(Request $request): RedirectResponse {
+    public function save_cookies_consent_selection(Request $request): JsonResponse {
         $this->set_cookies_consent_basic_cookie();
         $data = $request->all();
         foreach ($data as $key => $value) {
             if (strpos($key, 'cookies_consent_') !== false) {
                 $this->set_cookie($key);
+            } else {
+                $this->delete_cookie($key);
             }
         }
 
-        return redirect()->back()->withCookies(Cookie::getQueuedCookies());
+        return response()->json(['message' => 'Cookies consent selection saved', 'data' => $data, 'success' => true]);
     }
 
     /**

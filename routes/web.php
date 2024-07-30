@@ -15,3 +15,6 @@ use SciFY\LaravelCookiesConsent\Http\Controllers\CookiesController;
 Route::get('/cookie-policy', function () {
     return view('cookies-consent::cookie-policy');
 });
+
+Route::post('/cookie-consent/save', [CookiesController::class, 'save_cookies_consent_selection']);
+

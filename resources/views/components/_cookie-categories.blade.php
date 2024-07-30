@@ -2,18 +2,20 @@
     $alwaysOpen = $alwaysOpen ?? false;
     $cookieCategories = config('cookies_consent.cookies');
 @endphp
-
+<meta name="csrf-token" content="{{ csrf_token() }}">
 <div class="accordion" id="cookieAccordion">
     @foreach($cookieCategories as $category => $cookies)
         <div class="accordion-item cookies-consent-category-item">
             <h5 class="accordion-header h5" id="heading-{{ $category }}">
-                <button class="accordion-button" type="button" data-toggle="collapse"
+                <button class="accordion-button {{ $alwaysOpen || $category === 'strictly_necessary' ? 'collapsed' : '' }}"
+                        type="button" data-toggle="collapse"
                         data-target="#collapse-{{ $category }}" aria-expanded="{{ $alwaysOpen ? 'true' : 'false' }}"
                         aria-controls="collapse-{{ $category }}">
                     {{ ucfirst(str_replace('_', ' ', $category)) }}
                 </button>
             </h5>
-            <div id="collapse-{{ $category }}" class="accordion-collapse collapse {{ $alwaysOpen ? 'show' : '' }}"
+            <div id="collapse-{{ $category }}"
+                 class="accordion-collapse {{ $alwaysOpen || $category === 'strictly_necessary' ? 'show' : '' }}"
                  aria-labelledby="heading-{{ $category }}"
                  data-parent="#cookieAccordion">
                 <div class="accordion-body">
@@ -42,9 +44,8 @@
                                     </dd>
                                     @if($cookie['policy_external_link'])
                                         <dd>
-                                            <strong>Policy link: </strong>
                                             <a href="{{ $cookie['policy_external_link'] }}"
-                                               target="_blank">{{ $cookie['policy_external_link'] }}</a>
+                                               target="_blank">Policy link</a>
                                         </dd>
                                     @endif
                                 </dl>

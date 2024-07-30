@@ -1,6 +1,7 @@
-<section class="cookies-consent-banner banner cookies-policy-body" id="cookies-consent-banner" role="dialog" aria-labelledby="cookie-consent-title"
+<section class="cookies-consent-banner banner cookies-policy-body" id="cookies-consent-banner" role="dialog"
+         aria-labelledby="cookie-consent-title"
          aria-describedby="cookie-consent-description"
-         data-ajax-url="{{ url('/cookie-consent') }}"
+         data-ajax-url="{{ url('/cookie-consent/save') }}"
          data-show-floating-button="{{ config('cookie-consent.display_floating_button') }}"
          data-use-separate-page="{{ config('cookie-consent.use_separate_page') }}" style="display: none;">
     <h5 id="cookie-consent-title" class="h5 m-0 pt-0 pb-2">
@@ -9,7 +10,8 @@
         We use cookies to optimize our website and our service. You can choose which categories you consent to.</p>
 
     @if(config('cookies_consent.use_separate_page'))
-        <p class="small">For more detailed information about cookies, please visit our <a href="{{ url('/cookie-policy') }}">cookie policy page</a>.</p>
+        <p class="small">For more detailed information about cookies, please visit our <a
+                    href="{{ url('/cookie-policy') }}">cookie policy page</a>.</p>
     @else
         @include('cookies_consent::components._cookie-categories')
     @endif

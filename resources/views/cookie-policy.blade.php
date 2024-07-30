@@ -10,7 +10,7 @@
 <body class="cookies-policy-body cookies-consent-banner">
 <div class="container">
     <div class="row">
-        <div class="col-6">
+        <div class="col-6 col-sm-12">
             <h1>Cookie Policy</h1>
             <p>This is the cookie policy page. Here you can read about the Cookies that are used in the application and
                 select which cookies to allow.</p>
@@ -65,7 +65,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-6">
+        <div class="col-6 col-sm-12">
             <h2>Cookies used in this application</h2>
             <p>
                 The following cookies are used in this application. Please select which cookies you would like to allow.
@@ -77,7 +77,7 @@
             <section class="cookies-consent-banner" id="cookies-consent-banner" role="dialog"
                      aria-labelledby="cookie-consent-title"
                      aria-describedby="cookie-consent-description"
-                     data-ajax-url="{{ url('/cookie-consent') }}"
+                     data-ajax-url="{{ url('/cookie-consent/save') }}"
                      data-show-floating-button="false"
                      data-use-separate-page="true">
                 @include('cookies_consent::components._cookie-categories', ['alwaysOpen' => true])
