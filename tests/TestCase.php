@@ -16,8 +16,7 @@ class TestCase extends Orchestra {
         ];
     }
 
-    public function getEnvironmentSetUp($app) {
-    }
+    public function getEnvironmentSetUp($app) {}
 
     public function assertTranslationExists(string $key) {
         $this->assertTrue(trans($key) != $key, "Failed to assert that a translation exists for key `{$key}`");
