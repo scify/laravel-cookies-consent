@@ -2,7 +2,6 @@
     "preset": "laravel",
     "rules": {
         "no_superfluous_phpdoc_tags": false,
-        "Laravel/laravel_phpdoc_alignment": false,
         "align_multiline_comment": true,
         "array_indentation": true,
         "array_syntax": true,

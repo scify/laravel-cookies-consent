@@ -48,5 +48,6 @@
         <img src="{{ asset('/vendor/cookies_consent/images/cookie.png') }}" alt="Cookie">
     </div>
 @endif
+{{--<a href="javascript:void(0);" onclick="toggleCookieBanner()">Manage Cookies</a>--}}
 <link href="{{ asset('vendor/cookies_consent/css/cookies-consent.css') }}" rel="stylesheet">
 <script type="module" src="{{ asset('vendor/cookies_consent/js/cookies-consent.js') }}"></script>
