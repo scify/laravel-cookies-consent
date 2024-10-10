@@ -53,18 +53,23 @@ composer update scify/laravel-cookies-consent
 1. Publish the new configuration file by running the following command:
 
 ```bash
-php artisan vendor:publish --tag=cookies-consent-config
+php artisan vendor:publish --tag=cookies-consent-config --force
 ```
 
-2. Compare the new configuration file (`config/cookies-consent.php`) with your old configuration file. You should copy
+**CAUTION**: The `--force` flag is necessary in order to overwrite the existing configuration file.
+
+2. Go over the "Explanation of the configuration file" in the [README.md](README.md) file, in order to understand the new structure
+   of the configuration file.
+
+3. Compare the new configuration file (`config/cookies-consent.php`) with your old configuration file. You should copy
    the values from your old configuration file to the new one. Most importantly, you should migrate the `cookies` array
    from the old configuration file to the new one, which contains the cookies that your website uses.
 
-3. Make sure that the new configuration file is correct and that it contains all the necessary information about the
+4. Make sure that the new configuration file is correct and that it contains all the necessary information about the
    cookies and the cookie categories that your website uses.
 
-4. Make sure that the `cookies` array in the new configuration file is structured correctly. The `cookies` array should
+5. Make sure that the `cookies` array in the new configuration file is structured correctly. The `cookies` array should
    contain the cookies that your website uses, grouped by category.
 
-5. Make sure that the `cookies` array in the new configuration file contains the necessary information about each cookie
+6. Make sure that the `cookies` array in the new configuration file contains the necessary information about each cookie
    (e.g. name, description, duration, etc.).

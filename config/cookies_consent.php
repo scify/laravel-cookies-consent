@@ -10,8 +10,8 @@ return [
      * (for example "my_app_", in order for the cookies not to be mingled when running locally.
      */
     'cookie_prefix' => '',
-    'display_floating_button' => false, // Set to false to display the footer link instead
-    'use_separate_page' => true, // Set to true to use a separate page for cookies explanation
+    'display_floating_button' => true, // Set to false to display the footer link instead
+    'use_separate_page' => false, // Set to true to use a separate page for cookies explanation
     /*
     |--------------------------------------------------------------------------
     | Editor
