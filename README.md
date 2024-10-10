@@ -22,6 +22,12 @@
 [![GitHub pull-requests](https://img.shields.io/github/issues-pr/scify/laravel-cookies-consent)](https://github.com/scify/laravel-cookies-consent/pulls)
 [![GitHub closed pull-requests](https://img.shields.io/github/issues-pr-closed/scify/laravel-cookies-consent)](https://github.com/scify/laravel-cookies-consent/pulls?q=is%3Apr+is%3Aclosed)
 
+## Upgrading from v1 to v2
+
+As of **October 2024**, The v2 of the Laravel Cookies Consent plugin has been released! 🎉🥳😍
+In order to upgrade from v1 to v2, please follow the instructions in the [How To Upgrade to v2](how-to-upgrade-to-v2.md)
+file.
+
 ## About the plugin
 
 According to the [GDPR law](https://gdpr-info.eu/), every platform is required to allow the users to decide which cookie
@@ -160,15 +166,17 @@ cookie.
 For example, if `cookie_prefix` is set to `my_app_`, then the targeting cookie will have a value
 of `my_app_cookies_consent_targeting`.
 
-The `display_floating_button` field is optional and, if set to `true`, will display a floating button on the bottom right corner of the page. 
-If set to `false`, then you will need to add a relevant link in your footer, in order to show the cookies preferences page:
+The `display_floating_button` field is optional and, if set to `true`, will display a floating button on the bottom
+right corner of the page.
+If set to `false`, then you will need to add a relevant link in your footer, in order to show the cookies preferences
+page:
 
 ```html
 <a href="#" onclick="toggleCookieBanner()">Cookies Preferences</a>
 ```
 
-The `use_separate_page` field is optional and, if set to `true`, will display the cookies preferences in a separate page.
-
+The `use_separate_page` field is optional and, if set to `true`, will display the cookies preferences in a separate
+page.
 
 You can add as many cookie categories as you like, simply by adding values to the `cookies` array.
 
