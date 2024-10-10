@@ -5,7 +5,7 @@ All notable changes to `laravel-cookies-consent` will be documented in this file
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
-## v.2.0.0 - Major Release - GDPR & UI Improvements - 2024-10-10
+## v2.0.0 - Major Release - GDPR & UI Improvements - 2024-10-10
 
 The v2 of the Laravel Cookies Consent plugin has been released! 🎉🥳😍
 
