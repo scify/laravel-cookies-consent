@@ -1,51 +1,66 @@
-@if(!isset($_COOKIE[config('cookies_consent.cookie_prefix') . 'cookies_consent_selection']))
-    <link rel="stylesheet" href="{{asset('vendor/cookies_consent/css/style.css')}}">
-    <div class="laravel-cookies-consent" id="laravel-cookies-consent">
-        <div class="outer-wrapper">
-            <a href="#" class="cookies-close" tabindex="0" role="button"
-               onclick="document.getElementById('laravel-cookies-consent').classList.add('slide_down')">close</a>
-            <div class="inner-wrapper">
-                <p class="cookies-title">{!! trans('cookies_consent::messages.title') !!}</p>
-                <small class="cookies-text">{!! __('cookies_consent::messages.body') !!}
-                    @if(__('cookies_consent::messages.read_more_link'))
-                        <a href="{{ __('cookies_consent::messages.read_more_link') }}"
-                           target="_blank">{{ __('cookies_consent::messages.read_more_text') }}</a>
-                    @endif
-                </small>
-                <div class="consent-form-container">
-                    <form name="cookies-consent-form" id="add-blog-post-form" method="post"
-                          action="{{ route('cookies_consent.accept_selection') }}">
-                        @csrf
-                        <div class="consent-checkboxes">
-                            @foreach(config('cookies_consent.cookies') as $cookie_key)
-                                <div class="form-group">
-                                    <input type="checkbox" id="cookies_consent_{{$cookie_key}}"
-                                           name="cookies_consent_{{$cookie_key}}"
-                                           onchange="document.getElementById('cookies-consent-accept-all').classList.add('hidden');
-                                       document.getElementById('cookies-consent-accept-selection').classList.remove('hidden');"
-                                        {{ in_array($cookie_key, config('cookies_consent.enabled')) ? 'checked' : '' }}
-                                        {{ in_array($cookie_key, config('cookies_consent.required')) ? 'disabled' : '' }}>
-                                    <label
-                                        for="cookies_consent_{{$cookie_key}}"> {{ __('cookies_consent::messages.cookie_' . $cookie_key) }}</label><br>
-                                </div>
-                            @endforeach
-                        </div>
-                        <div class="consent-buttons">
-                            <button type="submit"
-                                    id="cookies-consent-accept-selection"
-                                    class="consent-submit consent-accept {{ !(count(config('cookies_consent.enabled')) > 1) ? 'hidden' : '' }}">{{ __('cookies_consent::messages.accept_selection_btn') }}
-                            </button>
-                            <a href="{{ route('cookies_consent.accept_all') }}"
-                               id="cookies-consent-accept-all"
-                               class="consent-submit consent-accept {{ count(config('cookies_consent.enabled')) > 1 ? 'hidden' : '' }}">{{ __('cookies_consent::messages.accept_all_btn') }}
-                            </a>
-                            <a href="{{ route('cookies_consent.decline_all') }}"
-                               class="consent-submit consent-decline-all">{{ __('cookies_consent::messages.decline_all_btn') }}
-                            </a>
-                        </div>
-                    </form>
-                </div>
+<section class="cookies-consent-banner banner cookies-policy-body" id="cookies-consent-banner" role="dialog"
+         aria-labelledby="cookie-consent-title"
+         aria-describedby="cookie-consent-description"
+         data-ajax-url="{{ url('/cookie-consent/save') }}"
+         data-show-floating-button="{{ config('cookies_consent.display_floating_button') }}"
+         style="display: none;">
+    <h5 id="cookie-consent-title" class="h5 m-0 pt-0 pb-2">{{ __('cookies_consent::messages.title') }}</h5>
+    <p id="cookie-consent-description" class="small">{{ __('cookies_consent::messages.description') }}</p>
+    @if(config('cookies_consent.use_separate_page'))
+        <p class="small">{{ __('cookies_consent::messages.please_visit_1') }} <a
+                    href="{{ url('/cookie-policy') }}"
+                    target="_blank"><b>{{ __('cookies_consent::messages.cookie_policy_page') }}</b></a>.</p>
+    @else
+        @include('cookies_consent::components._cookie-categories')
+    @endif
+
+    <div class="cookie-actions">
+        <div class="container-fluid p-0">
+            <div class="row g-0">
+                @if(config('cookies_consent.use_separate_page'))
+                    <div class="col-lg-6 col-sm-12">
+                        <button type="button" class="btn btn-light w-100" id="accept-all-cookies"
+                                aria-label="Accept All Cookies">
+                            {{ __('cookies_consent::messages.accept_additional_cookies_btn') }}
+                        </button>
+                    </div>
+                    <div class="col-lg-6 col-sm-12">
+                        <button type="button" class="btn btn-light w-100" id="reject-optional-cookies"
+                                aria-label="Reject Optional Cookies">
+                            {{ __('cookies_consent::messages.reject_additional_cookies_btn') }}
+                        </button>
+                    </div>
+                @else
+                    <div class="col-lg-4 col-sm-12">
+                        <button type="button" class="btn btn-light w-100" id="accept-all-cookies"
+                                aria-label="Accept All Cookies">
+                            {{ __('cookies_consent::messages.accept_all_btn') }}
+                        </button>
+                    </div>
+                    <div class="col-lg-4 col-sm-12">
+                        <button type="button" class="btn btn-light w-100" id="accept-selected-cookies"
+                                aria-label="Accept Selected Cookies">
+                            {{ __('cookies_consent::messages.accept_selection_btn') }}
+                        </button>
+                    </div>
+                    <div class="col-lg-4 col-sm-12">
+                        <button type="button" class="btn btn-light w-100" id="reject-optional-cookies"
+                                aria-label="Reject Optional Cookies">
+                            {{ __('cookies_consent::messages.reject_optional_btn') }}
+                        </button>
+                    </div>
+                @endif
             </div>
         </div>
     </div>
+</section>
+
+@if(config('cookies_consent.display_floating_button'))
+    <div id="scify-cookie-consent-floating-button" class="cookie-button" style="display: none;"
+         onclick="toggleCookieBanner()">
+        <img src="{{ asset('/vendor/cookies_consent/images/cookie.png') }}" alt="Cookie">
+    </div>
 @endif
+{{--<a href="javascript:void(0);" onclick="toggleCookieBanner()">Manage Cookies</a>--}}
+<link href="{{ asset('vendor/cookies_consent/css/cookies-consent.css') }}" rel="stylesheet">
+<script type="module" src="{{ asset('vendor/cookies_consent/js/cookies-consent.js') }}"></script>
