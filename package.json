@@ -1,6 +1,6 @@
 {
   "name": "laravel-cookies-consent",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "<p align=\"center\"> <img src=\"logo.jpg\" alt=\"logo\" width=\"400\"> </p>",
   "main": "index.js",
   "directories": {
@@ -23,7 +23,7 @@
   },
   "homepage": "https://github.com/scify/laravel-cookies-consent#readme",
   "devDependencies": {
-    "sass": "^1.77.6",
-    "vite": "^5.3.3"
+    "sass": "^1.79.4",
+    "vite": "^5.4.8"
   }
 }
