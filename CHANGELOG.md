@@ -5,6 +5,21 @@ All notable changes to `laravel-cookies-consent` will be documented in this file
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## v.2.0.0 - Major Release - GDPR & UI Improvements - 2024-10-10
+
+The v2 of the Laravel Cookies Consent plugin has been released! 🎉🥳😍
+
+This version includes some important changes and improvements, such as:
+
+- A new configuration file format. Now you can declare the cookies each cookie category uses in a
+  more structured way.
+- A new, clean, and intuitive UI for the cookies consent modal.
+- An option to present the cookies consent dialog in a separate page instead of a modal.
+- A stick cookies button that allows users to change their cookies preferences at any time. This button is optional and
+  it's existence can be tweaked in the configuration file.
+- A separate page for the cookies preferences, where users can read more about each cookie category and change their
+  preferences.
+
 ## v1.1.3 - UI Improvements for compliance with GDPR - 2023-10-26
 
 - Changed the background color of the "Allow all cookies" button, in order to be compliant with the GDPR rules
