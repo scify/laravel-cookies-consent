@@ -70,7 +70,9 @@ php artisan vendor:publish \
 
 By doing so, the assets files will be copied to `public/vendor/cookies_consent`.
 
-You can then either decide to include the `public/vendor/cookies_consent/css/style.css` file to git (especially if you
+**IMPORTANT:**
+
+You can then either decide to include the `public/vendor/cookies_consent/*` files to git (especially if you
 want
 to edit it first), or add it to `.gitignore`, and make sure to also run this command on the staging/production server.
 
