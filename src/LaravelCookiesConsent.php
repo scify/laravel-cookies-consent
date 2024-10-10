@@ -2,5 +2,4 @@
 
 namespace SciFY\LaravelCookiesConsent;
 
-class LaravelCookiesConsent {
-}
+class LaravelCookiesConsent {}

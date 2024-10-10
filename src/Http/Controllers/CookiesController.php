@@ -48,7 +48,7 @@ class CookiesController extends Controller {
     /**
      * Sets a cookie
      *
-     * @param $cookie_name string the cookie name
+     * @param  $cookie_name  string the cookie name
      * @return void
      */
     public function set_cookie(string $cookie_name) {
@@ -58,7 +58,7 @@ class CookiesController extends Controller {
     /**
      * Deletes a cookie
      *
-     * @param $cookie_name string the cookie name
+     * @param  $cookie_name  string the cookie name
      * @return void
      */
     public function delete_cookie(string $cookie_name) {

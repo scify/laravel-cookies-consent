@@ -17,4 +17,3 @@ Route::get('/cookie-policy', function () {
 });
 
 Route::post('/cookie-consent/save', [CookiesController::class, 'save_cookies_consent_selection']);
-
