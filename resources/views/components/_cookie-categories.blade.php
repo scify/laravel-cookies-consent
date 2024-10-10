@@ -5,13 +5,20 @@
 <meta name="csrf-token" content="{{ csrf_token() }}">
 <div class="accordion" id="cookieAccordion">
     @foreach($cookieCategories as $category => $cookies)
+        <div class="form-check form-switch">
+            <input class="form-check-input cookie-category" type="checkbox"
+                   id="{{ $category }}" {{ in_array($category, config('cookies_consent.required')) ? 'checked disabled' : '' }}>
+            <label class="form-check-label" for="{{ $category }}">
+                {{ ucfirst(str_replace('_', ' ', $category)) }}
+            </label>
+        </div>
         <div class="accordion-item cookies-consent-category-item">
             <h5 class="accordion-header h5" id="heading-{{ $category }}">
                 <button class="accordion-button {{ $alwaysOpen || $category === 'strictly_necessary' ? 'collapsed' : '' }}"
                         type="button" data-toggle="collapse"
                         data-target="#collapse-{{ $category }}" aria-expanded="{{ $alwaysOpen ? 'true' : 'false' }}"
                         aria-controls="collapse-{{ $category }}">
-                    {{ ucfirst(str_replace('_', ' ', $category)) }}
+                    Read more about {{ ucfirst(str_replace('_', ' ', $category)) }}
                 </button>
             </h5>
             <div id="collapse-{{ $category }}"
@@ -19,13 +26,6 @@
                  aria-labelledby="heading-{{ $category }}"
                  data-parent="#cookieAccordion">
                 <div class="accordion-body">
-                    <div class="form-check form-switch">
-                        <input class="form-check-input cookie-category" type="checkbox"
-                               id="{{ $category }}" {{ in_array($category, config('cookies_consent.required')) ? 'checked disabled' : '' }}>
-                        <label class="form-check-label" for="{{ $category }}">
-                            {{ ucfirst(str_replace('_', ' ', $category)) }}
-                        </label>
-                    </div>
                     <ul class="list-group mt-3">
                         @foreach($cookies as $cookie)
                             <li class="list-group-item cookie-content-text small">

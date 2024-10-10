@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const cookieBanner = document.getElementById('cookies-consent-banner');
     const cookieButton = document.getElementById('scify-cookie-consent-floating-button');
     const showFloatingButton = cookieBanner.dataset.showFloatingButton === 'true' || cookieBanner.dataset.showFloatingButton === '1';
-    const cookieConsent = getCookie('cookieConsent');
+    let cookieConsent = getCookie('cookieConsent');
     initialiseBanner();
     setSliders();
 
@@ -30,12 +30,12 @@ document.addEventListener('DOMContentLoaded', function () {
     function initialiseBanner() {
         if (onCookiesPage()) {
             cookieBanner.style.display = 'block';
-            cookieButton.style.display = 'none';
+            if (showFloatingButton && cookieButton)
+                cookieButton.style.display = 'none';
         } else {
             if (cookieConsent) {
                 cookieBanner.style.display = 'none';
-                if (showFloatingButton) {
-                    console.log('showing floating button');
+                if (showFloatingButton && cookieButton) {
                     cookieButton.style.display = 'block';
                 }
             } else {
@@ -65,13 +65,15 @@ document.addEventListener('DOMContentLoaded', function () {
         handleCookieConsent(consent);
     });
 
-    acceptSelectedButton.addEventListener('click', function () {
-        const consent = {};
-        document.querySelectorAll('.cookie-category').forEach(checkbox => {
-            consent[checkbox.id] = checkbox.checked;
+    if (acceptSelectedButton) {
+        acceptSelectedButton.addEventListener('click', function () {
+            const consent = {};
+            document.querySelectorAll('.cookie-category').forEach(checkbox => {
+                consent[checkbox.id] = checkbox.checked;
+            });
+            handleCookieConsent(consent);
         });
-        handleCookieConsent(consent);
-    });
+    }
 
     rejectOptionalButton.addEventListener('click', function () {
         const consent = {};
@@ -115,6 +117,9 @@ document.addEventListener('DOMContentLoaded', function () {
                             message.remove();
                         }, 1000);
                     }, 4000);
+                    // we also need to set the sliders to the new values
+                    cookieConsent = JSON.stringify(consent);
+                    setSliders();
                 }
             });
     }

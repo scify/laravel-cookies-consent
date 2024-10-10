@@ -1,74 +1,52 @@
 <!-- resources/views/cookie-policy.blade.php -->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ \Illuminate\Support\Facades\App::getLocale() }}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cookie Policy</title>
+    <title>{{ __('cookies_consent::messages.cookie_policy_title') }}</title>
     <link href="{{ asset('vendor/cookies_consent/css/cookies-consent.css') }}" rel="stylesheet">
 </head>
 <body class="cookies-policy-body cookies-consent-banner">
 <div class="container">
     <div class="row">
         <div class="col-6 col-sm-12">
-            <h1>Cookie Policy</h1>
-            <p>This is the cookie policy page. Here you can read about the Cookies that are used in the application and
-                select which cookies to allow.</p>
+            <h1>{{ __('cookies_consent::messages.cookie_policy_title') }}</h1>
+            <p>{{ __('cookies_consent::messages.cookie_policy_text_1') }}</p>
 
-            <h2>What Are Cookies?</h2>
+            <h2>{{ __('cookies_consent::messages.what_are_cookies_title') }}</h2>
 
             <p>
-                A cookie is a small text file that a website or app sends to a user's device. This text file collects
-                information about user actions on your site.
+                {{ __('cookies_consent::messages.what_are_cookies_text_1') }}
 
-                Cookies store helpful information to enhance users' experiences with your site, and possibly to improve
-                your ability to reconnect with them later.
+                {{ __('cookies_consent::messages.what_are_cookies_text_2') }}
 
-                Information collected by cookies can include the user's preferred language, device settings, browsing
-                activities and other useful information.
+                {{ __('cookies_consent::messages.what_are_cookies_text_3') }}
 
-                Websites like Google use cookies to make ads more relevant to their users. They also track analytics
-                such as counting the number of visitors to a page, locations of visitors, search preferences and so on.
+                {{ __('cookies_consent::messages.what_are_cookies_text_4') }}
 
-                Cookies are not harmful to your device. They are not viruses or malware. They are just text files that
-                can be deleted at any time.
+                {{ __('cookies_consent::messages.what_are_cookies_text_5') }}
             </p>
 
-            <h2>Use of Cookies</h2>
-            <p>Cookies generally are used to perform one or all of the following:</p>
+            <h2>{{ __('cookies_consent::messages.use_of_cookies_title') }}</h2>
+            <p>{{ __('cookies_consent::messages.use_of_cookies_text_1') }}</p>
 
             <ul>
-                <li><b>Authentication:</b> Cookies help websites determine if a user is logged in, and then deliver the
-                    right
-                    experience and features to that unique user.
-                </li>
-                <li><b>Security:</b> Cookies help impose security measures on a website. They also help detect unusual
-                    and
-                    suspicious activities.
-                </li>
-                <li><b>Advertising:</b> Cookies deliver a better advertising experience for both users and advertisers.
-                    Cookies
-                    help connect advertisers to users who are most interested in their products based on the user's
-                    browsing history.
-                </li>
-                <li><b>Performance:</b> Cookies help your website learn how services work for different people and how
-                    to route
-                    traffic between servers.
-                </li>
-                <li><b>Analytics and Research:</b> Websites and apps use cookies to learn which of their services are
-                    most
-                    used. This helps determine what to improve, what to remove and what to leave the same.
-                </li>
-                Some cookies can gather data across several websites in order to create user behavior profiles. These
-                profiles are then used to send targeted content and advertisement to users.
+                <li>{!! __('cookies_consent::messages.use_of_cookies_text_2') !!}</li>
+                <li>{!! __('cookies_consent::messages.use_of_cookies_text_3') !!}</li>
+                <li>{!! __('cookies_consent::messages.use_of_cookies_text_4') !!}</li>
+                <li>{!! __('cookies_consent::messages.use_of_cookies_text_5') !!}</li>
+                <li>{!! __('cookies_consent::messages.use_of_cookies_text_6') !!}</li>
+                <li>{!! __('cookies_consent::messages.use_of_cookies_text_7') !!}</li>
+                <li>{!! __('cookies_consent::messages.use_of_cookies_text_8') !!}</li>
             </ul>
         </div>
     </div>
     <div class="row">
         <div class="col-6 col-sm-12">
-            <h2>Cookies used in this application</h2>
+            <h2>{{ __('cookies_consent::messages.cookies_used_title') }}</h2>
             <p>
-                The following cookies are used in this application. Please select which cookies you would like to allow.
+                {{ __('cookies_consent::messages.cookies_used_text_1') }}
             </p>
         </div>
     </div>
@@ -86,19 +64,19 @@
                             <div class="col-lg-4 col-sm-12">
                                 <button type="button" class="btn btn-light w-100" id="accept-all-cookies"
                                         aria-label="Accept All Cookies">
-                                    Accept All
+                                    {{ __('cookies_consent::messages.accept_all_btn') }}
                                 </button>
                             </div>
                             <div class="col-lg-4 col-sm-12">
                                 <button type="button" class="btn btn-light w-100" id="accept-selected-cookies"
                                         aria-label="Accept Selected Cookies">
-                                    Accept Selected
+                                    {{ __('cookies_consent::messages.accept_selection_btn') }}
                                 </button>
                             </div>
                             <div class="col-lg-4 col-sm-12">
                                 <button type="button" class="btn btn-light w-100" id="reject-optional-cookies"
                                         aria-label="Reject Optional Cookies">
-                                    Reject Optional
+                                    {{ __('cookies_consent::messages.reject_optional_btn') }}
                                 </button>
                             </div>
                         </div>

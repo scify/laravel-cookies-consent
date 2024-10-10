@@ -34,12 +34,23 @@ allow.
 After the user submission, the page reloads and the relevant cookies are set on the browser, and can then be used in the
 front-end.
 
+# Screenshots
+
+![img.png](readme-images/img.png)
+
+![img2.png](readme-images/img2.png)
+
 ## Features
 
 - Customizable cookie categories
-- Customizable pop-up view and style
-- Customizable show/hide "Read more" link
-- Customizable translations (6 languages already included)
+- A new configuration file format. Now you can declare the cookies each cookie category uses in a
+  more structured way.
+- A new, clean, and intuitive UI for the cookies consent modal.
+- An option to present the cookies consent dialog in a separate page instead of a modal.
+- A stick cookies button that allows users to change their cookies preferences at any time. This button is optional and
+  it's existence can be tweaked in the configuration file.
+- A separate page for the cookies preferences, where users can read more about each cookie category and change their
+  preferences.
 
 ## Installation
 
