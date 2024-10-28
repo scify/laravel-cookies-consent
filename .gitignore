@@ -9,5 +9,10 @@ phpstan.neon
 testbench.yaml
 vendor
 node_modules
-public
+public/*
 storage
+
+# Do not ignore the public directory or the generated files
+!/public/cookies-consent.js
+!/public/cookies-consent.css
+!/public/cookie.png

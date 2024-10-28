@@ -40,7 +40,16 @@ not 100% backward compatible with the v1 configuration file.
 So, in order to update to the new configuration file, you should save your current configuration file (e.g.
 `config/cookies-consent.php`) to a safe place.
 
-### Step 1: Update the Plugin
+### Step 1: Backup any changes made to the styles file
+
+The v.1 of the plugin had a styles file that was published to `public/vendor/cookies_consent/css/style.css`. If you have
+made any changes to this file, you should back it up before updating the plugin.
+
+The v2 of the plugin has a new styles file, which is published to
+`public/vendor/cookies_consent/css/cookies-consent.css`. You should transfer any changes you made to the old styles file
+to the new one.
+
+### Step 2: Update the Plugin
 
 First, update the plugin to the latest version. You can do this by running the following command:
 
@@ -48,7 +57,7 @@ First, update the plugin to the latest version. You can do this by running the f
 composer update scify/laravel-cookies-consent
 ```
 
-### Step 2: Update the Configuration file
+### Step 3: Update the Configuration file
 
 1. Publish the new configuration file by running the following command:
 
@@ -58,7 +67,8 @@ php artisan vendor:publish --tag=cookies-consent-config --force
 
 **CAUTION**: The `--force` flag is necessary in order to overwrite the existing configuration file.
 
-2. Go over the "Explanation of the configuration file" in the [README.md](README.md) file, in order to understand the new structure
+2. Go over the "Explanation of the configuration file" in the [README.md](README.md) file, in order to understand the
+   new structure
    of the configuration file.
 
 3. Compare the new configuration file (`config/cookies-consent.php`) with your old configuration file. You should copy
@@ -73,3 +83,11 @@ php artisan vendor:publish --tag=cookies-consent-config --force
 
 6. Make sure that the `cookies` array in the new configuration file contains the necessary information about each cookie
    (e.g. name, description, duration, etc.).
+
+### Step 4: Update the styles file (if necessary)
+
+If you have made any changes to the styles file in the v1 version of the plugin, you should transfer these changes to
+the new styles file.
+
+Old styles file: `public/vendor/cookies_consent/css/style.css`
+New styles file: `public/vendor/cookies_consent/css/cookies-consent.css`
