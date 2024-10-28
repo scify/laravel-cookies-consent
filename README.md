@@ -172,7 +172,7 @@ If set to `false`, then you will need to add a relevant link in your footer, in 
 page:
 
 ```html
-<a href="#" onclick="toggleCookieBanner()">Cookies Preferences</a>
+<a href="javascript:void(0);" onclick="toggleCookieBanner()">Cookies Preferences</a>
 ```
 
 The `use_separate_page` field is optional and, if set to `true`, will display the cookies preferences in a separate
