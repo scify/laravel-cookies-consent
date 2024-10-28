@@ -510,12 +510,6 @@
   width: 600px;
   display: none;
 
-  .cookie-actions {
-    button#accept-all-cookies, button#accept-selected-cookies {
-      border-bottom: 1px solid #ccc; // Default style
-    }
-  }
-
   /* Query for mobile */
   @media (max-width: 575.98px) {
     width: calc(100% - 20px);
