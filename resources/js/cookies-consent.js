@@ -146,7 +146,14 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // Helper functions to manage cookies
+    // Helper functions to manage cookies:
+
+    /**
+     * Set a cookie with a given name and value
+     * @param name The name of the cookie
+     * @param value The value of the cookie
+     * @param days The number of days until the cookie expires
+     */
     function setCookie(name, value, days) {
         let expires = "";
         if (days) {
@@ -157,6 +164,10 @@ document.addEventListener('DOMContentLoaded', function () {
         document.cookie = name + "=" + (value || "") + expires + "; path=/";
     }
 
+    /**
+     * Get the value of a cookie by its name if it exists
+     * @param name The name of the cookie to retrieve
+     */
     function getCookie(name) {
         const nameEQ = name + "=";
         const ca = document.cookie.split(';');
@@ -168,6 +179,10 @@ document.addEventListener('DOMContentLoaded', function () {
         return null;
     }
 
+    /**
+     * Erase a cookie by setting its expiry date to a past date
+     * @param name The name of the cookie to erase
+     */
     function eraseCookie(name) {
         document.cookie = name + '=; Max-Age=-99999999;';
     }
