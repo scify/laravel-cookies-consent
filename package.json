@@ -1,6 +1,6 @@
 {
   "name": "laravel-cookies-consent",
-  "version": "2.0.5",
+  "version": "2.0.6",
   "description": "<p align=\"center\"> <img src=\"logo.jpg\" alt=\"logo\" width=\"400\"> </p>",
   "main": "index.js",
   "directories": {
