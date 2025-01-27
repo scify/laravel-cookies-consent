@@ -193,6 +193,11 @@
 
   .accordion-body {
     padding: 1rem 1.25rem;
+
+    // mobile
+    @media (max-width: 575.98px) {
+      padding: 0.5rem;
+    }
   }
 
   // Form check
@@ -253,6 +258,14 @@
   dd {
     margin-bottom: .5rem;
     margin-left: 0;
+
+    // mobile
+    @media (max-width: 575.98px) {
+      // last-child
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
   }
 
   dt {
@@ -319,6 +332,11 @@
     padding: 0.75rem 1.25rem;
     background-color: #fff;
     border: 1px solid rgba(0, 0, 0, 0.125);
+
+    // mobile
+    @media (max-width: 575.98px) {
+      padding: 0.25rem 0.5rem;
+    }
   }
 
   .mt-3 {
@@ -350,6 +368,11 @@
   dl {
     margin-top: 0;
     margin-bottom: 1rem;
+
+    // mobile
+    @media (max-width: 575.98px) {
+      margin-bottom: 0;
+    }
   }
 
   dt {
@@ -381,6 +404,11 @@
     cursor: pointer;
     font-weight: bold;
     background-color: #f7f7f7;
+
+    // mobile
+    @media (max-width: 575.98px) {
+      padding: 2px;
+    }
   }
 
   .accordion-button {
@@ -405,6 +433,11 @@
   .accordion-collapse.show {
     display: block;
     padding: 10px 15px;
+
+    // mobile
+    @media (max-width: 575.98px) {
+      padding: 2px;
+    }
   }
 
   /* Form switch styles */
@@ -506,7 +539,7 @@
   position: fixed;
   bottom: 1.25rem;
   left: 1.25rem;
-  z-index: 1000;
+  z-index: 10000000;
   width: 600px;
   display: none;
 
@@ -529,7 +562,7 @@
   position: fixed;
   bottom: 1.25rem;
   left: 1.25rem;
-  z-index: 1000;
+  z-index: 10000000;
   background-color: #f8f9fa;
   border: 1px solid #ddd;
   border-radius: 10px;
