@@ -104,11 +104,12 @@
     vertical-align: middle;
     cursor: pointer;
     user-select: none;
-    border: 1px solid transparent;
+    border: 1px solid #212529;
     padding: 0.425rem 0.1rem;
     font-size: 95%;
     border-radius: $border-radius;
     transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    white-space: nowrap;
   }
 
   .btn-light {
