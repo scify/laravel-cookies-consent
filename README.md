@@ -74,6 +74,8 @@ php artisan vendor:publish \
 --tag="cookies-consent-assets"
 ```
 
+**Notice:** if a new version of the plugin has been released and you want to update the styles file, please make sure to use `--force` option, to overwrite the files.
+
 By doing so, the assets files will be copied to `public/vendor/cookies_consent`.
 
 **IMPORTANT:**
