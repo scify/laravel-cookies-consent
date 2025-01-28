@@ -74,7 +74,8 @@ php artisan vendor:publish \
 --tag="cookies-consent-assets"
 ```
 
-**Notice:** if a new version of the plugin has been released and you want to update the styles file, please make sure to use `--force` option, to overwrite the files.
+**Notice:** if a new version of the plugin has been released and you want to update the styles file, please make sure to
+use `--force` option, to overwrite the files.
 
 By doing so, the assets files will be copied to `public/vendor/cookies_consent`.
 
@@ -435,6 +436,8 @@ After you have committed your changes, create a new git tag:
 git tag -a vx.y.z -m "This is a nice tag name"
 ```
 
+(for the `x.y.z` version number, follow the [Semantic Versioning](https://semver.org/) guidelines).
+
 Then, push the tag:
 
 ```bash
@@ -446,9 +449,7 @@ Then, in the [GitHub Releases page](https://github.com/scify/laravel-cookies-con
 
 That's it! Packagist will be updated automatically.
 
-Also, the `.github/workflows/update-changelog.yml` GitHub action will run, and it will update the `CHANGELOG.md` file.
-
-Make sure that you run `git pull` afterwards, to get the updates.
+Also, don't forget to update the `CHANGELOG.md` file with the new version name, release date, and release notes.
 
 ## Credits
 

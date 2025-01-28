@@ -5,6 +5,11 @@ All notable changes to `laravel-cookies-consent` will be documented in this file
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## v2.0.7 - UI Improvements for smaller screens - 2024-01-27
+
+- Improved the UI design for smaller screens (phones & tablets)
+- Fixed the width of the cookies container
+
 ## v2.0.0 - Major Release - GDPR & UI Improvements - 2024-10-10
 
 The v2 of the Laravel Cookies Consent plugin has been released! 🎉🥳😍
@@ -25,7 +30,7 @@ This version includes some important changes and improvements, such as:
 - Changed the background color of the "Allow all cookies" button, in order to be compliant with the GDPR rules
 - Fixed the padding of the button texts
 
-## v.1.1.2 - Portoguese Language v2
+## v.1.1.2 - Portuguese Language v2
 
 Added Portuguese Language corrections, thanks to
 this [PR](https://github.com/scify/laravel-cookies-consent/commit/a0ce037cd3bc82ca95c52ff30d2bf07236bd8306)

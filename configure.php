@@ -240,10 +240,6 @@ if (!$useLaravelRay) {
     remove_composer_deps(['spatie/laravel-ray']);
 }
 
-if (!$useUpdateChangelogWorkflow) {
-    safeUnlink(__DIR__ . '/.github/workflows/update-changelog.yml');
-}
-
 confirm('Execute `composer install` and run tests?') && run('composer install && composer test');
 
 confirm('Let this script delete itself?', true) && unlink(__FILE__);
