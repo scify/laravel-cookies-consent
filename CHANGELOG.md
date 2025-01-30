@@ -5,7 +5,7 @@ All notable changes to `laravel-cookies-consent` will be documented in this file
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
-## v3.0.0 - Major Release - JSON Cookie Storage & Configuration Changes - 2025-01-30
+## v3.0.2 - Major Release - JSON Cookie Storage & Configuration Changes - 2025-01-30
 
 ### Breaking Changes
 

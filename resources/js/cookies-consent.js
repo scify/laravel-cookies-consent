@@ -32,7 +32,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const cookieButton = document.getElementById('scify-cookie-consent-floating-button');
     const showFloatingButton = cookieBanner.dataset.showFloatingButton === 'true' || cookieBanner.dataset.showFloatingButton === '1';
     const hideFloatingButtonOnMobile = cookieBanner.dataset.hideFloatingButtonOnMobile === 'true' || cookieBanner.dataset.hideFloatingButtonOnMobile === '1';
-    let cookieConsent = getCookie('cookieConsent');
+    const cookiePrefix = cookieBanner.dataset.cookiePrefix;
+    let cookieConsent = getCookie(cookiePrefix + 'cookies_consent');
     initialiseBanner();
     setSliders();
 
@@ -43,19 +44,17 @@ document.addEventListener('DOMContentLoaded', function () {
     function initialiseBanner() {
         if (onCookiesPage()) {
             cookieBanner.style.display = 'block';
-            if (showFloatingButton && cookieButton) {
-                // if on mobile, also check the hideFloatingButtonOnMobile
-                if (hideFloatingButtonOnMobile && window.innerWidth < 768) {
-                    cookieButton.style.display = 'none';
-                } else {
-                    cookieButton.style.display = 'block';
-                }
-            }
         } else {
             if (cookieConsent) {
                 cookieBanner.style.display = 'none';
                 if (showFloatingButton && cookieButton) {
-                    cookieButton.style.display = 'block';
+                    // if on mobile, also check the hideFloatingButtonOnMobile
+                    if (hideFloatingButtonOnMobile && window.innerWidth < 768) {
+                        cookieButton.style.display = 'none';
+                    } else {
+                        cookieButton.style.display = 'block';
+                    }
+
                 }
             } else {
                 cookieBanner.style.display = 'block';
@@ -113,8 +112,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }).then(response => response.json())
             .then(data => {
                 if (data.success) {
-                    // get the 'cookie_prefix' from config file
-                    const cookiePrefix = cookieBanner.dataset.cookiePrefix;
                     setCookie(cookiePrefix + 'cookies_consent', JSON.stringify(consent), 30);
                     setSliders();
                     if (!onCookiesPage()) {
