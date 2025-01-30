@@ -31,6 +31,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const cookieBanner = document.getElementById('cookies-consent-banner');
     const cookieButton = document.getElementById('scify-cookie-consent-floating-button');
     const showFloatingButton = cookieBanner.dataset.showFloatingButton === 'true' || cookieBanner.dataset.showFloatingButton === '1';
+    const hideFloatingButtonOnMobile = cookieBanner.dataset.hideFloatingButtonOnMobile === 'true' || cookieBanner.dataset.hideFloatingButtonOnMobile === '1';
     let cookieConsent = getCookie('cookieConsent');
     initialiseBanner();
     setSliders();
@@ -42,8 +43,14 @@ document.addEventListener('DOMContentLoaded', function () {
     function initialiseBanner() {
         if (onCookiesPage()) {
             cookieBanner.style.display = 'block';
-            if (showFloatingButton && cookieButton)
-                cookieButton.style.display = 'none';
+            if (showFloatingButton && cookieButton) {
+                // if on mobile, also check the hideFloatingButtonOnMobile
+                if (hideFloatingButtonOnMobile && window.innerWidth < 768) {
+                    cookieButton.style.display = 'none';
+                } else {
+                    cookieButton.style.display = 'block';
+                }
+            }
         } else {
             if (cookieConsent) {
                 cookieBanner.style.display = 'none';

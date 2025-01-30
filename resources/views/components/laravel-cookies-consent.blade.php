@@ -3,6 +3,7 @@
          aria-describedby="cookie-consent-description"
          data-ajax-url="{{ url('/cookie-consent/save') }}"
          data-show-floating-button="{{ config('cookies_consent.display_floating_button') }}"
+         data-hide-floating-button-on-mobile="{{ config('cookies_consent.hide_floating_button_on_mobile') }}"
          data-cookie-prefix="{{ config('cookies_consent.cookie_prefix') }}"
          style="display: none;">
     <div class="cookies-container">

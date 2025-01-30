@@ -120,6 +120,7 @@ return [
      */
     'cookie_prefix' => '',
     'display_floating_button' => true, // Set to false to display the footer link instead
+    'hide_floating_button_on_mobile' => false, // Set to true to hide the floating button on mobile
     'use_separate_page' => false, // Set to true to use a separate page for cookies explanation
     /*
     |--------------------------------------------------------------------------
@@ -183,6 +184,8 @@ page:
 ```html
 <a href="javascript:void(0);" onclick="toggleCookieBanner()">Cookies Preferences</a>
 ```
+
+The `hide_floating_button_on_mobile` field is optional and, if set to `true`, will hide the floating button on mobile
 
 The `use_separate_page` field is optional and, if set to `true`, will display the cookies preferences in a separate
 page.

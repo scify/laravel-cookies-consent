@@ -15,6 +15,15 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 * Configuration File Changes: The configuration file format has been updated to reflect the new JSON cookie storage
   method. The `cookie_prefix` is now used to store cookies in a JSON object.
 
+## New Features
+
+* JSON Cookie Storage: Cookies are now stored in a JSON object under a single key with the prefix specified in the
+  configuration file. This change improves the structure and management of cookies.
+* `hide_floating_button_on_mobile` option: A new configuration option has been added to hide the floating cookies button
+  on mobile devices. This option allows you to control the visibility of the floating button based on the device type.
+* UI/UX Improvements: The cookies consent modal has been updated with improved styling and layout for a better user
+  experience.
+
 ### Migration Guide
 
 1. Update the configuration file to reflect the new JSON cookie storage method:
