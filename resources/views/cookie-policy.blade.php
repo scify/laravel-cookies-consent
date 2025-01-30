@@ -56,6 +56,7 @@
                      aria-labelledby="cookie-consent-title"
                      aria-describedby="cookie-consent-description"
                      data-ajax-url="{{ url('/cookie-consent/save') }}"
+                     data-cookie-prefix="{{ config('cookies_consent.cookie_prefix') }}"
                      data-show-floating-button="false">
                 @include('cookies_consent::components._cookie-categories', ['alwaysOpen' => true])
                 <div class="cookie-actions">

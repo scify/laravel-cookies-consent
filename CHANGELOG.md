@@ -5,6 +5,89 @@ All notable changes to `laravel-cookies-consent` will be documented in this file
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## v3.0.0 - Major Release - JSON Cookie Storage & Configuration Changes - 2025-01-30
+
+### Breaking Changes
+
+* JSON Cookie Storage: Cookies are now stored in a JSON object under a single key with the prefix specified in the
+  configuration file. This change improves the structure and management of cookies.
+
+* Configuration File Changes: The configuration file format has been updated to reflect the new JSON cookie storage
+  method. The `cookie_prefix` is now used to store cookies in a JSON object.
+
+### Migration Guide
+
+1. Update the configuration file to reflect the new JSON cookie storage method:
+
+* Ensure the `cookie_prefix` is set in the `config/cookies_consent.php` file.
+* Update the `name` field of each cookie in the `cookies` array to reflect the new JSON storage format.
+
+Example:
+
+```php
+'cookie_prefix' => 'my_app_',
+'cookies' => [
+    'strictly_necessary' => [
+        [
+            'name' => 'my_app_cookies_consent',
+            'description' => 'This cookie is set by the GDPR Cookie Consent plugin and is used to store whether or not user has consented to the use of cookies. It does not store any personal data.',
+            'duration' => '2 years',
+            'policy_external_link' => null,
+        ],
+        // other cookies...
+    ],
+    'targeting' => [
+        // cookies...
+    ],
+],
+```
+
+2. Update Blade Files
+
+* Update the Blade files to reflect the new JSON cookie storage method. The `cookie` helper function is used to set and
+  retrieve cookies from the JSON object.
+
+Example:
+
+```php
+@if(isset($_COOKIE[config('cookies_consent.cookie_prefix') . 'cookies_consent']))
+    @php
+        $cookiesConsent = json_decode($_COOKIE[config('cookies_consent.cookie_prefix') . 'cookies_consent'], true);
+    @endphp
+    @if(isset($cookiesConsent['targeting']) && $cookiesConsent['targeting'] && config('app.google_analytics_id'))
+        <!-- Google Analytics -->
+        <script defer async>
+            (function (i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r;
+                i[r] = i[r] || function () {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date();
+                a = s.createElement(o),
+                    m = s.getElementsByTagName(o)[0];
+                a.async = 1;
+                a.src = g;
+                m.parentNode.insertBefore(a, m)
+            })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+            window.ga('create', '{{ config('app.google_analytics_id') }}', 'auto');
+            window.ga('set', 'anonymizeIp', true);
+            window.ga('send', 'pageview');
+        </script>
+    @endif
+@endif
+```
+
+3. Publish the front-end assets
+
+* Run the following command to publish the updated assets:
+`php artisan vendor:publish --provider="SciFY\LaravelCookiesConsent\LaravelCookiesConsentServiceProvider" --tag="
+cookies-consent-assets" --force`
+
+4. Test your application
+
+* Ensure that the cookies consent functionality works as expected with the new JSON storage format.
+* Verify that the cookies are correctly set and retrieved in the browser.
+
 ## v2.0.7 - UI Improvements for smaller screens - 2024-01-27
 
 - Improved the UI design for smaller screens (phones & tablets)
@@ -65,6 +148,7 @@ php artisan vendor:publish \
 --tag="cookies-consent-assets"
 
 ```
+
 ## v1.0.1 - Fixed bug on setting "all" cookies button - 2023-03-16
 
 This release addresses [this issue](https://github.com/scify/laravel-cookies-consent/issues/4), regarding the cookie

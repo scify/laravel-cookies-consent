@@ -44,8 +44,8 @@
                                     </dd>
                                     @if($cookie['policy_external_link'])
                                         <dd>
-                                            <a href="{{ $cookie['policy_external_link'] }}"
-                                               target="_blank">Policy link</a>
+                                            <a class="policy-link" href="{{ $cookie['policy_external_link'] }}"
+                                               target="_blank">Policy link &#x1F517;</a>
                                         </dd>
                                     @endif
                                 </dl>

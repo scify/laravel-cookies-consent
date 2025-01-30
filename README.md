@@ -224,31 +224,32 @@ For example, An application that wants to load the Google Analytics script only 
 the `targeting` cookie category,
 might do the following:
 
-```bash
-google-analytics.blade.php
-
+```php
 <!-- Check the 'targeting' cookie: -->
-@if(isset($_COOKIE[config('cookies_consent.cookie_prefix') 
-. 'cookies_consent_targeting']) && config('app.google_analytics_id'))
-    
-    <!-- Google Analytics -->
-    <script defer async>
-        (function (i, s, o, g, r, a, m) {
-            i['GoogleAnalyticsObject'] = r;
-            i[r] = i[r] || function () {
-                (i[r].q = i[r].q || []).push(arguments)
-            }, i[r].l = 1 * new Date();
-            a = s.createElement(o),
-                m = s.getElementsByTagName(o)[0];
-            a.async = 1;
-            a.src = g;
-            m.parentNode.insertBefore(a, m)
-        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+@if(isset($_COOKIE[config('cookies_consent.cookie_prefix') . 'cookies_consent']))
+    @php
+        $cookiesConsent = json_decode($_COOKIE[config('cookies_consent.cookie_prefix') . 'cookies_consent'], true);
+    @endphp
+    @if(isset($cookiesConsent['targeting']) && $cookiesConsent['targeting'] && config('app.google_analytics_id'))
+        <!-- Google Analytics -->
+        <script defer async>
+            (function (i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r;
+                i[r] = i[r] || function () {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date();
+                a = s.createElement(o),
+                    m = s.getElementsByTagName(o)[0];
+                a.async = 1;
+                a.src = g;
+                m.parentNode.insertBefore(a, m)
+            })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
-        window.ga('create', '{{ config('app.google_analytics_id') }}', 'auto');
-        window.ga('set', 'anonymizeIp', true);
-        window.ga('send', 'pageview');
-    </script>
+            window.ga('create', '{{ config('app.google_analytics_id') }}', 'auto');
+            window.ga('set', 'anonymizeIp', true);
+            window.ga('send', 'pageview');
+        </script>
+    @endif
 @endif
 ```
 
@@ -324,7 +325,8 @@ Make sure that the `composer.json` file of the Laravel app has the following ent
                 "symlink": true
             }
         }
-    ]
+    ],
+"minimum-stability": "dev",
 ```
 
 This will tell composer that the code for the package is of the `"@dev"` version and that it exists in the specified

@@ -3,13 +3,25 @@ import '../scss/cookies-consent.scss';
 document.addEventListener('DOMContentLoaded', function () {
 
     // Add event listeners to all accordion buttons to toggle the accordion content
-    document.querySelectorAll('.accordion-button').forEach(button => {
-        button.addEventListener('click', function () {
-            const target = document.querySelector(button.dataset.target);
-            if (target) {
-                target.classList.toggle('show');
-                button.classList.toggle('collapsed');
-            }
+    document.addEventListener('DOMContentLoaded', function () {
+        document.querySelectorAll('.accordion-button').forEach(button => {
+            button.addEventListener('click', function () {
+                const target = document.querySelector(button.dataset.target);
+
+                // Close all accordion items
+                document.querySelectorAll('.accordion-collapse').forEach(collapse => {
+                    collapse.classList.remove('show');
+                });
+                document.querySelectorAll('.accordion-button').forEach(btn => {
+                    btn.classList.add('collapsed');
+                });
+
+                // Open the clicked accordion item
+                if (target) {
+                    target.classList.toggle('show');
+                    button.classList.toggle('collapsed');
+                }
+            });
         });
     });
 
@@ -94,7 +106,9 @@ document.addEventListener('DOMContentLoaded', function () {
         }).then(response => response.json())
             .then(data => {
                 if (data.success) {
-                    setCookie('cookieConsent', JSON.stringify(consent), 30);
+                    // get the 'cookie_prefix' from config file
+                    const cookiePrefix = cookieBanner.dataset.cookiePrefix;
+                    setCookie(cookiePrefix + 'cookies_consent', JSON.stringify(consent), 30);
                     setSliders();
                     if (!onCookiesPage()) {
                         cookieBanner.style.display = 'none';
