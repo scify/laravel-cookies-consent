@@ -22,6 +22,12 @@
 [![GitHub pull-requests](https://img.shields.io/github/issues-pr/scify/laravel-cookies-consent)](https://github.com/scify/laravel-cookies-consent/pulls)
 [![GitHub closed pull-requests](https://img.shields.io/github/issues-pr-closed/scify/laravel-cookies-consent)](https://github.com/scify/laravel-cookies-consent/pulls?q=is%3Apr+is%3Aclosed)
 
+## Upgrading from v2 to v3
+
+As of **January 2025**, The v3 of the Laravel Cookies Consent plugin has been released! 🎉🥳😍
+
+In order to upgrade from v2 to v3, please follow the instructions in the [CHANGELOG](CHANGELOG.md) file.
+
 ## Upgrading from v1 to v2
 
 As of **October 2024**, The v2 of the Laravel Cookies Consent plugin has been released! 🎉🥳😍
