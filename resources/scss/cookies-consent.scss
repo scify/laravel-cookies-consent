@@ -149,10 +149,25 @@ a {
       max-height: 650px;
       overflow-y: auto;
 
+      // small desktop (1920x1080)
+      @media (max-width: 1920px) {
+        max-height: 450px;
+      }
+
+      // old laptop (1366x768)
+      @media (max-width: 1366px) {
+        max-height: 350px;
+      }
+
+      // tablet
+      @media (max-width: 991.98px) {
+        max-height: 300px;
+      }
+
       // mobile
-        @media (max-width: 575.98px) {
-            max-height: 250px;
-        }
+      @media (max-width: 575.98px) {
+        max-height: 250px;
+      }
     }
 
     .accordion-header {
