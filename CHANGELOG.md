@@ -5,7 +5,7 @@ All notable changes to `laravel-cookies-consent` will be documented in this file
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
-## v3.0.5 - Assets files are no longer published in the public directory - 2025-01-31
+## v3.0.6 - Assets files are no longer published in the public directory - 2025-01-31
 
 In order to simplify the installation process and avoid potential conflicts with existing assets, the front-end assets
 are no longer published in the public directory. The assets are now included directly in the package and loaded from the
