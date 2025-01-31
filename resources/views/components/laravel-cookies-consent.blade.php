@@ -62,9 +62,9 @@
 @if(config('cookies_consent.display_floating_button'))
     <div id="scify-cookie-consent-floating-button" class="cookie-button" style="display: none;"
          onclick="toggleCookieBanner()">
-        <img src="{{ asset('/vendor/cookies_consent/images/cookie.png') }}" alt="Cookie">
+        <img src="{{ asset('vendor/scify/laravel-cookies-consent/cookie.png') }}" alt="Cookie">
     </div>
 @endif
 {{--<a href="javascript:void(0);" onclick="toggleCookieBanner()">Manage Cookies</a>--}}
-@vite('vendor/scify/laravel-cookies-consent/public/cookies-consent.js')
-@vite('vendor/scify/laravel-cookies-consent/public/cookies-consent.css')
+<link rel="stylesheet" href="{{ asset('vendor/scify/laravel-cookies-consent/cookies-consent.css') }}">
+<script src="{{ asset('vendor/scify/laravel-cookies-consent/cookies-consent.js') }}"></script>
