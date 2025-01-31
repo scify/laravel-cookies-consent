@@ -5,6 +5,29 @@ All notable changes to `laravel-cookies-consent` will be documented in this file
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## v3.0.5 - Assets files are no longer published in the public directory - 2025-01-31
+
+In order to simplify the installation process and avoid potential conflicts with existing assets, the front-end assets
+are no longer published in the public directory. The assets are now included directly in the package and loaded from the
+vendor directory.
+
+This means that the `public/vendor/cookies_consent` directory now should contain only the `cookie.png` image file.
+
+In order to update to the new version, you need to remove the `public/vendor/cookies_consent` directory and run the
+asset publishing command:
+
+```bash
+rm -rf public/vendor/cookies_consent
+```
+
+And then:
+
+```bash
+php artisan vendor:publish \
+--provider="SciFY\LaravelCookiesConsent\LaravelCookiesConsentServiceProvider" \
+--tag="cookies-consent-assets"
+```
+
 ## v3.0.2 - Major Release - JSON Cookie Storage & Configuration Changes - 2025-01-30
 
 ### Breaking Changes

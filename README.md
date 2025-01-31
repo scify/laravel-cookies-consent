@@ -72,7 +72,7 @@ You can install the package via composer:
 composer require scify/laravel-cookies-consent
 ```
 
-**Make sure to manually publish** the styles file, by running:
+**Make sure to manually publish** the cookie image file, by running:
 
 ```bash
 php artisan vendor:publish \
@@ -80,10 +80,10 @@ php artisan vendor:publish \
 --tag="cookies-consent-assets"
 ```
 
-**Notice:** if a new version of the plugin has been released and you want to update the styles file, please make sure to
-use `--force` option, to overwrite the files.
+**Notice:** if a new version of the plugin has been released and you want to update the image file, please make sure to
+use `--force` option, to overwrite the file.
 
-By doing so, the assets files will be copied to `public/vendor/cookies_consent`.
+By doing so, the image file will be copied to `public/vendor/cookies_consent`.
 
 **IMPORTANT:**
 
