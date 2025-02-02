@@ -1,6 +1,8 @@
 #!/usr/bin/env php
 <?php
 
+const COMPOSER_JSON_FILE = __DIR__ . '/composer.json';
+
 function ask(string $question, string $default = ''): string {
     $answer = readline($question . ($default ? " ({$default})" : null) . ': ');
 
@@ -73,7 +75,7 @@ function remove_prefix(string $prefix, string $content): string {
 }
 
 function remove_composer_deps(array $names) {
-    $data = json_decode(file_get_contents(__DIR__ . '/composer.json'), true);
+    $data = json_decode(file_get_contents(COMPOSER_JSON_FILE), true);
 
     foreach ($data['require-dev'] as $name => $version) {
         if (in_array($name, $names, true)) {
@@ -81,11 +83,11 @@ function remove_composer_deps(array $names) {
         }
     }
 
-    file_put_contents(__DIR__ . '/composer.json', json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE));
+    file_put_contents(COMPOSER_JSON_FILE, json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE));
 }
 
 function remove_composer_script($scriptName) {
-    $data = json_decode(file_get_contents(__DIR__ . '/composer.json'), true);
+    $data = json_decode(file_get_contents(COMPOSER_JSON_FILE), true);
 
     foreach ($data['scripts'] as $name => $script) {
         if ($scriptName === $name) {
@@ -94,7 +96,7 @@ function remove_composer_script($scriptName) {
         }
     }
 
-    file_put_contents(__DIR__ . '/composer.json', json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE));
+    file_put_contents(COMPOSER_JSON_FILE, json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE));
 }
 
 function remove_readme_paragraphs(string $file): void {

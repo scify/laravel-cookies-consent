@@ -1,207 +1,212 @@
 import '../scss/cookies-consent.scss';
 
 document.addEventListener('DOMContentLoaded', function () {
+    initializeAccordionButtons();
+    initializeCookieBanner();
+    initializeCookiePolicyLink();
+});
 
-    // Add event listeners to all accordion buttons to toggle the accordion content
-    document.addEventListener('DOMContentLoaded', function () {
-        document.querySelectorAll('.accordion-button').forEach(button => {
-            button.addEventListener('click', function () {
-                const target = document.querySelector(button.dataset.target);
-
-                // Close all accordion items
-                document.querySelectorAll('.accordion-collapse').forEach(collapse => {
-                    collapse.classList.remove('show');
-                });
-                document.querySelectorAll('.accordion-button').forEach(btn => {
-                    btn.classList.add('collapsed');
-                });
-
-                // Open the clicked accordion item
-                if (target) {
-                    target.classList.toggle('show');
-                    button.classList.toggle('collapsed');
-                }
-            });
+function initializeAccordionButtons() {
+    document.querySelectorAll('.accordion-button').forEach(button => {
+        button.addEventListener('click', function () {
+            toggleAccordion(button);
         });
     });
+}
 
-    const acceptAllButton = document.getElementById('accept-all-cookies');
-    const acceptSelectedButton = document.getElementById('accept-selected-cookies');
-    const rejectOptionalButton = document.getElementById('reject-optional-cookies');
+function toggleAccordion(button) {
+    const target = document.querySelector(button.dataset.target);
+
+    // Close all accordion items
+    document.querySelectorAll('.accordion-collapse').forEach(collapse => {
+        collapse.classList.remove('show');
+    });
+    document.querySelectorAll('.accordion-button').forEach(btn => {
+        btn.classList.add('collapsed');
+    });
+
+    // Open the clicked accordion item
+    if (target) {
+        target.classList.toggle('show');
+        button.classList.toggle('collapsed');
+    }
+}
+
+function initializeCookieBanner() {
     const cookieBanner = document.getElementById('cookies-consent-banner');
     const cookieButton = document.getElementById('scify-cookie-consent-floating-button');
     const showFloatingButton = cookieBanner.dataset.showFloatingButton === 'true' || cookieBanner.dataset.showFloatingButton === '1';
     const hideFloatingButtonOnMobile = cookieBanner.dataset.hideFloatingButtonOnMobile === 'true' || cookieBanner.dataset.hideFloatingButtonOnMobile === '1';
     const cookiePrefix = cookieBanner.dataset.cookiePrefix;
     let cookieConsent = getCookie(cookiePrefix + 'cookies_consent');
-    initialiseBanner();
-    setSliders();
 
-    function onCookiesPage() {
-        return window.location.href.includes('/cookie-policy');
+    initialiseBanner(cookieBanner, cookieButton, showFloatingButton, hideFloatingButtonOnMobile, cookieConsent);
+    setSliders(cookieConsent);
+
+    addEventListeners({
+        'accept-all-cookies': handleAcceptAllCookies,
+        'accept-selected-cookies': handleAcceptSelectedCookies,
+        'reject-optional-cookies': handleRejectOptionalCookies
+    });
+}
+
+function addEventListeners(buttonHandlers) {
+    for (const [buttonId, handler] of Object.entries(buttonHandlers)) {
+        const button = document.getElementById(buttonId);
+        if (button) {
+            button.addEventListener('click', handler);
+        }
     }
+}
 
-    function initialiseBanner() {
-        if (onCookiesPage()) {
-            cookieBanner.style.display = 'block';
-        } else {
-            if (cookieConsent) {
-                cookieBanner.style.display = 'none';
-                if (showFloatingButton && cookieButton) {
-                    // if on mobile, also check the hideFloatingButtonOnMobile
-                    if (hideFloatingButtonOnMobile && window.innerWidth < 768) {
-                        cookieButton.style.display = 'none';
-                    } else {
+function initialiseBanner(cookieBanner, cookieButton, showFloatingButton, hideFloatingButtonOnMobile, cookieConsent) {
+    if (onCookiesPage()) {
+        cookieBanner.style.display = 'block';
+    } else {
+        toggleBannerDisplay(cookieBanner, cookieButton, showFloatingButton, hideFloatingButtonOnMobile, cookieConsent);
+    }
+}
+
+function toggleBannerDisplay(cookieBanner, cookieButton, showFloatingButton, hideFloatingButtonOnMobile, cookieConsent) {
+    if (cookieConsent) {
+        cookieBanner.style.display = 'none';
+        if (showFloatingButton && cookieButton) {
+            cookieButton.style.display = hideFloatingButtonOnMobile && window.innerWidth < 768 ? 'none' : 'block';
+        }
+    } else {
+        cookieBanner.style.display = 'block';
+    }
+}
+
+function setSliders(cookieConsent) {
+    if (cookieConsent) {
+        const consentSettings = JSON.parse(cookieConsent);
+        for (const category in consentSettings) {
+            const categoryCheckbox = document.getElementById(category);
+            if (categoryCheckbox) {
+                categoryCheckbox.checked = consentSettings[category];
+            }
+        }
+    }
+}
+
+function handleAcceptAllCookies() {
+    handleCookieConsent(getConsentSettings(true));
+}
+
+function handleAcceptSelectedCookies() {
+    handleCookieConsent(getConsentSettings());
+}
+
+function handleRejectOptionalCookies() {
+    handleCookieConsent(getConsentSettings(false, 'strictly_necessary'));
+}
+
+function getConsentSettings(acceptAll = false, requiredCategory = null) {
+    const consent = {};
+    document.querySelectorAll('.cookie-category').forEach(checkbox => {
+        consent[checkbox.id] = acceptAll || checkbox.id === requiredCategory || checkbox.checked;
+    });
+    return consent;
+}
+
+function handleCookieConsent(consent) {
+    const cookieBanner = document.getElementById('cookies-consent-banner');
+    const cookieButton = document.getElementById('scify-cookie-consent-floating-button');
+    const showFloatingButton = cookieBanner.dataset.showFloatingButton === 'true' || cookieBanner.dataset.showFloatingButton === '1';
+    const cookiePrefix = cookieBanner.dataset.cookiePrefix;
+
+    fetch(cookieBanner.dataset.ajaxUrl, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+        },
+        body: JSON.stringify(consent)
+    }).then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                setCookie(cookiePrefix + 'cookies_consent', JSON.stringify(consent), 30);
+                setSliders(JSON.stringify(consent));
+                if (!onCookiesPage()) {
+                    cookieBanner.style.display = 'none';
+                    if (showFloatingButton) {
                         cookieButton.style.display = 'block';
                     }
-
                 }
-            } else {
-                cookieBanner.style.display = 'block';
+                showSuccessMessage(data.message);
             }
-        }
-    }
-
-    function setSliders() {
-        // Retrieve and set sliders based on cookieConsent cookie
-        if (cookieConsent) {
-            const consentSettings = JSON.parse(cookieConsent);
-            for (const category in consentSettings) {
-                const categoryCheckbox = document.getElementById(category);
-                if (categoryCheckbox) {
-                    categoryCheckbox.checked = consentSettings[category];
-                }
-            }
-        }
-    }
-
-    acceptAllButton.addEventListener('click', function () {
-        const consent = {};
-        document.querySelectorAll('.cookie-category').forEach(checkbox => {
-            consent[checkbox.id] = true;
         });
-        handleCookieConsent(consent);
-    });
+}
 
-    if (acceptSelectedButton) {
-        acceptSelectedButton.addEventListener('click', function () {
-            const consent = {};
-            document.querySelectorAll('.cookie-category').forEach(checkbox => {
-                consent[checkbox.id] = checkbox.checked;
-            });
-            handleCookieConsent(consent);
-        });
-    }
+function showSuccessMessage(messageText) {
+    const message = document.createElement('div');
+    message.classList.add('cookie-success-message');
+    message.innerText = messageText;
+    document.body.appendChild(message);
+    setTimeout(() => {
+        message.classList.add('show');
+    }, 100);
+    setTimeout(() => {
+        message.classList.remove('show');
+        setTimeout(() => {
+            message.remove();
+        }, 1000);
+    }, 4000);
+}
 
-    rejectOptionalButton.addEventListener('click', function () {
-        const consent = {};
-        document.querySelectorAll('.cookie-category').forEach(checkbox => {
-            consent[checkbox.id] = checkbox.id === 'strictly_necessary';
-        });
-        handleCookieConsent(consent);
-    });
-
-    function handleCookieConsent(consent) {
-        fetch(cookieBanner.dataset.ajaxUrl, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-            },
-            body: JSON.stringify(consent)
-        }).then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    setCookie(cookiePrefix + 'cookies_consent', JSON.stringify(consent), 30);
-                    setSliders();
-                    if (!onCookiesPage()) {
-                        cookieBanner.style.display = 'none';
-                        if (showFloatingButton) {
-                            cookieButton.style.display = 'block';
-                        }
-                    }
-                    // create and show a success floating message
-                    const message = document.createElement('div');
-                    message.classList.add('cookie-success-message');
-                    message.innerText = data.message;
-                    // show the message with an animation, and after 4 seconds hide it, with another animation
-                    document.body.appendChild(message);
-                    setTimeout(() => {
-                        message.classList.add('show');
-                    }, 100);
-                    setTimeout(() => {
-                        message.classList.remove('show');
-                        setTimeout(() => {
-                            message.remove();
-                        }, 1000);
-                    }, 4000);
-                    // we also need to set the sliders to the new values
-                    cookieConsent = JSON.stringify(consent);
-                    setSliders();
-                }
-            });
-    }
-
-    window.toggleCookieBanner = function () {
-        if (cookieBanner.style.display === 'none' || cookieBanner.style.display === '') {
-            cookieBanner.style.display = 'block';
-            if (showFloatingButton) {
-                cookieButton.style.display = 'none';
-            }
-        } else {
-            cookieBanner.style.display = 'none';
-            if (showFloatingButton) {
-                cookieButton.style.display = 'block';
-            }
-        }
-    };
-
-    // Clear cookieConsent when navigating to the cookie policy page
+function initializeCookiePolicyLink() {
     const cookiePolicyLink = document.getElementById('cookie-policy-link');
     if (cookiePolicyLink) {
         cookiePolicyLink.addEventListener('click', function () {
             eraseCookie('cookieConsent');
         });
     }
+}
 
-    // Helper functions to manage cookies:
+function onCookiesPage() {
+    return window.location.href.includes('/cookie-policy');
+}
 
-    /**
-     * Set a cookie with a given name and value
-     * @param name The name of the cookie
-     * @param value The value of the cookie
-     * @param days The number of days until the cookie expires
-     */
-    function setCookie(name, value, days) {
-        let expires = "";
-        if (days) {
-            const date = new Date();
-            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-            expires = "; expires=" + date.toUTCString();
+function setCookie(name, value, days) {
+    let expires = "";
+    if (days) {
+        const date = new Date();
+        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+        expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + (value || "") + expires + "; path=/";
+}
+
+function getCookie(name) {
+    const nameEQ = name + "=";
+    const ca = document.cookie.split(';');
+    for (let i = 0; i < ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) === ' ') c = c.substring(1, c.length);
+        if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
+    }
+    return null;
+}
+
+function eraseCookie(name) {
+    document.cookie = name + '=; Max-Age=-99999999;';
+}
+
+window.toggleCookieBanner = function () {
+    const cookieBanner = document.getElementById('cookies-consent-banner');
+    const cookieButton = document.getElementById('scify-cookie-consent-floating-button');
+    const showFloatingButton = cookieBanner.dataset.showFloatingButton === 'true' || cookieBanner.dataset.showFloatingButton === '1';
+
+    if (cookieBanner.style.display === 'none' || cookieBanner.style.display === '') {
+        cookieBanner.style.display = 'block';
+        if (showFloatingButton) {
+            cookieButton.style.display = 'none';
         }
-        document.cookie = name + "=" + (value || "") + expires + "; path=/";
-    }
-
-    /**
-     * Get the value of a cookie by its name if it exists
-     * @param name The name of the cookie to retrieve
-     */
-    function getCookie(name) {
-        const nameEQ = name + "=";
-        const ca = document.cookie.split(';');
-        for (let i = 0; i < ca.length; i++) {
-            let c = ca[i];
-            while (c.charAt(0) === ' ') c = c.substring(1, c.length);
-            if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
+    } else {
+        cookieBanner.style.display = 'none';
+        if (showFloatingButton) {
+            cookieButton.style.display = 'block';
         }
-        return null;
     }
-
-    /**
-     * Erase a cookie by setting its expiry date to a past date
-     * @param name The name of the cookie to erase
-     */
-    function eraseCookie(name) {
-        document.cookie = name + '=; Max-Age=-99999999;';
-    }
-});
+};
