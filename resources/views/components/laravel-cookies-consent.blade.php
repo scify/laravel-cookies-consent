@@ -61,7 +61,8 @@
 
 @if(config('cookies_consent.display_floating_button'))
     <div id="scify-cookie-consent-floating-button" class="cookie-button" style="display: none;"
-         onclick="toggleCookieBanner()">
+         onclick="toggleCookieBanner()" onkeyup="if (event.key === 'Enter') toggleCookieBanner()" role="button"
+         tabindex="0">
         <img src="{{ asset('vendor/scify/laravel-cookies-consent/cookie.png') }}" alt="Cookie">
     </div>
 @endif
