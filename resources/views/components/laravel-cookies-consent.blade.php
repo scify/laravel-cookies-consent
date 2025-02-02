@@ -66,6 +66,6 @@
         <img src="{{ asset('vendor/scify/laravel-cookies-consent/cookie.png') }}" alt="Cookie">
     </div>
 @endif
-{{--<a href="javascript:void(0);" onclick="toggleCookieBanner()">Manage Cookies</a>--}}
+{{--<a href="javascript:void(0);" onclick="toggleCookieBanner()" role="button" aria-label="Manage Cookies">Manage Cookies</a>--}}
 <link rel="stylesheet" href="{{ asset('vendor/scify/laravel-cookies-consent/cookies-consent.css') }}">
 <script src="{{ asset('vendor/scify/laravel-cookies-consent/cookies-consent.js') }}"></script>
