@@ -182,7 +182,8 @@ If set to `false`, then you will need to add a relevant link in your footer, in 
 page:
 
 ```html
-<a href="javascript:void(0);" onclick="toggleCookieBanner()" role="button" aria-label="Manage Cookies">Manage Cookies</a>
+<a href="javascript:void(0);" onclick="toggleCookieBanner()" onkeyup="if (event.key === 'Enter') toggleCookieBanner()"
+   role="button" aria-label="Manage Cookies">Manage Cookies</a>
 ```
 
 The `hide_floating_button_on_mobile` field is optional and, if set to `true`, will hide the floating button on mobile
