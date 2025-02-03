@@ -16,10 +16,6 @@ class TestCase extends Orchestra {
         ];
     }
 
-    protected function getEnvironmentSetUp($app) {
-        // This method is intentionally left empty because the default environment setup is sufficient for these tests.
-    }
-
     public function assertTranslationExists(string $key) {
         $this->assertTrue(trans($key) != $key, "Failed to assert that a translation exists for key `{$key}`");
     }
