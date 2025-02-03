@@ -1,4 +1,3 @@
-<!-- resources/views/cookie-policy.blade.php -->
 <!DOCTYPE html>
 <html lang="{{ \Illuminate\Support\Facades\App::getLocale() }}">
 <head>
@@ -52,13 +51,13 @@
     </div>
     <div class="row">
         <div class="col">
-            <section class="cookies-consent-banner" id="cookies-consent-banner" role="dialog"
-                     aria-labelledby="cookie-consent-title"
-                     aria-describedby="cookie-consent-description"
-                     data-ajax-url="{{ url('/cookie-consent/save') }}"
-                     data-cookie-prefix="{{ config('cookies_consent.cookie_prefix') }}"
-                     data-show-floating-button="false"
-                     data-hide-floating-button-on-mobile="{{ config('cookies_consent.hide_floating_button_on_mobile') }}">
+            <dialog class="cookies-consent-banner banner cookies-policy-body" id="cookies-consent-banner"
+                    aria-labelledby="cookie-consent-title"
+                    aria-describedby="cookie-consent-description"
+                    data-ajax-url="{{ url('/cookie-consent/save') }}"
+                    data-cookie-prefix="{{ config('cookies_consent.cookie_prefix') }}"
+                    data-show-floating-button="false"
+                    data-hide-floating-button-on-mobile="{{ config('cookies_consent.hide_floating_button_on_mobile') }}">
                 @include('cookies_consent::components._cookie-categories', ['alwaysOpen' => true])
                 <div class="cookie-actions">
                     <div class="container-fluid p-0">
@@ -84,7 +83,7 @@
                         </div>
                     </div>
                 </div>
-            </section>
+            </dialog>
         </div>
     </div>
 </div>

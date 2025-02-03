@@ -1,11 +1,11 @@
-<section class="cookies-consent-banner banner cookies-policy-body" id="cookies-consent-banner" role="dialog"
-         aria-labelledby="cookie-consent-title"
-         aria-describedby="cookie-consent-description"
-         data-ajax-url="{{ url('/cookie-consent/save') }}"
-         data-show-floating-button="{{ config('cookies_consent.display_floating_button') }}"
-         data-hide-floating-button-on-mobile="{{ config('cookies_consent.hide_floating_button_on_mobile') }}"
-         data-cookie-prefix="{{ config('cookies_consent.cookie_prefix') }}"
-         style="display: none;">
+<dialog class="cookies-consent-banner banner cookies-policy-body" id="cookies-consent-banner"
+        aria-labelledby="cookie-consent-title"
+        aria-describedby="cookie-consent-description"
+        data-ajax-url="{{ url('/cookie-consent/save') }}"
+        data-show-floating-button="{{ config('cookies_consent.display_floating_button') }}"
+        data-hide-floating-button-on-mobile="{{ config('cookies_consent.hide_floating_button_on_mobile') }}"
+        data-cookie-prefix="{{ config('cookies_consent.cookie_prefix') }}"
+        style="display: none;">
     <div class="cookies-container">
         <h5 id="cookie-consent-title" class="h5 m-0 pt-0 pb-2">{{ __('cookies_consent::messages.title') }}</h5>
         <p id="cookie-consent-description" class="small">{{ __('cookies_consent::messages.description') }}</p>
@@ -57,15 +57,14 @@
             </div>
         </div>
     </div>
-</section>
+</dialog>
 
 @if(config('cookies_consent.display_floating_button'))
-    <div id="scify-cookie-consent-floating-button" class="cookie-button" style="display: none;"
-         onclick="toggleCookieBanner()" onkeyup="if (event.key === 'Enter') toggleCookieBanner()" role="button"
+    <button id="scify-cookie-consent-floating-button" class="cookie-button" style="display: none;"
+         onclick="toggleCookieBanner()" onkeyup="if (event.key === 'Enter') toggleCookieBanner()"
          tabindex="0">
         <img src="{{ asset('vendor/scify/laravel-cookies-consent/cookie.png') }}" alt="Cookie">
-    </div>
+    </button>
 @endif
-{{--<a href="javascript:void(0);" onclick="toggleCookieBanner()" onkeyup="if (event.key === 'Enter') toggleCookieBanner()" role="button" aria-label="Manage Cookies">Manage Cookies</a>--}}
 <link rel="stylesheet" href="{{ asset('vendor/scify/laravel-cookies-consent/cookies-consent.css') }}">
 <script src="{{ asset('vendor/scify/laravel-cookies-consent/cookies-consent.js') }}"></script>

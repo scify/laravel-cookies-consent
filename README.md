@@ -466,6 +466,7 @@ Also, don't forget to update the `CHANGELOG.md` file with the new version name, 
 ## Credits
 
 - [SciFY Dev Team](https://github.com/scify)
+- <a href="https://www.flaticon.com/free-icons/cookie" title="cookie icons">Cookie icons created by Freepik - Flaticon</a>
 
 ## License
 

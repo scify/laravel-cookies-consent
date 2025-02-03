@@ -6,32 +6,91 @@ document.addEventListener('DOMContentLoaded', function () {
     initializeCookiePolicyLink();
 });
 
+/**
+ * Initializes the accordion buttons by attaching event listeners to them.
+ *
+ * @function initializeAccordionButtons
+ * @returns {void}
+ *
+ * @description
+ * This function initializes the accordion buttons by attaching event listeners to them.
+ */
 function initializeAccordionButtons() {
+
+    // Remove existing event listeners to avoid duplication
     document.querySelectorAll('.accordion-button').forEach(button => {
-        button.addEventListener('click', function () {
-            toggleAccordion(button);
-        });
+        button.removeEventListener('click', handleAccordionClick);
+    });
+
+    // Attach new event listeners
+    document.querySelectorAll('.accordion-button').forEach(button => {
+        button.addEventListener('click', handleAccordionClick);
     });
 }
 
+/**
+ * Handles the click event on an accordion button.
+ *
+ * @function handleAccordionClick
+ * @param event {Event} The click event
+ * @returns {void}
+ *
+ * @description
+ * This function handles the click event on an accordion button.
+ */
+function handleAccordionClick(event) {
+    event.stopPropagation(); // Stop event propagation
+    const button = event.currentTarget;
+    toggleAccordion(button);
+}
+
+/**
+ * Toggles the accordion item associated with the clicked button.
+ *
+ * @param button {Element} The clicked button
+ * @returns {void}
+ *
+ * @description
+ * This function toggles the accordion item associated with the clicked button.
+ * If the accordion item is already open, it closes it. If it is closed, it opens it.
+ * It also closes all other accordion items except the clicked one.
+ */
 function toggleAccordion(button) {
     const target = document.querySelector(button.dataset.target);
 
-    // Close all accordion items
+    // Close all accordion items except the clicked one
     document.querySelectorAll('.accordion-collapse').forEach(collapse => {
-        collapse.classList.remove('show');
-    });
-    document.querySelectorAll('.accordion-button').forEach(btn => {
-        btn.classList.add('collapsed');
+        if (collapse !== target) {
+            collapse.classList.remove('show');
+        }
     });
 
-    // Open the clicked accordion item
-    if (target) {
-        target.classList.toggle('show');
-        button.classList.toggle('collapsed');
+    // Toggle the clicked accordion item
+    if (target.classList.contains('show')) {
+        // If the accordion is already open, close it
+        target.classList.remove('show');
+        button.classList.add('collapsed');
+    } else {
+        // If the accordion is closed, open it
+        target.classList.add('show');
+        button.classList.remove('collapsed');
     }
 }
 
+/**
+ * Initializes the cookie banner by setting up the necessary event listeners and cookie handling.
+ *
+ * @function initializeCookieBanner
+ * @returns {void}
+ *
+ * @description
+ * This function initializes the cookie banner by setting up the necessary event listeners and cookie handling.
+ * It also sets the initial state of the banner based on the user's cookie consent.
+ * If the user has already accepted the cookies, the banner is hidden.
+ * If the user has not accepted the cookies, the banner is displayed
+ * and the floating button is shown if the configuration allows it.
+ * The cookie settings are stored as a JSON object with the category names as keys and their consent status as values.
+ */
 function initializeCookieBanner() {
     const cookieBanner = document.getElementById('cookies-consent-banner');
     const cookieButton = document.getElementById('scify-cookie-consent-floating-button');
@@ -78,6 +137,16 @@ function toggleBannerDisplay(cookieBanner, cookieButton, showFloatingButton, hid
     }
 }
 
+/**
+ * Sets the sliders based on the user's cookie consent.
+ * @param cookieConsent {string} The user's cookie consent as a JSON string
+ *
+ * @function setSliders
+ * @returns {void}
+ * @description
+ * This function sets the sliders based on the user's cookie consent.
+ * If the user has already accepted the cookies, the sliders are set according to the consent settings.
+ */
 function setSliders(cookieConsent) {
     if (cookieConsent) {
         const consentSettings = JSON.parse(cookieConsent);
@@ -110,6 +179,17 @@ function getConsentSettings(acceptAll = false, requiredCategory = null) {
     return consent;
 }
 
+/**
+ * Handles the user's cookie consent by sending an AJAX request to the server.
+ * @param consent {Object} The user's cookie consent settings
+ * @returns {void}
+ * @description
+ * This function handles the user's cookie consent by sending an AJAX request to the server.
+ * The consent settings are stored as a JSON object with the category names as keys and their consent status as values.
+ * The consent settings are then stored in a cookie with a specified prefix.
+ * If the consent is successfully stored, the cookie banner is hidden and a success message is displayed
+ * to inform the user about the successful storage of their consent.
+ */
 function handleCookieConsent(consent) {
     const cookieBanner = document.getElementById('cookies-consent-banner');
     const cookieButton = document.getElementById('scify-cookie-consent-floating-button');
@@ -181,10 +261,10 @@ function setCookie(name, value, days) {
 function getCookie(name) {
     const nameEQ = name + "=";
     const ca = document.cookie.split(';');
-    for (let i = 0; i < ca.length; i++) {
-        let c = ca[i].trim();
-        if (c.startsWith(nameEQ)) {
-            return c.substring(nameEQ.length, c.length);
+    for (const c of ca) {
+        let cookie = c.trim();
+        if (cookie.startsWith(nameEQ)) {
+            return cookie.substring(nameEQ.length, cookie.length);
         }
     }
     return null;
