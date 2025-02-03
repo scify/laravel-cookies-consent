@@ -19,6 +19,19 @@ jobs:
         uses: aglipanci/laravel-pint-action@2.4
 
       - name: Commit changes
-        uses: stefanzweifel/git-auto-commit-action@v5
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git checkout -b php-code-style-fixes
+          git add .
+          git diff-index --quiet HEAD || git commit -m 'Fix styling'
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v5
         with:
-          commit_message: Fix styling
+          branch: php-code-style-fixes
+          title: 'Fix PHP code style issues'
+          body: 'This PR fixes PHP code style issues.'
+          labels: 'code-style'
+          commit-message: 'Fix styling'
+          delete-branch: true
