@@ -322,6 +322,7 @@
       border-radius: 1em;
       position: relative;
       transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+      --bs-form-switch-bg: none !important; // Removes Bootstrap background
 
       &:hover {
         cursor: pointer;
@@ -335,7 +336,8 @@
         width: 0.75em;
         height: 0.75em;
         border-radius: 0.75em;
-        background-color: #fff;
+        background-image: none !important; // Removes Bootstrap's background image
+        background-color: #fff !important;
         transition: transform 0.15s ease-in-out;
       }
 
@@ -345,6 +347,8 @@
 
       &:checked {
         background-color: $primary-color;
+        --bs-form-switch-bg: none !important;
+        background-image: none !important; // Ensures Bootstrap does not override the background
       }
     }
   }
