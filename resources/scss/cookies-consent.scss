@@ -490,3 +490,22 @@
     height: 100%;
   }
 }
+
+@media (max-height: 599px) {
+  .cookies-consent-banner.banner {
+    top: 0;
+    bottom: auto;
+    .accordion .accordion-item {
+      max-height: 6lh;
+    }
+  }
+}
+
+@media (max-height: 1080px) {
+  .cookies-consent-banner.banner {
+    max-height: 100%;
+    .accordion .accordion-item {
+      max-height: 11lh;
+    }
+  }
+}
