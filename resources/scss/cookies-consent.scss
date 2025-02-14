@@ -34,7 +34,7 @@
 // Cookies Consent Banner
 .cookies-consent-banner {
   color: #222;
-  font-family: Roboto, sans-serif;
+  font-family: system-ui, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", sans-serif;
   font-size: 16px;
   font-weight: 400;
   line-height: 1.6;
@@ -132,7 +132,7 @@
   }
 
   .accordion {
-    --bs-accordion-border-color: $border-color;
+    --bs-accordion-border-color: #{$border-color};
     background-color: #fff;
     border: 1px solid #ddd;
     border-radius: 4px;
@@ -146,6 +146,10 @@
       max-height: 45vh; // Default height based on viewport height
       overflow-y: auto;
       transition: max-height 0.3s ease-out;
+
+      .accordion-button {
+        font-size: 1.5rem;
+      }
     }
 
     // Mobile devices (up to 767px)

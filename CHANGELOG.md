@@ -5,12 +5,13 @@ All notable changes to `laravel-cookies-consent` will be documented in this file
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
-## v3.1.0 - Changes in assets files in the public - 2025-01-31
+## v3.1.0 - Changes in assets files in the public directory - 2025-01-31
 
 In order to simplify the installation process and avoid potential conflicts with existing assets, the front-end assets
 are now included directly in the package and loaded from the `vendor/scify/laravel-cookies-consent/` directory.
 
-This means that the `public/vendor/cookies_consent` directory should  be deleted, and the assets should be published again:
+This means that the `public/vendor/cookies_consent` directory should be deleted, and the assets should be published
+again:
 
 In order to update to the new version, you need to remove the `public/vendor/cookies_consent` directory and run the
 asset publishing command:
