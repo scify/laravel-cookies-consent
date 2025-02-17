@@ -62,7 +62,7 @@
                 <div class="cookie-actions">
                     <div class="container-fluid p-0">
                         <div class="row g-0">
-                            <div class="col-lg-4 col-sm-12">
+                            <div class="col-lg-4 col-sm-12 pl-0">
                                 <button type="button" class="btn btn-light w-100" id="accept-all-cookies"
                                         aria-label="Accept All Cookies">
                                     {{ __('cookies_consent::messages.accept_all_btn') }}
@@ -74,7 +74,7 @@
                                     {{ __('cookies_consent::messages.accept_selection_btn') }}
                                 </button>
                             </div>
-                            <div class="col-lg-4 col-sm-12">
+                            <div class="col-lg-4 col-sm-12 pr-0">
                                 <button type="button" class="btn btn-light w-100" id="reject-optional-cookies"
                                         aria-label="Reject Optional Cookies">
                                     {{ __('cookies_consent::messages.reject_optional_btn') }}
