@@ -6,7 +6,6 @@ use Orchestra\Testbench\TestCase as Orchestra;
 use SciFY\LaravelCookiesConsent\LaravelCookiesConsentServiceProvider;
 
 class TestCase extends Orchestra {
-
     protected function getPackageProviders($app): array {
         return [
             LaravelCookiesConsentServiceProvider::class,

@@ -1,11 +1,20 @@
 @import 'variables';
 
-// Cookies Policy Body
-.cookies-policy-body {
+#cookies-external-page {
   min-height: 100vh;
+  width: auto;
+  max-width: 100%;
 
-  &.banner {
+  .cookies-consent-banner {
     min-height: auto;
+    max-width: 100%;
+    margin: 0 auto;
+    position: relative !important;
+    width: 70% !important;
+
+    .accordion .accordion-item .accordion-button {
+      font-size: 1rem;
+    }
   }
 }
 
@@ -14,7 +23,7 @@
   position: fixed;
   bottom: 1rem;
   right: 1rem;
-  z-index: 1050;
+  z-index: 100000;
   padding: 0.75rem 1.25rem;
   margin-bottom: 1rem;
   border: 1px solid #c3e6cb;
@@ -93,7 +102,7 @@
   @media (min-width: 992px) {
     .col-lg-4 {
       flex: 0 0 auto;
-      width: 33.33333333%;
+      width: calc(33.333333% - 17px);
       padding: 2px 8px;
     }
   }
@@ -211,7 +220,6 @@
       width: 100%;
       padding: 0.5rem 1rem;
       font-size: $font-size-base;
-      color: #212529;
       text-align: left;
       background-color: $border-color;
       border: 1px solid transparent;
@@ -219,6 +227,7 @@
       border-top-right-radius: $border-radius;
       cursor: pointer;
       transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+      color: $primary-color;
 
       // mobile
       @media (max-width: 575.98px) {
@@ -226,7 +235,7 @@
       }
 
       &:not(.collapsed) {
-        color: $primary-color;
+        color: $dark-color;
         background-color: $border-color;
         box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.125);
       }
@@ -318,6 +327,8 @@
     padding-left: 2.5rem;
     display: flex;
     align-items: center;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
 
     .form-check-input {
       width: 2em;
@@ -401,6 +412,14 @@
     padding-bottom: 0.5rem !important;
   }
 
+  .pl-0 {
+    padding-left: 0 !important;
+  }
+
+  .pr-0 {
+    padding-right: 0 !important;
+  }
+
   dl {
     margin-top: 0;
     margin-bottom: 0;
@@ -466,7 +485,7 @@
     bottom: 1.25rem;
     left: 1.25rem;
     z-index: 10000000;
-    width: 600px;
+    width: 65rem;
     display: none;
     max-height: 80%;
     overflow: hidden;

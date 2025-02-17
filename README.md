@@ -21,17 +21,12 @@
 [![GitHub pull-requests](https://img.shields.io/github/issues-pr/scify/laravel-cookies-consent)](https://github.com/scify/laravel-cookies-consent/pulls)
 [![GitHub closed pull-requests](https://img.shields.io/github/issues-pr-closed/scify/laravel-cookies-consent)](https://github.com/scify/laravel-cookies-consent/pulls?q=is%3Apr+is%3Aclosed)
 
-## Upgrading from v2 to v3
+## Upgrading to v4
 
-As of **January 2025**, The v3 of the Laravel Cookies Consent plugin has been released! 🎉🥳😍
+As of **February 2025**, The v4 of the Laravel Cookies Consent plugin has been released! 🎉🥳😍
 
-In order to upgrade from v2 to v3, please follow the instructions in the [CHANGELOG](CHANGELOG.md) file.
-
-## Upgrading from v1 to v2
-
-As of **October 2024**, The v2 of the Laravel Cookies Consent plugin has been released! 🎉🥳😍
-In order to upgrade from v1 to v2, please follow the instructions in the [How To Upgrade to v2](how-to-upgrade-to-v2.md)
-file.
+In order to upgrade to v4, please follow the instructions in the [CHANGELOG](CHANGELOG.md) file, and consult also
+the [How To Upgrade to a New Major Version](how-to-upgrade-to-new-major-version.md) file.
 
 ## About the plugin
 
@@ -49,8 +44,6 @@ front-end.
 
 ![img.png](readme-images/img.png)
 
-![img2.png](readme-images/img2.png)
-
 ## Features
 
 - Customizable cookie categories
@@ -58,10 +51,12 @@ front-end.
   more structured way.
 - A new, clean, and intuitive UI for the cookies consent modal.
 - An option to present the cookies consent dialog in a separate page instead of a modal.
-- A stick cookies button that allows users to change their cookies preferences at any time. This button is optional and
+- A sticky cookies button that allows users to change their cookies preferences at any time. This button is optional and
   it's existence can be tweaked in the configuration file.
 - A separate page for the cookies preferences, where users can read more about each cookie category and change their
   preferences.
+- Multi-lingual support. The plugin comes with 6 built-in languages: English, Greek, Spanish, German, Italian, and
+  Swedish. You can add your own language by publishing the translations and editing/adding your own translations.
 
 ## Installation
 
@@ -79,14 +74,16 @@ php artisan vendor:publish \
 --tag="cookies-consent-assets"
 ```
 
-**Notice:** if a new version of the plugin has been released and you want to update the image file, please make sure to
+**Notice:** if a new version of the plugin has been released and you want to update the front-end files, please make
+sure to
 use `--force` option, to overwrite the file.
 
-By doing so, the image file will be copied to `public/vendor/cookies_consent`.
+By doing so, the image file will be copied to `public/vendor/scify/laravel-cookies-consent`.
 
 **IMPORTANT:**
 
-You can then either decide to include the `public/vendor/cookies_consent/*` files to git (especially if you
+You can then either decide to include the `public/vendor/scify/laravel-cookies-consent/*` files to git (especially if
+you
 want
 to edit it first), or add it to `.gitignore`, and make sure to also run this command on the staging/production server.
 
@@ -137,21 +134,25 @@ return [
     'cookies' => [
         'strictly_necessary' => [
             [
-                'name' => 'cookieConsent',
-                'description' => 'This cookie is set by the GDPR Cookie Consent plugin and is used to store whether or not user has consented to the use of cookies. It does not store any personal data.',
-                'duration' => '2 years',
+                // you need to change this in order to reflect the cookie_prefix from above
+                'name' => 'my_app_cookies_consent',
+                'description' => 'cookies_consent::messages.cookie_cookies_consent_description',
+                'duration' => 'cookies_consent::messages.years',
+                'duration_count' => 2,
                 'policy_external_link' => null,
             ],
             [
                 'name' => 'XSRF-TOKEN',
-                'description' => 'This cookie is set by Laravel to prevent Cross-Site Request Forgery (CSRF) attacks.',
-                'duration' => '2 hours',
+                'description' => 'cookies_consent::messages.cookie_xsrf_token_description',
+                'duration' => 'cookies_consent::messages.hours',
+                'duration_count' => 2,
                 'policy_external_link' => null,
             ],
             [
                 'name' => 'laravel_session',
-                'description' => 'This cookie is set by Laravel to identify a session instance for the user.',
-                'duration' => '2 hours',
+                'description' => 'cookies_consent::messages.cookie_laravel_session_description',
+                'duration' => 'cookies_consent::messages.hours',
+                'duration_count' => 2,
                 'policy_external_link' => null,
             ],
         ],
@@ -182,7 +183,9 @@ page:
 
 ```html
 <a href="javascript:void(0);" onclick="toggleCookieBanner()" onkeyup="if (event.key === 'Enter') toggleCookieBanner()"
-   role="button" aria-label="Manage Cookies">Manage Cookies</a>
+   role="button" aria-label="{{ __('cookies_consent::messages.cookies_settings') }}">
+    {{ __('cookies_consent::messages.cookies_settings') }}
+</a>
 ```
 
 The `hide_floating_button_on_mobile` field is optional and, if set to `true`, will hide the floating button on mobile
@@ -219,6 +222,97 @@ Typically, a good strategy is to put the component just before the closing `<bod
     ...
     <x-laravel-cookies-consent></x-laravel-cookies-consent>
 </body>
+```
+
+## How to add a new cookie category
+
+In order to add a new cookie category, you need to add a new entry in the `cookies` array in the configuration file:
+
+```php
+        'strictly_necessary' => [
+            ...
+            ...
+        ],
+        'targeting' => [
+            [
+                'name' => '_ga',
+                'description' => 'This cookie is installed by Google Analytics. The cookie is used to calculate visitor, session, campaign data and keep track of site usage for the site\'s analytics report. The cookies store information anonymously and assign a randomly generated number to identify unique visitors.',
+                'duration' => 'cookies_consent::messages.years',
+                'duration_count' => 2,
+                'policy_external_link' => 'https://policies.google.com/privacy?hl=en-US',
+            ],
+            [
+                'name' => '_gid',
+                'description' => 'This cookie is installed by Google Analytics. The cookie is used to store information of how visitors use a website and helps in creating an analytics report of how the website is doing. The data collected including the number visitors, the source where they have come from, and the pages visited in an anonymous form.',
+                'duration' => 'cookies_consent::messages.days',
+                'duration_count' => 1,
+                'policy_external_link' => 'https://policies.google.com/privacy?hl=en-US',
+            ],
+            [
+                'name' => '_gat',
+                'description' => 'This cookies is installed by Google Universal Analytics to throttle the request rate to limit the colllection of data on high traffic sites.',
+                'duration' => 'cookies_consent::messages.minutes',
+                'duration_count' => 1,
+                'policy_external_link' => 'https://policies.google.com/privacy?hl=en-US',
+            ],
+        ],
+```
+
+Or, you can set the `description` to be null (or an empty string), or set a translation key directly, like so:
+
+1. Create a cookies-specific translation file:
+
+```bash
+ touch lang/en/cookies.php
+```
+
+Contents:
+
+```php
+<?php
+
+return [
+    'google_analytics' => [
+        '_ga_description' => 'This cookie is installed by Google Analytics. The cookie is used to calculate visitor, session, campaign data and keep track of site usage for the site\'s analytics report. The cookies store information anonymously and assign a randomly generated number to identify unique visitors.',
+        '_gid_description' => 'This cookie is installed by Google Analytics. The cookie is used to store information of how visitors use a website and helps in creating an analytics report of how the website is doing. The data collected including the number visitors, the source where they have come from, and the pages visited in an anonymous form.',
+        '_gat_description' => 'This cookies is installed by Google Universal Analytics to throttle the request rate to limit the colllection of data on high traffic sites.',
+    ]
+];
+```
+
+Then, in your `config/cookies_consent.php` file, you can set the `description` fields to be the translation keys.
+Notice that the `description` fields have `cookies.google_analytics.*` values: (from the `cookies.php` file we just
+created).
+
+```php
+        'strictly_necessary' => [
+            ...
+            ...
+        ],
+        'targeting' => [
+            [
+                'name' => '_ga',
+                'description' => 'cookies.google_analytics._ga_description',
+                'duration' => 'cookies_consent::messages.years',
+                'duration_count' => 2,
+                'policy_external_link' => 'https://policies.google.com/privacy?hl=en-US',
+            ],
+            [
+                'name' => '_gid',
+                'description' => 'cookies.google_analytics._gid_description',
+                'duration' => 'cookies_consent::messages.days',
+                'duration_count' => 1,
+                'policy_external_link' => 'https://policies.google.com/privacy?hl=en-US',
+            ],
+            [
+                'name' => '_gat',
+                'description' => 'cookies.google_analytics._gat_description',
+                'duration' => 'cookies_consent::messages.minutes',
+                'duration_count' => 1,
+                'policy_external_link' => 'https://policies.google.com/privacy?hl=en-US',
+            ],
+        ],
+
 ```
 
 After that, you can use the `$_COOKIE` global object, in order to check for the appropriate cookie.
@@ -278,27 +372,10 @@ php artisan vendor:publish \
 --tag="cookies-consent-translations"
 ```
 
-This will publish this file to `resources/lang/vendor/cookies_consent/{{lang}}/messages.php`.
+This will publish the translation files to `lang/vendor/scify/laravel-cookies-consent/` directory.
 
-The plugin comes with 6 built-in languages. You can change the translations for a given language, or add additional
+The plugin comes with many built-in languages. You can change the translations for a given language, or add additional
 languages yourself.
-
-### Customizing the "Read more" link
-
-In the cookies dialog, there is also an optional "Read more" link. This link is specified in the language translation
-files, since it is common to have a different link for each language.
-
-Example (file `lang/vendor/cookies_consent/en/messages.php`):
-
-```php
-return [
-    ...
-    'read_more_link' => '',
-    ...
-];
-```
-
-If the link is left empty (default state), it won't be shown.
 
 ### Customizing the component contents
 
@@ -310,8 +387,7 @@ php artisan vendor:publish \
 --tag="cookies-consent-components"
 ```
 
-This will copy the `resources/views/components/laravel-cookies-consent` view file over
-to `resources/views/components/vendor/cookies_consent` directory.
+This will copy the view files over to `resources/views/components/vendor/scify/laravel-cookies-consent` directory.
 
 ## Development
 
@@ -465,7 +541,8 @@ Also, don't forget to update the `CHANGELOG.md` file with the new version name, 
 ## Credits
 
 - [SciFY Dev Team](https://github.com/scify)
-- <a href="https://www.flaticon.com/free-icons/cookie" title="cookie icons">Cookie icons created by Freepik - Flaticon</a>
+- <a href="https://www.flaticon.com/free-icons/cookie" title="cookie icons">Cookie icons created by Freepik -
+  Flaticon</a>
 
 ## License
 

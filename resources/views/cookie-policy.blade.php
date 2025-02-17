@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<html lang="{{ \Illuminate\Support\Facades\App::getLocale() }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ __('cookies_consent::messages.cookie_policy_title') }}</title>
-    <link href="{{ asset('vendor/cookies_consent/css/cookies-consent.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('vendor/scify/laravel-cookies-consent/cookies-consent.css') }}">
 </head>
-<body class="cookies-policy-body cookies-consent-banner">
+
+<body id="cookies-external-page" class="cookies-policy-body cookies-consent-banner">
 <div class="container">
     <div class="row">
         <div class="col-6 col-sm-12">
@@ -41,7 +42,7 @@
             </ul>
         </div>
     </div>
-    <div class="row">
+    <div class="row" style="margin-bottom: 3rem;">
         <div class="col-6 col-sm-12">
             <h2>{{ __('cookies_consent::messages.cookies_used_title') }}</h2>
             <p>
@@ -52,8 +53,7 @@
     <div class="row">
         <div class="col">
             <dialog class="cookies-consent-banner banner cookies-policy-body" id="cookies-consent-banner"
-                    aria-labelledby="cookie-consent-title"
-                    aria-describedby="cookie-consent-description"
+                    aria-labelledby="cookie-consent-title" aria-describedby="cookie-consent-description"
                     data-ajax-url="{{ url('/cookie-consent/save') }}"
                     data-cookie-prefix="{{ config('cookies_consent.cookie_prefix') }}"
                     data-show-floating-button="false"
@@ -87,6 +87,13 @@
         </div>
     </div>
 </div>
-<script type="module" src="{{ asset('vendor/cookies_consent/js/cookies-consent.js') }}"></script>
+<script>
+    window.cookies_consent_translations = {
+        read_more: "{{ __('cookies_consent::messages.read_more') }}",
+        read_less: "{{ __('cookies_consent::messages.read_less') }}"
+    };
+</script>
+<script src="{{ asset('vendor/scify/laravel-cookies-consent/cookies-consent.js') }}"></script>
 </body>
+
 </html>

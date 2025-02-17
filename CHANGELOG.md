@@ -5,19 +5,68 @@ All notable changes to `laravel-cookies-consent` will be documented in this file
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## v4.0.0 - Major Release - Breaking Changes in Configuration and Functionality - 2025-02-17
+
+### Introduction
+
+In order to conform with the European Union's General Data Protection Regulation (GDPR) and improve the user experience,
+the Laravel Cookies Consent plugin has undergone a major update. This release includes a multi-language support in the
+banner, in order to allow the banner to change when the `locale` is changed. The plugin now supports multiple languages
+in all the texts that are displayed to the user!
+
+### Breaking Changes
+
+The `v4.0.0` release introduces significant changes to the `config/cookies_consent.php` configuration file.
+These changes are necessary to improve the flexibility and usability of the plugin. Below
+are the details of the changes and the steps required to update your existing configuration.
+
+#### Configuration File Changes
+
+**Cookie Categories:**
+
+The structure of the `cookies` array has been updated to reflect the new multi-language support.
+Each cookie now has their description derived from the language files, based on the `locale` set in the application.
+
+**Cookie Duration:**
+
+Each cookie category now includes a `description`, `duration`, and `duration_count` attributes.
+For example, if you want to set the duration of a cookie to `2 years`, you can set the `duration` to
+`cookies_consent::messages.years` and the `duration_count` to `2`.
+The plugin will automatically translate the duration text, based on the `locale` set in the application.
+
+### Migration Guide
+
+1. Backup your existing configuration file: Before updating to the new version, make sure to backup your existing
+   `config/cookies_consent.php` file to avoid losing any custom settings.
+2. **Update the Configuration File:** Run
+   `php artisan vendor:publish --provider="SciFY\LaravelCookiesConsent\LaravelCookiesConsentServiceProvider" --tag=cookies-consent-config --force`
+   and then ensure the `cookie_prefix` is set in the `config/cookies_consent.php` file. Update
+   the
+   `description`, `duration`, and `duration_count` fields of **each cookie** in the cookies array to reflect the new
+   JSON
+   storage format.
+3. **Publish the Front-End Assets:** Run the following command to publish the updated assets:
+   `php artisan vendor:publish --provider="SciFY\LaravelCookiesConsent\LaravelCookiesConsentServiceProvider" --tag="cookies-consent-public" --force`
+4. **Build the Laravel configuration cache:** Run the following command to rebuild the configuration cache:
+   `php artisan config:cache`
+5. **Test Your Application:** Ensure that the cookies consent functionality works as expected with the new JSON storage
+   format. Verify that the cookies are correctly set and retrieved in the browser.
+
 ## v3.1.0 - Changes in assets files in the public directory - 2025-01-31
 
 In order to simplify the installation process and avoid potential conflicts with existing assets, the front-end assets
 are now included directly in the package and loaded from the `vendor/scify/laravel-cookies-consent/` directory.
 
-This means that the `public/vendor/cookies_consent` directory should be deleted, and the assets should be published
+This means that the `public/vendor/scify/laravel-cookies-consent` directory should be deleted, and the assets should be
+published
 again:
 
-In order to update to the new version, you need to remove the `public/vendor/cookies_consent` directory and run the
+In order to update to the new version, you need to remove the `public/vendor/scify/laravel-cookies-consent` directory
+and run the
 asset publishing command:
 
 ```bash
-rm -rf public/vendor/cookies_consent
+rm -rf public/vendor/scify/laravel-cookies-consent
 ```
 
 And then:
@@ -170,7 +219,8 @@ Improvements regarding the styles file, Composer lib updates
 
 **Notable Changes:**
 
-Now, in order to publish the styles file to `public/vendor/cookies_consent/css/style.css` it is **required** to manually
+Now, in order to publish the styles file to `public/vendor/scify/laravel-cookies-consent/css/style.css` it is **required
+** to manually
 run the publishing command:
 
 ```bash

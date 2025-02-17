@@ -62,6 +62,12 @@ function toggleAccordion(button) {
     document.querySelectorAll('.accordion-collapse').forEach(collapse => {
         if (collapse !== target) {
             collapse.classList.remove('show');
+            const relatedButton = document.querySelector(`[data-target="#${collapse.id}"]`);
+            if (relatedButton) {
+                relatedButton.classList.add('collapsed');
+                if (window.cookies_consent_translations)
+                    relatedButton.textContent = window.cookies_consent_translations.read_more;
+            }
         }
     });
 
@@ -70,10 +76,14 @@ function toggleAccordion(button) {
         // If the accordion is already open, close it
         target.classList.remove('show');
         button.classList.add('collapsed');
+        if (window.cookies_consent_translations)
+            button.textContent = window.cookies_consent_translations.read_more;
     } else {
         // If the accordion is closed, open it
         target.classList.add('show');
         button.classList.remove('collapsed');
+        if (window.cookies_consent_translations)
+            button.textContent = window.cookies_consent_translations.read_less;
     }
 }
 
@@ -195,6 +205,7 @@ function handleCookieConsent(consent) {
     const cookieButton = document.getElementById('scify-cookie-consent-floating-button');
     const showFloatingButton = cookieBanner.dataset.showFloatingButton === 'true' || cookieBanner.dataset.showFloatingButton === '1';
     const cookiePrefix = cookieBanner.dataset.cookiePrefix;
+    consent['locale'] = cookieBanner.dataset.locale;
 
     fetch(cookieBanner.dataset.ajaxUrl, {
         method: 'POST',

@@ -1,6 +1,4 @@
-# How To Upgrade to v2
-
-The v2 of the Laravel Cookies Consent plugin has been released! 🎉🥳😍
+# How To Upgrade to a New Major Version
 
 ## Why Upgrade?
 
@@ -8,29 +6,14 @@ According to the EU General Data Protection Regulation (GDPR), websites must obt
 on a user's device. The Laravel Cookies Consent plugin helps you comply with this regulation by providing a customizable
 cookies consent dialog that allows users to choose which cookies they want to accept.
 
-The intuition behind the v2 release was to provide a more analytical, user-friendly and intuitive UI for the cookies
+The intuition behind the a new major release is always to provide a more analytical, user-friendly and intuitive UI for the cookies
 consent dialog,
 as well as to make the configuration file more structured and easier to use.
 
-Additionally, we wanted to provide the users with a more detailed list of each cookie category and the cookies that are
+Additionally, we want to provide the users with a more detailed list of each cookie category and the cookies that are
 being used, and allow the users to change their cookies preferences at any time.
 
-## Changes - New Features
-
-This version includes some important changes and improvements, such as:
-
-- A new configuration file format. Now you can declare the cookies each cookie category uses in a
-  more structured way.
-- A new, clean, and intuitive UI for the cookies consent modal.
-- An option to present the cookies consent dialog in a separate page instead of a modal.
-- A stick cookies button that allows users to change their cookies preferences at any time. This button is optional and
-  it's existence can be tweaked in the configuration file.
-- A separate page for the cookies preferences, where users can read more about each cookie category and change their
-  preferences.
-
-This guide will help you upgrade your existing v1 plugin to v2.
-
-## How to transition from v1 to v2
+## How to upgrade to a new major version
 
 ### Step 0: Backup Your Current Configuration File
 
@@ -42,11 +25,11 @@ So, in order to update to the new configuration file, you should save your curre
 
 ### Step 1: Backup any changes made to the styles file
 
-The v.1 of the plugin had a styles file that was published to `public/vendor/cookies_consent/css/style.css`. If you have
+The v.1 of the plugin had a styles file that was published to `public/vendor/scify/laravel-cookies-consent/css/style.css`. If you have
 made any changes to this file, you should back it up before updating the plugin.
 
 The v2 of the plugin has a new styles file, which is published to
-`public/vendor/cookies_consent/css/cookies-consent.css`. You should transfer any changes you made to the old styles file
+`public/vendor/scify/laravel-cookies-consent/css/cookies-consent.css`. You should transfer any changes you made to the old styles file
 to the new one.
 
 ### Step 2: Update the Plugin
@@ -62,7 +45,7 @@ composer update scify/laravel-cookies-consent
 1. Publish the new configuration file by running the following command:
 
 ```bash
-php artisan vendor:publish --tag=cookies-consent-config --force
+php artisan vendor:publish --provider="SciFY\LaravelCookiesConsent\LaravelCookiesConsentServiceProvider" --tag=cookies-consent-config --force
 ```
 
 **CAUTION**: The `--force` flag is necessary in order to overwrite the existing configuration file.
@@ -89,5 +72,16 @@ php artisan vendor:publish --tag=cookies-consent-config --force
 If you have made any changes to the styles file in the v1 version of the plugin, you should transfer these changes to
 the new styles file.
 
-Old styles file: `public/vendor/cookies_consent/css/style.css`
-New styles file: `public/vendor/cookies_consent/css/cookies-consent.css`
+Old styles file: `public/vendor/scify/laravel-cookies-consent/css/style.css`
+New styles file: `public/vendor/scify/laravel-cookies-consent/css/cookies-consent.css`
+
+### Step 5: Test that the Plugin Works Correctly
+
+After updating the plugin and the configuration file, you should test that the plugin works correctly. You should test the following:
+
+1. The cookies consent dialog is displayed correctly on your website.
+2. The cookies consent dialog is displayed in the correct language.
+3. The cookies consent dialog displays the correct information about the cookies and the cookie categories.
+4. The cookies consent dialog allows users to change their cookies preferences.
+5. The cookies consent dialog saves the users' cookies preferences correctly.
+6. The cookies consent dialog displays the correct cookies banner based on the users' cookies preferences.
