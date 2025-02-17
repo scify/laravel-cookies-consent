@@ -1,13 +1,14 @@
 @php
     $alwaysOpen = $alwaysOpen ?? false;
     $cookieCategories = config('cookies_consent.cookies');
+    $categoriesCollapsedByDefault = config('cookies_consent.categories_collapsed_by_default', false);
 @endphp
 <meta name="csrf-token" content="{{ csrf_token() }}">
 <div class="accordion" id="cookieAccordion">
     @foreach ($cookieCategories as $category => $cookies)
         <div class="form-check form-switch">
             <input class="form-check-input cookie-category" type="checkbox" id="{{ $category }}"
-                {{ in_array($category, config('cookies_consent.required')) ? 'checked disabled' : '' }}>
+                    {{ in_array($category, config('cookies_consent.required')) ? 'checked disabled' : '' }}>
             <label class="form-check-label" for="{{ $category }}">
                 {{ __('cookies_consent::messages.' . $category) }}
             </label>
@@ -15,10 +16,11 @@
         <div class="accordion-item cookies-consent-category-item">
             <h5 class="accordion-header h5" id="heading-{{ $category }}">
                 <button
-                    class="accordion-button {{ $alwaysOpen || $category === 'strictly_necessary' ? '' : 'collapsed' }}"
-                    type="button" data-toggle="collapse" data-target="#collapse-{{ $category }}"
-                    aria-expanded="{{ $alwaysOpen ? 'true' : 'false' }}" aria-controls="collapse-{{ $category }}">
-                    @if ($category === 'strictly_necessary')
+                        class="accordion-button {{ $alwaysOpen || (!$categoriesCollapsedByDefault && $category === 'strictly_necessary') ? '' : 'collapsed' }}"
+                        type="button" data-toggle="collapse" data-target="#collapse-{{ $category }}"
+                        aria-expanded="{{ $alwaysOpen || (!$categoriesCollapsedByDefault && $category === 'strictly_necessary') ? 'true' : 'false' }}"
+                        aria-controls="collapse-{{ $category }}">
+                    @if ($alwaysOpen || (!$categoriesCollapsedByDefault && $category === 'strictly_necessary'))
                         {{ __('cookies_consent::messages.read_less') }}
                     @else
                         {{ __('cookies_consent::messages.read_more') }}
@@ -26,8 +28,8 @@
                 </button>
             </h5>
             <div id="collapse-{{ $category }}"
-                class="accordion-collapse {{ $alwaysOpen || $category === 'strictly_necessary' ? 'show' : '' }}"
-                aria-labelledby="heading-{{ $category }}" data-parent="#cookieAccordion">
+                 class="accordion-collapse {{ $alwaysOpen || (!$categoriesCollapsedByDefault && $category === 'strictly_necessary') ? 'show' : '' }}"
+                 aria-labelledby="heading-{{ $category }}" data-parent="#cookieAccordion">
                 <div class="accordion-body">
                     <ul class="list-group mt-3">
                         @foreach ($cookies as $cookie)
@@ -48,7 +50,7 @@
                                     @if ($cookie['policy_external_link'])
                                         <dd>
                                             <a class="policy-link" href="{{ $cookie['policy_external_link'] }}"
-                                                target="_blank">{{ __('cookies_consent::messages.policy_label') }}
+                                               target="_blank">{{ __('cookies_consent::messages.policy_label') }}
                                                 &#x1F517;</a>
                                         </dd>
                                     @endif

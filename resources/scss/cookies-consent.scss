@@ -124,6 +124,7 @@
     transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
     white-space: nowrap;
     height: auto;
+    text-transform: none;
 
     &.btn-light {
       color: #212529;
