@@ -215,7 +215,7 @@ You can then use this component in order to display the cookies consent window, 
 
 Typically, a good strategy is to put the component just before the closing `<body>` tag:
 
-```bash
+```html
 <body>
     ...
     ...
