@@ -157,7 +157,8 @@
       transition: max-height 0.3s ease-out;
 
       .accordion-button {
-        font-size: 16px;
+        // set a font size for all screens
+        font-size: 15.5px;
       }
     }
 
