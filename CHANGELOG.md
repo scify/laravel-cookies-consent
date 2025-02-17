@@ -5,7 +5,7 @@ All notable changes to `laravel-cookies-consent` will be documented in this file
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
-## v4.0.0 - Major Release - Breaking Changes in Configuration and Functionality - 2025-02-17
+## v4.0.0 - Multilingual Support - Major Release - Breaking Changes in Configuration and Functionality - 2025-02-17
 
 ### Introduction
 
@@ -13,6 +13,14 @@ In order to conform with the European Union's General Data Protection Regulation
 the Laravel Cookies Consent plugin has undergone a major update. This release includes a multi-language support in the
 banner, in order to allow the banner to change when the `locale` is changed. The plugin now supports multiple languages
 in all the texts that are displayed to the user!
+
+### New Features
+
+- **Multi-Language Support:** The plugin now supports multiple languages in the banner and the cookies consent modal.
+  The texts displayed to the user can be translated based on the `locale` set in the application. By default, all 24
+  languages of the EU are supported.
+- **Automatic locale detection:** The plugin automatically detects the app's locale based on the Laravel locale, and
+  displays the banner in the corresponding language.
 
 ### Breaking Changes
 
