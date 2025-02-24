@@ -118,6 +118,7 @@ return [
     'display_floating_button' => true, // Set to false to display the footer link instead
     'hide_floating_button_on_mobile' => false, // Set to true to hide the floating button on mobile
     'use_separate_page' => false, // Set to true to use a separate page for cookies explanation
+    'categories_collapsed_by_default' => true, // Set to false to initially collapse the optional categories
     /*
     |--------------------------------------------------------------------------
     | Editor
@@ -192,6 +193,9 @@ The `hide_floating_button_on_mobile` field is optional and, if set to `true`, wi
 
 The `use_separate_page` field is optional and, if set to `true`, will display the cookies preferences in a separate
 page.
+
+The `categories_collapsed_by_default` field is optional and, if set to `false`, will initially collapse the optional categories.
+If set to `true`, all categories will be collapsed by default.
 
 You can add as many cookie categories as you like, simply by adding values to the `cookies` array.
 
