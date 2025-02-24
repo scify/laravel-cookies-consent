@@ -37,6 +37,28 @@ be customized to match the design of your application.
 - **Improved UI/UX:** The cookies consent modal has been updated with improved styling and layout for a better user
   experience.
 
+#### How to override the CSS styles
+
+If you want to override the CSS styles of the cookies consent dialog, you can do this:
+
+```html
+
+<x-laravel-cookies-consent></x-laravel-cookies-consent>
+<link rel="stylesheet" href="/vendor/scify/laravel-cookies-consent/_variables.css">
+<style>
+    #scify-cookies-consent {
+        --primary-color: #ff5722; /* Override primary color */
+
+        ...
+
+        /* Add more override rules here */
+    }
+</style>
+```
+
+The full list of CSS variables that can be overridden can be found in the
+`public/vendor/scify/laravel-cookies-consent/_variables.css` file.
+
 ### Breaking Changes
 
 The `v4.0.0` release introduces significant changes to the `config/cookies_consent.php` configuration file.
@@ -65,7 +87,8 @@ the cookies included in that category. This can be tweaked in the `config/cookie
 
 ### Migration Guide
 
-1. Backup your existing configuration file: Before updating to the new version, make sure to take a backup of your existing
+1. Backup your existing configuration file: Before updating to the new version, make sure to take a backup of your
+   existing
    `config/cookies_consent.php` file to avoid losing any custom settings.
 2. **Update the Configuration File:** Run
    `php artisan vendor:publish --provider="SciFY\LaravelCookiesConsent\LaravelCookiesConsentServiceProvider" --tag=cookies-consent-config --force`

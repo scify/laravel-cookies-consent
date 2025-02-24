@@ -216,12 +216,28 @@ You can then use this component in order to display the cookies consent window, 
 Typically, a good strategy is to put the component just before the closing `<body>` tag:
 
 ```html
+
 <body>
-    ...
-    ...
-    ...
-    <x-laravel-cookies-consent></x-laravel-cookies-consent>
+...
+...
+...
+<x-laravel-cookies-consent></x-laravel-cookies-consent>
 </body>
+```
+
+## How to override the CSS styles
+
+If you want to override the CSS styles of the cookies consent dialog, you can do this:
+
+```html
+
+<x-laravel-cookies-consent></x-laravel-cookies-consent>
+<link rel="stylesheet" href="/vendor/scify/laravel-cookies-consent/_variables.css">
+<style>
+    #scify-cookies-consent {
+        --primary-color: #ff5722; /* Override primary color */
+    }
+</style>
 ```
 
 ## How to add a new cookie category
