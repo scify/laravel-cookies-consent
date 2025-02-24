@@ -5,7 +5,7 @@ All notable changes to `laravel-cookies-consent` will be documented in this file
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
-## v4.0.0 - Multilingual Support - Major Release - Breaking Changes in Configuration and Functionality - 2025-02-17
+## v4.0.0 - Multilingual Support & Better Theming - Breaking Changes in Configuration and Functionality - 2025-02-17
 
 ### Introduction
 
@@ -14,6 +14,11 @@ the Laravel Cookies Consent plugin has undergone a major update. This release in
 banner, in order to allow the banner to change when the `locale` is changed. The plugin now supports multiple languages
 in all the texts that are displayed to the user!
 
+Also, in order to improve the flexibility and theming of the plugin, we now provide a `_variables.css` file, which can
+be used to customize the colors and fonts of the plugin. This file is located in the
+`public/vendor/scify/laravel-cookies-consent/styles` directory and can
+be customized to match the design of your application.
+
 ### New Features
 
 - **Multi-Language Support:** The plugin now supports multiple languages in the banner and the cookies consent modal.
@@ -21,6 +26,16 @@ in all the texts that are displayed to the user!
   languages of the EU are supported.
 - **Automatic locale detection:** The plugin automatically detects the app's locale based on the Laravel locale, and
   displays the banner in the corresponding language.
+- **Customizable Theme:** A `_variables.css` file is now being added to the
+  `public/vendor/scify/laravel-cookies-consent/styles`
+  directory, once you publish the front-end assets. This file can be used to customize the colors and fonts of the
+  plugin to match the design of your
+  application.
+- **Cookies categories collapsed by default:** The cookies categories are now collapsed by default in the cookies
+  consent modal. Users can expand each category to view the cookies included in that category. This can be tweaked in
+  the `config/cookies_consent.php` file.
+- **Improved UI/UX:** The cookies consent modal has been updated with improved styling and layout for a better user
+  experience.
 
 ### Breaking Changes
 
@@ -42,9 +57,15 @@ For example, if you want to set the duration of a cookie to `2 years`, you can s
 `cookies_consent::messages.years` and the `duration_count` to `2`.
 The plugin will automatically translate the duration text, based on the `locale` set in the application.
 
+**Cookies categories collapsed by default:**
+
+The cookies categories are now collapsed by default in the cookies consent modal. Users can expand each category to view
+the cookies included in that category. This can be tweaked in the `config/cookies_consent.php` file, in the
+`categories_collapsed_by_default` key.
+
 ### Migration Guide
 
-1. Backup your existing configuration file: Before updating to the new version, make sure to backup your existing
+1. Backup your existing configuration file: Before updating to the new version, make sure to take a backup of your existing
    `config/cookies_consent.php` file to avoid losing any custom settings.
 2. **Update the Configuration File:** Run
    `php artisan vendor:publish --provider="SciFY\LaravelCookiesConsent\LaravelCookiesConsentServiceProvider" --tag=cookies-consent-config --force`

@@ -1,4 +1,4 @@
-import '../scss/cookies-consent.scss';
+import '../styles/cookies-consent.scss';
 
 document.addEventListener('DOMContentLoaded', function () {
     initializeAccordionButtons();
@@ -231,19 +231,22 @@ function handleCookieConsent(consent) {
 }
 
 function showSuccessMessage(messageText) {
-    const message = document.createElement('div');
-    message.classList.add('cookie-success-message');
-    message.innerText = messageText;
-    document.body.appendChild(message);
-    setTimeout(() => {
-        message.classList.add('show');
-    }, 100);
-    setTimeout(() => {
-        message.classList.remove('show');
+    const parent = document.getElementById('scify-cookies-consent');
+    if (parent) {
+        const message = document.createElement('div');
+        message.classList.add('cookie-success-message');
+        message.innerText = messageText;
+        parent.appendChild(message);
         setTimeout(() => {
-            message.remove();
-        }, 1000);
-    }, 4000);
+            message.classList.add('show');
+        }, 100);
+        setTimeout(() => {
+            message.classList.remove('show');
+            setTimeout(() => {
+                message.remove();
+            }, 1000);
+        }, 4000);
+    }
 }
 
 function initializeCookiePolicyLink() {

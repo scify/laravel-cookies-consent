@@ -17,3 +17,20 @@
 /UPGRADING.md       export-ignore
 /phpstan.neon.dist  export-ignore
 /phpstan-baseline.neon  export-ignore
+/CHANGELOG.md       export-ignore
+/CONTRIBUTING.md    export-ignore
+/README.md          export-ignore
+/SECURITY.md        export-ignore
+
+# Ignore all IDE files
+/.idea              export-ignore
+/.vscode            export-ignore
+
+# Ignore other files
+/.git               export-ignore
+logo.jpg            export-ignore
+phpunit.xml*        export-ignore
+pint.json           export-ignore
+vite.config.js      export-ignore
+.nvmrc              export-ignore
+phpstan*.neon       export-ignore

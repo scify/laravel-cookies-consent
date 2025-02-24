@@ -23,10 +23,10 @@
 
 ## Upgrading to v4
 
-As of **February 2025**, The v4 of the Laravel Cookies Consent plugin has been released! 🎉🥳😍
+As of **February 2025**, The `v4` of the Laravel Cookies Consent plugin has been released! 🎉🥳😍
 
-In order to upgrade to v4, please follow the instructions in the [CHANGELOG](CHANGELOG.md) file, and consult also
-the [How To Upgrade to a New Major Version](how-to-upgrade-to-new-major-version.md) file.
+In order to upgrade to `v4`, please follow the instructions in the [CHANGELOG](CHANGELOG.md) file, and consult also
+the [How To Upgrade to a New Major Version](UPGRADING.md) file.
 
 ## About the plugin
 
