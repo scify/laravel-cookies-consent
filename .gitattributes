@@ -34,3 +34,5 @@ pint.json           export-ignore
 vite.config.js      export-ignore
 .nvmrc              export-ignore
 phpstan*.neon       export-ignore
+readme-images/      export-ignore
+database/           export-ignore
