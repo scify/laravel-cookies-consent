@@ -232,13 +232,19 @@ If you want to override the CSS styles of the cookies consent dialog, you can do
 ```html
 
 <x-laravel-cookies-consent></x-laravel-cookies-consent>
-<link rel="stylesheet" href="/vendor/scify/laravel-cookies-consent/_variables.css">
 <style>
     #scify-cookies-consent {
         --primary-color: #ff5722; /* Override primary color */
+
+        ...
+
+        /* Add more override rules here */
     }
 </style>
 ```
+
+The full list of CSS variables that can be overridden can be found in the
+`public/vendor/scify/laravel-cookies-consent/_variables.css` file.
 
 ## How to add a new cookie category
 
