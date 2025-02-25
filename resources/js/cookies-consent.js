@@ -285,6 +285,9 @@ function eraseCookie(name) {
 }
 
 window.toggleCookieBanner = function () {
+    // if on cookies page, do nothing
+    if (onCookiesPage()) return;
+
     const cookieBanner = document.getElementById('cookies-consent-banner');
     const cookieButton = document.getElementById('scify-cookie-consent-floating-button');
     const showFloatingButton = cookieBanner.dataset.showFloatingButton === 'true' || cookieBanner.dataset.showFloatingButton === '1';
