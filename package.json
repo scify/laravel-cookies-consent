@@ -9,7 +9,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "vite",
-    "build": "vite build && cp resources/images/cookie.png public/cookie.png && cp resources/styles/_variables.css public/_variables.css"
+    "build": "vite build && cp resources/styles/_variables.css public/_variables.css"
   },
   "repository": {
     "type": "git",
