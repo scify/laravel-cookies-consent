@@ -3,9 +3,9 @@
 return [
     'title' => 'Cookies Consent',
     'description' => 'We use cookies to optimize our website and our service. You can choose which categories you consent to.',
-    'please_visit_1' => 'For more detailed information about cookies, please visit our',
+    'please_visit_1' => 'For more detailed information about cookies, please visit the',
     'cookie_policy_page' => 'cookie policy page',
-    'accept_selection_btn' => 'Accept Selected',
+    'accept_selection_btn' => 'Accept Selection',
     'accept_all_btn' => 'Accept All',
     'reject_optional_btn' => 'Reject Optional',
     'accept_additional_cookies_btn' => 'Accept additional cookies',

@@ -65,8 +65,7 @@ function toggleAccordion(button) {
             const relatedButton = document.querySelector(`[data-target="#${collapse.id}"]`);
             if (relatedButton) {
                 relatedButton.classList.add('collapsed');
-                if (window.cookies_consent_translations)
-                    relatedButton.textContent = window.cookies_consent_translations.read_more;
+                if (window.cookies_consent_translations) relatedButton.textContent = window.cookies_consent_translations.read_more;
             }
         }
     });
@@ -76,14 +75,12 @@ function toggleAccordion(button) {
         // If the accordion is already open, close it
         target.classList.remove('show');
         button.classList.add('collapsed');
-        if (window.cookies_consent_translations)
-            button.textContent = window.cookies_consent_translations.read_more;
+        if (window.cookies_consent_translations) button.textContent = window.cookies_consent_translations.read_more;
     } else {
         // If the accordion is closed, open it
         target.classList.add('show');
         button.classList.remove('collapsed');
-        if (window.cookies_consent_translations)
-            button.textContent = window.cookies_consent_translations.read_less;
+        if (window.cookies_consent_translations) button.textContent = window.cookies_consent_translations.read_less;
     }
 }
 
@@ -208,12 +205,10 @@ function handleCookieConsent(consent) {
     consent['locale'] = cookieBanner.dataset.locale;
 
     fetch(cookieBanner.dataset.ajaxUrl, {
-        method: 'POST',
-        headers: {
+        method: 'POST', headers: {
             'Content-Type': 'application/json',
             'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-        },
-        body: JSON.stringify(consent)
+        }, body: JSON.stringify(consent)
     }).then(response => response.json())
         .then(data => {
             if (data.success) {
@@ -259,7 +254,8 @@ function initializeCookiePolicyLink() {
 }
 
 function onCookiesPage() {
-    return window.location.href.includes('/cookie-policy');
+    const cookieBanner = document.getElementById('cookies-consent-banner');
+    return cookieBanner.dataset.onCookiesPage === 'true' || cookieBanner.dataset.onCookiesPage === '1';
 }
 
 function setCookie(name, value, days) {

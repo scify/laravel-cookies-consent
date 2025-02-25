@@ -1,3 +1,5 @@
+<!-- omit in toc -->
+
 # Laravel Cookies Consent Plugin - Make your Laravel app compliant with the EU GDPR cookie law
 
 <p align="center">
@@ -21,6 +23,36 @@
 [![GitHub pull-requests](https://img.shields.io/github/issues-pr/scify/laravel-cookies-consent)](https://github.com/scify/laravel-cookies-consent/pulls)
 [![GitHub closed pull-requests](https://img.shields.io/github/issues-pr-closed/scify/laravel-cookies-consent)](https://github.com/scify/laravel-cookies-consent/pulls?q=is%3Apr+is%3Aclosed)
 
+## Table of Contents
+
+- [Upgrading to v4](#upgrading-to-v4)
+- [About the plugin](#about-the-plugin)
+- [Features](#features)
+- [Installation](#installation)
+  - [Explanation of the configuration file](#explanation-of-the-configuration-file)
+  - [Usage](#usage)
+    - [Option 1: All-in-one dialog (default)](#option-1-all-in-one-dialog-default)
+    - [Option 2: Simple dialog, with a link to the default separate internal page](#option-2-simple-dialog-with-a-link-to-the-default-separate-internal-page)
+    - [Option 3: Simple dialog, with a link to a customized separate internal page with navbars, footers, etc.](#option-3-simple-dialog-with-a-link-to-a-customized-separate-internal-page-with-navbars-footers-etc)
+    - [Option 4: Simple dialog, with a link to an external (off-the-app) page](#option-4-simple-dialog-with-a-link-to-an-external-off-the-app-page)
+    - [How to override the CSS styles](#how-to-override-the-css-styles)
+  - [How to add a new cookie category](#how-to-add-a-new-cookie-category)
+  - [How to check if a cookie category is allowed](#how-to-check-if-a-cookie-category-is-allowed)
+    - [Backend code](#backend-code)
+    - [Frontend code](#frontend-code)
+  - [Customization](#customization)
+    - [Customizing the component texts](#customizing-the-component-texts)
+    - [Customizing the component contents](#customizing-the-component-contents)
+- [Development](#development)
+  - [Testing](#testing)
+- [FAQ](#faq)
+- [Changelog](#changelog)
+- [Contributing](#contributing)
+  - [PHP code style - Laravel Pint](#php-code-style---laravel-pint)
+  - [Releasing a new version](#releasing-a-new-version)
+- [Credits](#credits)
+- [License](#license)
+
 ## Upgrading to v4
 
 As of **February 2025**, The `v4` of the Laravel Cookies Consent plugin has been released! 🎉🥳😍
@@ -40,22 +72,17 @@ allow.
 After the user submission, the page reloads and the relevant cookies are set on the browser, and can then be used in the
 front-end.
 
-# Screenshots
-
-![img.png](readme-images/img.png)
-
 ## Features
 
 - Customizable cookie categories
-- A new configuration file format. Now you can declare the cookies each cookie category uses in a
-  more structured way.
-- A new, clean, and intuitive UI for the cookies consent modal.
-- An option to present the cookies consent dialog in a separate page instead of a modal.
-- A sticky cookies button that allows users to change their cookies preferences at any time. This button is optional and
+- 3 Different integration options: All-in-one dialog, internal page, external separate page,
+- A clean and intuitive UI for the cookies consent modal.
+- A sticky cookies button and footer link that allows users to change their cookies preferences at any time. This button
+  is optional, and
   it's existence can be tweaked in the configuration file.
 - A separate page for the cookies preferences, where users can read more about each cookie category and change their
   preferences.
-- Multi-lingual support. The plugin comes with 6 built-in languages: English, Greek, Spanish, German, Italian, and
+- Multilingual support. The plugin comes with 6 built-in languages: English, Greek, Spanish, German, Italian, and
   Swedish. You can add your own language by publishing the translations and editing/adding your own translations.
 
 ## Installation
@@ -74,7 +101,7 @@ php artisan vendor:publish \
 --tag="cookies-consent-assets"
 ```
 
-**Notice:** if a new version of the plugin has been released and you want to update the front-end files, please make
+**Notice:** if a new version of the plugin has been released, and you want to update the front-end files, please make
 sure to
 use `--force` option, to overwrite the file.
 
@@ -177,7 +204,7 @@ cookie.
 For example, if `cookie_prefix` is set to `my_app_`, then the targeting cookie will have a value
 of `my_app_cookies_consent_targeting`.
 
-The `display_floating_button` field is optional and, if set to `true`, will display a floating button on the bottom
+The `display_floating_button` field is optional and, if set to `true`, will display a floating button in the bottom
 right corner of the page.
 If set to `false`, then you will need to add a relevant link in your footer, in order to show the cookies preferences
 page:
@@ -185,7 +212,7 @@ page:
 ```html
 <a href="javascript:void(0);" onclick="toggleCookieBanner()" onkeyup="if (event.key === 'Enter') toggleCookieBanner()"
    role="button" aria-label="{{ __('cookies_consent::messages.cookies_settings') }}">
-    {{ __('cookies_consent::messages.cookies_settings') }}
+  {{ __('cookies_consent::messages.cookies_settings') }}
 </a>
 ```
 
@@ -194,7 +221,8 @@ The `hide_floating_button_on_mobile` field is optional and, if set to `true`, wi
 The `use_separate_page` field is optional and, if set to `true`, will display the cookies preferences in a separate
 page.
 
-The `categories_collapsed_by_default` field is optional and, if set to `false`, will initially collapse the optional categories.
+The `categories_collapsed_by_default` field is optional and, if set to `false`, will initially collapse the optional
+categories.
 If set to `true`, all categories will be collapsed by default.
 
 You can add as many cookie categories as you like, simply by adding values to the `cookies` array.
@@ -207,6 +235,10 @@ and the `required` array to set the cookies that the user won't be able to desel
 If you want to change how long the cookies will be stored, edit the `cookie_lifetime` variable.
 
 ## Usage
+
+### Option 1: All-in-one dialog (default)
+
+**Suitable for**: Apps that would like to show a single dialog with all the cookie categories.
 
 When the plugin is installed, a `laravel-cookies-consent`
 custom [Laravel View Component](https://laravel.com/docs/9.x/blade#components) is automatically registered.
@@ -226,7 +258,93 @@ Typically, a good strategy is to put the component just before the closing `<bod
 ...
 ...
 <x-laravel-cookies-consent></x-laravel-cookies-consent>
+<x-laravel-cookies-consent-scripts></x-laravel-cookies-consent-scripts>
 </body>
+```
+
+(Or you can put the scripts in the `<head>` tag, if you prefer).
+
+### Option 2: Simple dialog, with a link to the default separate internal page
+
+**Suitable for**: Apps that would like to show a simple "Accept all/Reject Optional" dialog with a link to a separate
+page for customizing the cookies preferences.
+
+Edit the `config/cookies_consent.php` file, and set the `use_separate_page` field to `true`.
+
+```php
+    'use_separate_page' => true,
+```
+
+When the plugin is installed, a `/cookie-policy/{locale}` route is automatically registered.
+So, you can edit the `config/cookies_consent.php` file, and set the `use_separate_page` field to `true`.
+
+Now, the user will see a simple dialog, with a link to the `/cookie-policy/{locale}` page, where they can customize
+their cookies preferences.
+This page is managed by the plugin, and it will show the cookies categories, descriptions, and the ability to accept or
+reject them.
+
+### Option 3: Simple dialog, with a link to a customized separate internal page with navbars, footers, etc.
+
+**Suitable for**: Apps that would like to show a simple "Accept all/Reject Optional" dialog with a link to a customized
+page, with the app's own content (navigation, footer, etc).
+
+If you would like to show a simple "Accept all/Reject Optional" dialog with a link to a separate page for customizing
+the cookies preferences, you can set the following in the `config/cookies_consent.php` file:
+
+```php
+'use_separate_page' => true,
+'cookie_policy_page_custom_url' => '/my-custom-cookies-policy',
+```
+
+```php
+Route::get('/my-custom-cookies-policy', function () {
+    return view('my-custom-cookies-policy');
+});
+```
+
+Or you can declare your route to override the default one:
+
+```php
+'use_separate_page' => true,
+'cookie_policy_page_custom_url' => null,
+```
+
+And then create a new route in your `routes/web.php` file:
+
+```php
+Route::get('/cookie-policy/{locale}', function () {
+    return view('my-custom-cookies-policy');
+});
+```
+
+Then, you can create a new route in your `routes/web.php` file:
+
+Now, in the `resources/views/my-custom-cookies-policy.blade.php` file, you will need to render the
+`x-laravel-cookies-consent-page` component, in order to show the cookies preferences dialog.
+
+Here is a usage example:
+
+```bladehtml
+@extends('layouts.app')
+@section('head)
+<x-laravel-cookies-consent-scripts></x-laravel-cookies-consent-scripts>
+@endsection
+@section('content')
+<x-laravel-cookies-consent-page></x-laravel-cookies-consent-page>
+@endsection
+```
+
+### Option 4: Simple dialog, with a link to an external (off-the-app) page
+
+**Suitable for**: Apps that would like to show a simple "Accept all/Reject Optional" dialog, with a link to an external
+URL.
+
+If you would like to show a simple "Accept all/Reject Optional" dialog with a link to an external URL, you can set the
+following in the `config/cookies_consent.php` file:
+
+```php
+    'use_separate_page' => true,
+    'cookie_policy_page_custom_url' => 'https://www.example.com/cookies-policy',
 ```
 
 ## How to override the CSS styles
@@ -236,14 +354,21 @@ If you want to override the CSS styles of the cookies consent dialog, you can do
 ```html
 
 <x-laravel-cookies-consent></x-laravel-cookies-consent>
+<x-laravel-cookies-consent-scripts></x-laravel-cookies-consent-scripts>
+```
+
+Then, you can add a `<style>` tag in your Blade file, in order to override the CSS styles:
+
+```html
+
 <style>
-    #scify-cookies-consent {
-        --primary-color: #ff5722; /* Override primary color */
+  #scify-cookies-consent, .scify-cookie-policy-page, #scify-cookie-consent-floating-button {
+    --primary-color: #ff5722; /* Override primary color */
 
-        ...
+    ...
 
-        /* Add more override rules here */
-    }
+    /* Add more override rules here */
+  }
 </style>
 ```
 
@@ -341,7 +466,11 @@ created).
 
 ```
 
-After that, you can use the `$_COOKIE` global object, in order to check for the appropriate cookie.
+## How to check if a cookie category is allowed
+
+### Backend code
+
+You can use the `$_COOKIE` global object, in order to check for the appropriate cookie.
 
 Now you can use this object in your Blade files like this:
 
@@ -384,6 +513,11 @@ might do the following:
 
 In this example, we checked whether
 the `$_COOKIE[config('cookies_consent.cookie_prefix') . 'cookies_consent_targeting']` key exists or not.
+
+### Frontend code
+
+You can use the `window.localStorage` object, in order to check for the appropriate cookie. (declared in the
+configuration file)
 
 ## Customization
 
@@ -451,7 +585,17 @@ composer update scify/laravel-cookies-consent --prefer-source
 
 To fetch the local package.
 
-## Testing
+Or, to prune everything and re-install:
+
+```bash
+rm -rf public/vendor/scify && \
+rm -rf vendor/scify && \
+composer require scify/laravel-cookies-consent && \
+php artisan vendor:publish --provider="SciFY\LaravelCookiesConsent\LaravelCookiesConsentServiceProvider" --tag="cookies-consent-public" --force && \
+php artisan config:cache
+```
+
+### Testing
 
 This project uses [Pest](https://pestphp.com/) for testing. To execute the test suite, run:
 
@@ -538,7 +682,7 @@ In order to run the styler, run :
 ```bash
 ./vendor/bin/pint --test -v # the --test will not do any changes, it will just output the changes needed
 
-./vendor/bin/pint -v # this command will actually perform the code style changes 
+./vendor/bin/pint -v # this command will actually perform the code style changes
 ```
 
 ### Releasing a new version

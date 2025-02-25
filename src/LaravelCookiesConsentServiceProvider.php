@@ -5,6 +5,8 @@ namespace SciFY\LaravelCookiesConsent;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Translation\TranslationServiceProvider;
+use SciFY\LaravelCookiesConsent\View\Components\LaravelCookiesConsentPage;
+use SciFY\LaravelCookiesConsent\View\Components\LaravelCookiesConsentScripts;
 
 class LaravelCookiesConsentServiceProvider extends ServiceProvider {
     public function boot() {
@@ -41,6 +43,8 @@ class LaravelCookiesConsentServiceProvider extends ServiceProvider {
         $this->loadRoutesFrom(__DIR__ . '/../routes/web.php');
 
         Blade::component('laravel-cookies-consent', \SciFY\LaravelCookiesConsent\View\Components\LaravelCookiesConsent::class);
+        Blade::component('laravel-cookies-consent-page', LaravelCookiesConsentPage::class);
+        Blade::component('laravel-cookies-consent-scripts', LaravelCookiesConsentScripts::class);
     }
 
     public function register() {

@@ -15,7 +15,7 @@ use SciFY\LaravelCookiesConsent\Http\Controllers\CookiesController;
 Route::get('/cookie-policy/{locale}', function (string $locale) {
     app()->setLocale($locale);
 
-    return view('cookies_consent::cookie-policy');
+    return view('cookies_consent::pages.cookie-policy-default-page');
 });
 
 Route::post('/cookie-consent/save', [CookiesController::class, 'save_cookies_consent_selection']);

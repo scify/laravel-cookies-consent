@@ -9,7 +9,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "vite",
-    "build": "vite build && cp resources/images/cookie.png public/cookie.png  && cp resources/styles/_variables.css public/_variables.css"
+    "build": "vite build && cp resources/images/cookie.png public/cookie.png && cp resources/styles/_variables.css public/_variables.css"
   },
   "repository": {
     "type": "git",
@@ -24,7 +24,7 @@
   "homepage": "https://github.com/scify/laravel-cookies-consent#readme",
   "devDependencies": {
     "blade-formatter": "^1.42.2",
-    "sass": "^1.85.0",
-    "vite": "^6.1.1"
+    "sass": "^1.85.1",
+    "vite": "^6.2.0"
   }
 }

@@ -25,7 +25,6 @@
     "require-dev": {
         "laravel/pint": "^1.6",
         "nunomaduro/collision": "^7.0",
-        "nunomaduro/larastan": "^2.0.1",
         "orchestra/testbench": "^8.0",
         "pestphp/pest": "^2.0",
         "pestphp/pest-plugin-laravel": "^v2.2",
@@ -33,7 +32,7 @@
         "phpstan/phpstan-deprecation-rules": "^1.0",
         "phpstan/phpstan-phpunit": "^1.0",
         "phpunit/phpunit": "^10.4",
-        "spatie/laravel-ray": "^1.26"
+        "spatie/laravel-ray": "^1.39"
     },
     "autoload": {
         "psr-4": {
