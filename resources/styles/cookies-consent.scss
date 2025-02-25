@@ -106,6 +106,7 @@
     .col-sm-12 {
       flex: 0 0 auto;
       width: 100%;
+      padding: 0;
     }
   }
 
@@ -589,7 +590,10 @@
       overflow: hidden;
 
       &.separate-page-mode {
-        width: 550px;
+        // when larger than mobile
+        @media (min-width: 576px) {
+          width: 550px;
+        }
       }
 
       .cookies-container {
