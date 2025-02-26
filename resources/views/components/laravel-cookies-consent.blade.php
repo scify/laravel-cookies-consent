@@ -1,8 +1,7 @@
 <div id="scify-cookies-consent">
     <dialog
         class="cookies-consent-banner banner cookies-policy-wrapper {{ config('cookies_consent.use_separate_page') ? 'separate-page-mode' : '' }}"
-        id="cookies-consent-banner"
-        aria-labelledby="cookie-consent-title" aria-describedby="cookie-consent-description"
+        id="cookies-consent-banner" aria-labelledby="cookie-consent-title" aria-describedby="cookie-consent-description"
         data-ajax-url="{{ url('/cookie-consent/save') }}"
         data-show-floating-button="{{ config('cookies_consent.display_floating_button') }}"
         data-hide-floating-button-on-mobile="{{ config('cookies_consent.hide_floating_button_on_mobile') }}"
@@ -27,38 +26,38 @@
                         @if (config('cookies_consent.use_separate_page'))
                             <div class="button-col col-6 col-sm-12 pl-0">
                                 <button type="button" class="btn btn-light w-100" id="reject-optional-cookies"
-                                        aria-label="{{ __('cookies_consent::messages.reject_optional_btn') }}">
+                                    aria-label="{{ __('cookies_consent::messages.reject_optional_btn') }}">
                                     {{ __('cookies_consent::messages.reject_optional_btn') }}
                                 </button>
                             </div>
                             <div class="button-col col-6 col-sm-12 pr-0">
                                 <button type="button" class="btn btn-light w-100" id="accept-all-cookies"
-                                        aria-label="{{ __('cookies_consent::messages.accept_all_btn') }}">
+                                    aria-label="{{ __('cookies_consent::messages.accept_all_btn') }}">
                                     {{ __('cookies_consent::messages.accept_all_btn') }}
                                 </button>
                             </div>
                         @else
                             <div class="button-col col-lg-4 col-sm-12 pl-0">
                                 <button type="button" class="btn btn-light w-100" id="customise-cookies"
-                                        aria-label="{{ __('cookies_consent::messages.customise_btn') }}">
+                                    aria-label="{{ __('cookies_consent::messages.customise_btn') }}">
                                     {{ __('cookies_consent::messages.customise_btn') }}
                                 </button>
                             </div>
                             <div class="button-col col-lg-4 col-sm-12 pl-0 display-none">
                                 <button type="button" class="btn btn-light w-100" id="accept-selected-cookies"
-                                        aria-label="{{ __('cookies_consent::messages.accept_selection_btn') }}">
+                                    aria-label="{{ __('cookies_consent::messages.accept_selection_btn') }}">
                                     {{ __('cookies_consent::messages.accept_selection_btn') }}
                                 </button>
                             </div>
                             <div class="button-col col-lg-4 col-sm-12">
                                 <button type="button" class="btn btn-light w-100" id="reject-optional-cookies"
-                                        aria-label="{{ __('cookies_consent::messages.reject_optional_btn') }}">
+                                    aria-label="{{ __('cookies_consent::messages.reject_optional_btn') }}">
                                     {{ __('cookies_consent::messages.reject_optional_btn') }}
                                 </button>
                             </div>
                             <div class="button-col col-lg-4 col-sm-12 pr-0">
                                 <button type="button" class="btn btn-light w-100" id="accept-all-cookies"
-                                        aria-label="{{ __('cookies_consent::messages.accept_all_btn') }}">
+                                    aria-label="{{ __('cookies_consent::messages.accept_all_btn') }}">
                                     {{ __('cookies_consent::messages.accept_all_btn') }}
                                 </button>
                             </div>
@@ -71,7 +70,7 @@
 </div>
 @if (config('cookies_consent.display_floating_button'))
     <button id="scify-cookie-consent-floating-button" class="cookie-button" style="display: none;"
-            onclick="toggleCookieBanner()" onkeyup="if (event.key === 'Enter') toggleCookieBanner()" tabindex="0">
+        onclick="toggleCookieBanner()" onkeyup="if (event.key === 'Enter') toggleCookieBanner()" tabindex="0">
         @include('cookies_consent::components.cookie-icon')
 
     </button>

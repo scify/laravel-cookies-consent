@@ -46,33 +46,34 @@
                 <div class="row">
                     <div class="col">
                         <dialog class="cookies-consent-banner banner cookies-policy-wrapper" id="cookies-consent-banner"
-                                aria-labelledby="cookie-consent-title" aria-describedby="cookie-consent-description"
-                                data-ajax-url="{{ url('/cookie-consent/save') }}"
-                                data-cookie-prefix="{{ config('cookies_consent.cookie_prefix') }}"
-                                data-show-floating-button="false"
-                                data-on-cookies-page="true"
-                                data-hide-floating-button-on-mobile="{{ config('cookies_consent.hide_floating_button_on_mobile') }}">
-                            @include('cookies_consent::components._cookie-categories', ['alwaysOpen' => true])
+                            aria-labelledby="cookie-consent-title" aria-describedby="cookie-consent-description"
+                            data-ajax-url="{{ url('/cookie-consent/save') }}"
+                            data-cookie-prefix="{{ config('cookies_consent.cookie_prefix') }}"
+                            data-show-floating-button="false" data-on-cookies-page="true"
+                            data-hide-floating-button-on-mobile="{{ config('cookies_consent.hide_floating_button_on_mobile') }}">
+                            @include('cookies_consent::components._cookie-categories', [
+                                'alwaysOpen' => true,
+                            ])
                             <div class="cookie-actions">
                                 <div class="container-fluid p-0">
                                     <div class="row g-0">
                                         <div class="col-lg-4 col-sm-12 pl-0">
                                             <button type="button" class="btn btn-light w-100"
-                                                    id="accept-selected-cookies"
-                                                    aria-label="{{ __('cookies_consent::messages.accept_selection_btn') }}">
+                                                id="accept-selected-cookies"
+                                                aria-label="{{ __('cookies_consent::messages.accept_selection_btn') }}">
                                                 {{ __('cookies_consent::messages.accept_selection_btn') }}
                                             </button>
                                         </div>
                                         <div class="col-lg-4 col-sm-12">
                                             <button type="button" class="btn btn-light w-100"
-                                                    id="reject-optional-cookies"
-                                                    aria-label="{{ __('cookies_consent::messages.reject_optional_btn') }}">
+                                                id="reject-optional-cookies"
+                                                aria-label="{{ __('cookies_consent::messages.reject_optional_btn') }}">
                                                 {{ __('cookies_consent::messages.reject_optional_btn') }}
                                             </button>
                                         </div>
                                         <div class="col-lg-4 col-sm-12 pr-0">
                                             <button type="button" class="btn btn-light w-100" id="accept-all-cookies"
-                                                    aria-label="{{ __('cookies_consent::messages.accept_all_btn') }}">
+                                                aria-label="{{ __('cookies_consent::messages.accept_all_btn') }}">
                                                 {{ __('cookies_consent::messages.accept_all_btn') }}
                                             </button>
                                         </div>
