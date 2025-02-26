@@ -6,6 +6,7 @@ return [
     'please_visit_1' => 'Daugiau informacijos apie slapukus rasite mūsų',
     'cookie_policy_page' => 'slapukų politikos puslapyje',
     'accept_selection_btn' => 'Priimti pasirinktus',
+    'customise_btn' => 'Prisitaikyti',
     'accept_all_btn' => 'Priimti visus',
     'reject_optional_btn' => 'Atmesti pasirinktinius',
     'accept_additional_cookies_btn' => 'Priimti papildomus slapukus',

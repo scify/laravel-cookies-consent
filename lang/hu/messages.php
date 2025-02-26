@@ -6,6 +6,7 @@ return [
     'please_visit_1' => 'A cookie-król részletesebb információkért látogasson el a',
     'cookie_policy_page' => 'cookie-kra vonatkozó irányelvek oldalunkra',
     'accept_selection_btn' => 'Kiválasztottak elfogadása',
+    'customise_btn' => 'Testreszabás',
     'accept_all_btn' => 'Összes elfogadása',
     'reject_optional_btn' => 'Opcionális elutasítása',
     'accept_additional_cookies_btn' => 'További cookie-k elfogadása',

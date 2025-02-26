@@ -6,6 +6,7 @@ return [
     'please_visit_1' => 'Chun tuilleadh faisnéise mionsonraithe faoi fhianáin, tabhair cuairt ar ár',
     'cookie_policy_page' => 'leathanach beartas fianáin',
     'accept_selection_btn' => 'Glac leis na Roghnaithe',
+    'customise_btn' => 'Saincheapadh',
     'accept_all_btn' => 'Glac le Gach Rud',
     'reject_optional_btn' => 'Diúltaigh Roghnach',
     'accept_additional_cookies_btn' => 'Glac le fianáin bhreise',

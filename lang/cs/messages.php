@@ -6,6 +6,7 @@ return [
     'please_visit_1' => 'Pro podrobnější informace o cookies navštivte naši',
     'cookie_policy_page' => 'stránku s politikou cookies',
     'accept_selection_btn' => 'Přijmout výběr',
+    'customise_btn' => 'Přizpůsobit',
     'accept_all_btn' => 'Přijmout vše',
     'reject_optional_btn' => 'Odmítnout volitelné',
     'accept_additional_cookies_btn' => 'Přijmout další cookies',

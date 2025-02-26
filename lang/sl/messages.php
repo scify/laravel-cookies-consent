@@ -6,6 +6,7 @@ return [
     'please_visit_1' => 'Za podrobnejše informacije o piškotkih obiščite našo',
     'cookie_policy_page' => 'stran s politiko piškotkov',
     'accept_selection_btn' => 'Sprejmi izbrano',
+    'customise_btn' => 'Prilagodi',
     'accept_all_btn' => 'Sprejmi vse',
     'reject_optional_btn' => 'Zavrni izbirne',
     'accept_additional_cookies_btn' => 'Sprejmi dodatne piškotke',

@@ -1,13 +1,14 @@
 <?php
 
 return [
-    'title' => 'Cookies Consent',
-    'description' => 'We use cookies to optimize our website and our service. You can choose which categories you consent to.',
+    'title' => 'We value your privacy',
+    'description' => 'We use cookies to enhance your browsing experience, serve personalized ads or content, and analyze our traffic. By clicking "Accept All", you consent to our use of cookies. You can choose which categories you consent to.',
     'please_visit_1' => 'For more detailed information about cookies, please visit the',
     'cookie_policy_page' => 'cookie policy page',
-    'accept_selection_btn' => 'Accept Selection',
+    'accept_selection_btn' => 'Save selection',
+    'customise_btn' => 'Customise',
     'accept_all_btn' => 'Accept All',
-    'reject_optional_btn' => 'Reject Optional',
+    'reject_optional_btn' => 'Reject All',
     'accept_additional_cookies_btn' => 'Accept additional cookies',
     'reject_additional_cookies_btn' => 'Reject additional cookies',
     'cookie_policy_title' => 'Cookie Policy',
@@ -48,4 +49,5 @@ return [
     'read_less' => 'Read less',
     'selection_saved_message' => 'Cookies consent selection saved',
     'cookies_settings' => 'Cookies Settings',
+    'always_active' => 'always active',
 ];

@@ -57,23 +57,23 @@
                                 <div class="container-fluid p-0">
                                     <div class="row g-0">
                                         <div class="col-lg-4 col-sm-12 pl-0">
-                                            <button type="button" class="btn btn-light w-100" id="accept-all-cookies"
-                                                    aria-label="Accept All Cookies">
-                                                {{ __('cookies_consent::messages.accept_all_btn') }}
+                                            <button type="button" class="btn btn-light w-100"
+                                                    id="accept-selected-cookies"
+                                                    aria-label="{{ __('cookies_consent::messages.accept_selection_btn') }}">
+                                                {{ __('cookies_consent::messages.accept_selection_btn') }}
                                             </button>
                                         </div>
                                         <div class="col-lg-4 col-sm-12">
                                             <button type="button" class="btn btn-light w-100"
-                                                    id="accept-selected-cookies"
-                                                    aria-label="Accept Selected Cookies">
-                                                {{ __('cookies_consent::messages.accept_selection_btn') }}
+                                                    id="reject-optional-cookies"
+                                                    aria-label="{{ __('cookies_consent::messages.reject_optional_btn') }}">
+                                                {{ __('cookies_consent::messages.reject_optional_btn') }}
                                             </button>
                                         </div>
                                         <div class="col-lg-4 col-sm-12 pr-0">
-                                            <button type="button" class="btn btn-light w-100"
-                                                    id="reject-optional-cookies"
-                                                    aria-label="Reject Optional Cookies">
-                                                {{ __('cookies_consent::messages.reject_optional_btn') }}
+                                            <button type="button" class="btn btn-light w-100" id="accept-all-cookies"
+                                                    aria-label="{{ __('cookies_consent::messages.accept_all_btn') }}">
+                                                {{ __('cookies_consent::messages.accept_all_btn') }}
                                             </button>
                                         </div>
                                     </div>

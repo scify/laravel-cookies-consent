@@ -11,6 +11,9 @@
                     {{ in_array($category, config('cookies_consent.required')) ? 'checked disabled' : '' }}>
             <label class="form-check-label" for="{{ $category }}">
                 {{ __('cookies_consent::messages.' . $category) }}
+                @if (in_array($category, config('cookies_consent.required')))
+                    <span class="always-active">({{ __('cookies_consent::messages.always_active') }})</span>
+                @endif
             </label>
         </div>
         <div class="accordion-item cookies-consent-category-item">

@@ -6,6 +6,7 @@ return [
     'please_visit_1' => 'Lisätietoja evästeistä saat käymällä',
     'cookie_policy_page' => 'evästekäytäntösivullamme',
     'accept_selection_btn' => 'Hyväksy valitut',
+    'customise_btn' => 'Mukauta',
     'accept_all_btn' => 'Hyväksy kaikki',
     'reject_optional_btn' => 'Hylkää valinnaiset',
     'accept_additional_cookies_btn' => 'Hyväksy lisäevästeet',

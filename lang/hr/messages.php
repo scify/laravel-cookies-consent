@@ -6,6 +6,7 @@ return [
     'please_visit_1' => 'Za detaljnije informacije o kolačićima, posjetite našu',
     'cookie_policy_page' => 'stranicu s politikom kolačića',
     'accept_selection_btn' => 'Prihvati odabrano',
+    'customise_btn' => 'Prilagodi',
     'accept_all_btn' => 'Prihvati sve',
     'reject_optional_btn' => 'Odbij opcionalno',
     'accept_additional_cookies_btn' => 'Prihvati dodatne kolačiće',

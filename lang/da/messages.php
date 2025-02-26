@@ -6,6 +6,7 @@ return [
     'please_visit_1' => 'For mere detaljerede oplysninger om cookies, besøg venligst vores',
     'cookie_policy_page' => 'cookiepolitik side',
     'accept_selection_btn' => 'Accepter valgte',
+    'customise_btn' => 'Tilpas',
     'accept_all_btn' => 'Accepter alle',
     'reject_optional_btn' => 'Afvis valgfri',
     'accept_additional_cookies_btn' => 'Accepter yderligere cookies',

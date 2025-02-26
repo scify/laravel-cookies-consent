@@ -6,6 +6,7 @@ return [
     'please_visit_1' => 'За по-подробна информация относно бисквитките, моля посетете нашата',
     'cookie_policy_page' => 'страница с политика за бисквитки',
     'accept_selection_btn' => 'Приемете избора',
+    'customise_btn' => 'Персонализирайте',
     'accept_all_btn' => 'Приемете всички',
     'reject_optional_btn' => 'Откажете опционалните',
     'accept_additional_cookies_btn' => 'Приемете допълнителни бисквитки',

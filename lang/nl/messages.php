@@ -6,6 +6,7 @@ return [
     'please_visit_1' => 'Voor meer gedetailleerde informatie over cookies, bezoek onze',
     'cookie_policy_page' => 'cookiebeleid pagina',
     'accept_selection_btn' => 'Geselecteerde Accepteren',
+    'customise_btn' => 'Aanpassen',
     'accept_all_btn' => 'Alles Accepteren',
     'reject_optional_btn' => 'Optionele Weigeren',
     'accept_additional_cookies_btn' => 'Aanvullende cookies accepteren',

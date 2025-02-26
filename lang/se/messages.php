@@ -6,6 +6,7 @@ return [
     'please_visit_1' => 'För mer detaljerad information om cookies, besök vår',
     'cookie_policy_page' => 'cookiepolicy-sida',
     'accept_selection_btn' => 'Acceptera val',
+    'customise_btn' => 'Anpassa',
     'accept_all_btn' => 'Acceptera alla',
     'reject_optional_btn' => 'Avvisa valfria',
     'accept_additional_cookies_btn' => 'Acceptera ytterligare cookies',

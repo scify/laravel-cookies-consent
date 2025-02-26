@@ -6,6 +6,7 @@ return [
     'please_visit_1' => 'Küpsiste kohta üksikasjalikuma teabe saamiseks külastage meie',
     'cookie_policy_page' => 'küpsiste poliitika lehte',
     'accept_selection_btn' => 'Nõustu valitud',
+    'customise_btn' => 'Kohanda',
     'accept_all_btn' => 'Nõustu kõigiga',
     'reject_optional_btn' => 'Lükka tagasi valikulised',
     'accept_additional_cookies_btn' => 'Nõustu täiendavate küpsistega',

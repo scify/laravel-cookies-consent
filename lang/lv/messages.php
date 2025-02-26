@@ -6,6 +6,7 @@ return [
     'please_visit_1' => 'Lai iegūtu sīkāku informāciju par sīkdatnēm, lūdzu, apmeklējiet mūsu',
     'cookie_policy_page' => 'sīkdatņu politikas lapu',
     'accept_selection_btn' => 'Pieņemt izvēlēto',
+    'customise_btn' => 'Pielāgot',
     'accept_all_btn' => 'Pieņemt visu',
     'reject_optional_btn' => 'Noraidīt izvēles',
     'accept_additional_cookies_btn' => 'Pieņemt papildu sīkdatnes',

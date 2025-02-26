@@ -1,11 +1,12 @@
 <?php
 
 return [
-    'title' => 'Consentimiento de Cookies',
+    'title' => 'Valoramos su privacidad',
     'description' => 'Utilizamos cookies para optimizar nuestro sitio web y nuestro servicio. Puede elegir a qué categorías da su consentimiento.',
     'please_visit_1' => 'Para obtener información más detallada sobre las cookies, visite nuestra',
     'cookie_policy_page' => 'página de política de cookies',
     'accept_selection_btn' => 'Aceptar Selección',
+    'customise_btn' => 'Personalizar',
     'accept_all_btn' => 'Aceptar Todo',
     'reject_optional_btn' => 'Rechazar Opcionales',
     'accept_additional_cookies_btn' => 'Aceptar cookies adicionales',

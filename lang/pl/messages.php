@@ -6,6 +6,7 @@ return [
     'please_visit_1' => 'Aby uzyskać bardziej szczegółowe informacje na temat plików cookie, odwiedź naszą',
     'cookie_policy_page' => 'stronę polityki plików cookie',
     'accept_selection_btn' => 'Akceptuj wybrane',
+    'customise_btn' => 'Dostosuj',
     'accept_all_btn' => 'Akceptuj wszystkie',
     'reject_optional_btn' => 'Odrzuć opcjonalne',
     'accept_additional_cookies_btn' => 'Akceptuj dodatkowe pliki cookie',

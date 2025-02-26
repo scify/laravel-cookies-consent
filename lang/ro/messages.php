@@ -6,6 +6,7 @@ return [
     'please_visit_1' => 'Pentru informații mai detaliate despre cookie-uri, vă rugăm să vizitați',
     'cookie_policy_page' => 'pagina noastră de politică privind cookie-urile',
     'accept_selection_btn' => 'Acceptați selecția',
+    'customise_btn' => 'Personalizați',
     'accept_all_btn' => 'Acceptați toate',
     'reject_optional_btn' => 'Respingeți opționalele',
     'accept_additional_cookies_btn' => 'Acceptați cookie-uri suplimentare',

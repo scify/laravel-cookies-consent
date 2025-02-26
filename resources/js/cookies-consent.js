@@ -110,6 +110,7 @@ function initializeCookieBanner() {
     setSliders(cookieConsent);
 
     addEventListeners({
+        'customise-cookies': handleCustomiseCookies,
         'accept-all-cookies': handleAcceptAllCookies,
         'accept-selected-cookies': handleAcceptSelectedCookies,
         'reject-optional-cookies': handleRejectOptionalCookies
@@ -137,6 +138,7 @@ function toggleBannerDisplay(cookieBanner, cookieButton, showFloatingButton, hid
     if (cookieConsent) {
         cookieBanner.style.display = 'none';
         if (showFloatingButton && cookieButton) {
+            // Hide the floating button on mobile if the configuration allows it
             cookieButton.style.display = hideFloatingButtonOnMobile && window.innerWidth < 768 ? 'none' : 'block';
         }
     } else {
@@ -164,6 +166,19 @@ function setSliders(cookieConsent) {
             }
         }
     }
+}
+
+function handleCustomiseCookies() {
+    const cookieCategoriesContainer = document.getElementById('cookie-categories-container');
+    // find the closest parent element with the "banner" class, and set the width to 650px
+    cookieCategoriesContainer.closest('.banner').style.width = '650px';
+    // remove the "display-none" class to show the cookie categories
+    cookieCategoriesContainer.classList.remove('display-none');
+
+    // hide the parent with class "button-col" of the "customise-cookies" button
+    document.getElementById('customise-cookies').closest('.button-col').classList.add('display-none');
+    // show the "accept-selected-cookies" button
+    document.getElementById('accept-selected-cookies').closest('.button-col').classList.remove('display-none');
 }
 
 function handleAcceptAllCookies() {
@@ -204,6 +219,14 @@ function handleCookieConsent(consent) {
     const cookiePrefix = cookieBanner.dataset.cookiePrefix;
     consent['locale'] = cookieBanner.dataset.locale;
 
+    // if on cookies page, do not hide the banner
+    if (!onCookiesPage()) {
+        cookieBanner.style.display = 'none';
+        if (showFloatingButton) {
+            cookieButton.style.display = 'block';
+        }
+    }
+
     fetch(cookieBanner.dataset.ajaxUrl, {
         method: 'POST', headers: {
             'Content-Type': 'application/json',
@@ -214,12 +237,6 @@ function handleCookieConsent(consent) {
             if (data.success) {
                 setCookie(cookiePrefix + 'cookies_consent', JSON.stringify(consent), 30);
                 setSliders(JSON.stringify(consent));
-                if (!onCookiesPage()) {
-                    cookieBanner.style.display = 'none';
-                    if (showFloatingButton) {
-                        cookieButton.style.display = 'block';
-                    }
-                }
                 showSuccessMessage(data.message);
             }
         });
